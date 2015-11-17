@@ -22,6 +22,22 @@ var userSchema = new mongoose.Schema({
     picture: { type: String, default: '' }
   },
 
+//Add Teams per user.
+
+  teams:{
+    name:{type:String, default:''},
+    emails:{type:Array},
+    usernames:{type:Array}
+  },
+
+//orders per user.
+
+  orders:{
+    id:{type:String, default:''},
+    team:{type:Array},
+    choices:{type:Array}
+  },
+
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });
