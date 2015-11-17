@@ -108,7 +108,7 @@ app.post('/forgot', userController.postForgot);
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
 
-// app.get('/signup', userController.getSignup);//Added to login page.
+app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
 
