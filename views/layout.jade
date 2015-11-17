@@ -15,9 +15,10 @@ html
       block content
 
     include partials/footer
-
+    
     script(src='/js/lib/jquery.min.js')
     script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/smooth-scroll.js')
     script(src='/js/main.js')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
@@ -29,3 +30,6 @@ html
 
       ga('create', 'UA-XXXXX-X', 'auto');
       ga('send', 'pageview');
+    
+    script.
+      smoothScroll.init(); 

@@ -107,7 +107,8 @@ app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
-app.get('/signup', userController.getSignup);
+
+// app.get('/signup', userController.getSignup);//Added to login page.
 app.post('/signup', userController.postSignup);
 
 
@@ -118,6 +119,9 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+
+
 
 /**
  * API examples routes.

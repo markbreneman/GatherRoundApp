@@ -52,6 +52,7 @@
     "paypal-rest-sdk": "^1.6.4",
     "request": "^2.65.0",
     "serve-favicon": "^2.3.0",
+    "smooth-scroll": "cferdinandi/smooth-scroll",
     "stripe": "^4.0.0",
     "tumblr.js": "^0.0.7",
     "twilio": "^2.5.2",
