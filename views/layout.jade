@@ -7,13 +7,14 @@ html
     meta(name='csrf-token', content=_csrf)
     title #{title} - Gather:Team Lunches Made Simple.
     link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='css/carousel.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/carousel.css')
   body
     include partials/header
 
-    .container
-      include partials/flash
-      block content
+    
+    include partials/flash
+    block content
 
     include partials/footer
     
