@@ -4,103 +4,130 @@ block content
   #Home.jumbotron
     #Top.container
       .row
-        .col-md-4.col-md-offset-4.splash
+        .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.splash
           img.img-responsive.center-block(src='img/logo.png')
-
-  #OurMission.container
+  
+  #OurMission.container.section
     .row
-      h2.col-md-12 Our Mission
+      .col-md-12
+        h2 Our Mission
     .row
-      .col-md-6.col-md-offset-3
-        | Gather believes that great lunch means great culture. We take the work out of lunch at work, making it simple to order for teams. Lunch should be a much needed break in the day. Let’s make that happen.
- 
-  .container
-    .row
-      h2.col-md-12 Features
-    .row
-      .col-md-4
-        h3 Healthy & High Quality Food
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-6.col-md-offset-3.blurb
         p
-          | Gather curates a daily menu, sourcing high quality and nutiritous food for you and your team.
-      .col-md-4
-        h3 Simple Group Ordering
-        img.img-responsive.center-block(src='img/square.jpg')
+          | Gather believes that great lunch means great culture. We take the work out of lunch at work, making it simple to order for teams. Lunch should be a much needed break in the day.
+          br
+          br
+          | Let’s make that happen.
+
+  #Features.container.section
+    .row
+      .col-md-12
+        h2 Features
+    .row
+      .col-md-4.feature
+        h3
+          | Healthy &
+          br
+          |  High Quality Food
+        img.img-responsive.center-block(src='img/healthy.png')
+        p
+          | Gather curates a daily menu, sourcing high quality and nutritious food for you and your team. Our menus are designed for teams 6-10 people and cost $10 per person.
+      .col-md-4.feature
+        h3
+          | Simple
+          br
+          |  Group Ordering
+        img.img-responsive.center-block(src='img/simple.png')
         p
           | Our ‘food mood’ selection process makes it easy to choose food that suits the entire team.
-      .col-md-4
-        h3 Ready for Sharing
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-4.feature
+        h3
+          | Ready
+          br
+          |  for Sharing
+        img.img-responsive.center-block(src='img/ready.png')
         p
-          | We don’t just deliver, we set up your lunch family stlye so you can spend more time enjoying, and less time prepping.
-  
-  #HowItWorks.container
+          | We don’t just deliver, we set up your lunch family style so you can spend more time enjoying, and less time prepping.
+
+  #HowItWorks.container.section
     .row
-      h2.col-md-12 How it Works
-    .row
-      .col-md-8
-        h3 Log On & Pick Your Team
+      .col-md-12
+        h2 How it Works
+    .row.how-it-works
+      .col-md-8.instruction
+        h3 1. Log On & Pick Your Team
         p
-          | Log on to Gather and invite your team members to lunch by simply adding their e-mail and select the time you want to eat.
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
-    .row
-      .col-md-8
-        h3 Choose your food mood
+          | Log on to Gather and invite your team members to lunch by simply adding their e‑mail and select the time you want to eat.
+      .col-md-4.img-instruction
+        img(src='img/instruction1.png')
+    .row.how-it-works
+      .col-md-8.instruction
+        h3 2. Choose your food mood
         p
-          | Team members recieve an e-mail and are asked their ‘food mood’ (hearty, health, light or comforting).
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
-    .row
-      .col-md-8
-        h3 Gather does its Magic
+          | Team members receive an e-mail and are asked their ‘food mood’ (hearty, healthy, light or comforting).
+      .col-md-4.img-instruction
+        img(src='img/instruction2.png')
+    .row.how-it-works
+      .col-md-8.instruction
+        h3 3. Gather does its Magic
         p
           | Based on the food moods of the team, Gather’s ‘food mood’ algorithm curates dishes that are designed to meet the needs of the entire team.
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
-    .row
-      .col-md-8
-        h3 Enjoy a team lunch
+      .col-md-4.img-instruction
+        img(src='img/instruction3.png')
+    .row.how-it-works
+      .col-md-8.instruction
+        h3 4. Enjoy a team lunch
         p
           | Gather will deliver the food and set the table for the team. Food is served family style to encourage sharing and conversation.
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
-    .row
-      .col-md-8
-        h3 No Washing Up!
+      .col-md-4.img-instruction
+        img(src='img/instruction4.png')
+    .row.how-it-works
+      .col-md-8.instruction
+        h3 5. No Washing Up!
         p
           | At the end of lunch, simply put the empty dishes in the box provided and we will come pick them up, allowing you to get back to work.
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
-
-  .container
+      .col-md-4.img-instruction
+        img(src='img/instruction5.png')
+        
+  #Partners.container.section
     .row
-      h2.col-md-12 Our Partners
+      .col-md-12
+        h2 Our Partners
     .row
-      .col-md-6.col-md-offset-3
-        | We have worked hard to find partners who believe in our mission and can deliver high qaulity, healthy lunch options. We’re creating our A-team to feed your A-team.
-    .row
+      .col-md-6.col-md-offset-3.blurb
+        p
+          | We have worked hard to find partners who believe in our mission and can deliver high quality, healthy lunch options. We’re creating our A‑team to feed your A‑team.
+    .row.sample-partners
       h3.col-md-12 Here’s a Sample of Just Some of Our Partners:
     .row
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/meatball.jpg')
         h4 Meatball Shop
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/haldi.jpg')
         h4 Haldi
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/oaxaca.jpg')
         h4 Oaxaca Taqueria
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/laut.jpg')
+        h4 Laut
     .row
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/taim.jpg')
         h4 Taim
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/bangkok.jpg')
         h4 Bangkok B.A.R.
-      .col-md-4
-        img.img-responsive.center-block(src='img/square.jpg')
-        h4 Poulette    
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/poulette.jpg')
+        h4 Poulette
+      .col-md-3.col-sm-3.col-xs-6
+        img.img-responsive.center-block.partner(src='img/partners/greyscale/mq.jpg')
+        h4 Might Quinn's
+          
+        
+           
     if !user
       #Signup.page-header        
         h3 Sign up

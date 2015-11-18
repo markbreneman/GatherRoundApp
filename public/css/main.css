@@ -11685,6 +11685,7 @@ fieldset[disabled] .btn-yahoo.active {
   font-weight: 500;
   text-transform: uppercase;
   transition: all 0.2s linear;
+  font-family: roboto_condensedregular;
 }
 
 html {

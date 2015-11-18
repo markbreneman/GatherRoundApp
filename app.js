@@ -102,6 +102,9 @@ app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 
+app.get('/dashboard', userController.index);
+app.get('/placeorder', userController.placeOrder);
+
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);

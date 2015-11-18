@@ -42,10 +42,31 @@ exports.postLogin = function(req, res, next) {
       if (err) return next(err);
       req.flash('success', { msg: 'Success! You are logged in.' });
       // res.redirect(req.session.returnTo || '/'); // Session Bit is actin funny--mark does not understand how it works.
-      res.redirect('/');
+      res.redirect('/dashboard');
     });
   })(req, res, next);
 };
+
+/**
+ * GET /userDashboard
+ */
+exports.index = function(req, res) {
+  res.render('account/dashboard', {
+    title: 'Dashboard',
+    username:"farts",
+  });
+};
+
+/**
+ * GET /placeorder
+ */
+exports.placeOrder = function(req, res) {
+  res.render('account/placeorder', {
+    title: 'Place an Order',
+    username:"farts",
+  });
+};
+
 
 /**
  * GET /logout

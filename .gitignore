@@ -13,11 +13,6 @@ logs
 results
 tmp
 
-#Secret Keys
-
-
-
-
 # Dependency directory
 node_modules
 bower_components
