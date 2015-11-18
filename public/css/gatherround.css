@@ -58,9 +58,42 @@ footer {
   height: 3px;
 }
 
-.nav .navbar-nav{
+.nav.navbar-nav{
   height: 60px;
 }
+
+.nav.navbar-nav li{
+  height:60px;
+}
+
+.nav.navbar-nav li a{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color:#333;
+}
+
+.nav input{
+  margin-top:10px;
+  border-radius:0px;
+  border:none;
+  background-color:#F2F2F2;
+  color:#8C8C8C;
+}
+
+.nav #btnLogin{
+  background-color:transparent;
+  border-radius:0px;
+  border:0px;
+  box-shadow:None;
+  font-size:18px;
+  margin-left: 32%;
+}
+
+#ForgotLink{
+  padding: 0px;
+  color:#8C8C8C;
+}
+
 
 /* CUSTOMIZE THE SPLASH
 -------------------------------------------------- */

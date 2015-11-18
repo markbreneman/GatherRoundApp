@@ -29,15 +29,15 @@
       ul.nav.navbar-nav.navbar-right
         if !user
           li#menuLogin.dropdown
-            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') Login
+            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') Log In
             .dropdown-menu(style='padding:17px;')
               form#formLogin.form(method="POST" action='/login')
                 input(type='hidden', name='_csrf', value=_csrf)
                 input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus=true)
                 input.form-control(type='password', name='password', id='password', placeholder='Password')
                 br
-                button#btnLogin.btn(type='submit') Login
-                a.btn.btn-link(href='/forgot') Forgot your password?
+                button#btnLogin.btn(type='submit') Log In
+                a#ForgotLink.btn.btn-link(href='/forgot') Forgot your password?
             
         else
           li.dropdown(class=title=='Account Management'?'active':undefined)
@@ -51,6 +51,6 @@
             ul.dropdown-menu
               li
                 a(href='/account') My Account
-              li.divider
+              //- li.divider
               li
                 a(href='/logout') Logout
