@@ -1,41 +1,41 @@
-#NavLoggedIn.navbar.navbar-default
-  .container
-    .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand(href='/dashboard')
-        img(src='/img/logo_navbar_invert.png')
-    .collapse.navbar-collapse(style='text-align:center;')
-      if user
-        img#logologgedin(src='/img/logologgedin@2x.png')    
-      ul.nav.navbar-nav.navbar-right
-        if !user
-          li#menuLogin.dropdown
-            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') Log In
-            .dropdown-menu(style='padding:20px; background-color: #f8f8f8;')
-              form#formLogin.form(method="POST" action='/login')
-                input(type='hidden', name='_csrf', value=_csrf)
-                input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus=true)
-                input.form-control(type='password', name='password', id='password', placeholder='Password')
-                br
-                button#btnLogin.btn(type='submit') Log In
-                a#ForgotLink.btn.btn-link(href='/forgot') Forgot your password?
+#NavLoggedIn.nav.navbar.navbar-default(role='navigation')
+  ul.navbar-nav.navbar-left
+    li
+      a(href='#')
+        img(style='width: 50px; margin:0; height:auto;' src='http://cl.ly/image/0z2Z2Q1V1w2v/download/logo_navbar_invert.png')
+  |   &#x9;
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+      span.sr-only Toggle navigation
+      |         
+      span.icon-bar
+      |         
+      span.icon-bar
+      |         
+      span.icon-bar
+  |   
+  |    
+  a.centerlogo(href='#')
+    img(src='http://cl.ly/image/3U3E1J2v3h2L/download/logologgedin@2x.png')
+  #navbar-collapse-1.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a.dropdown-toggle(href='#', data-toggle='dropdown')
+          if user.profile.picture
+            img(src='#{user.profile.picture}')
+          else
+            img(src='#{user.gravatar(60)}')
+          | #{user.profile.name || user.email || user.id}&nbsp;
+          i.caret
+          //- b.caret
+        |          
+        ul.dropdown-menu
+          li
+            a(href='/account') My Account
+          |            
+          //- li.divider
+          |            
+          li
+            a(href='/logout') Log out
             
-        else
-          li.dropdown(class=title=='Account Management'?'active':undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src='#{user.profile.picture}')
-              else
-                img(src='#{user.gravatar(60)}')
-              | #{user.profile.name || user.email || user.id}&nbsp;
-              i.caret
-            ul.dropdown-menu
-              li
-                a(href='/account') My Account
-              //- li.divider
-              li
-                a(href='/logout') Logout
+            

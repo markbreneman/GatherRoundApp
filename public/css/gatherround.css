@@ -75,6 +75,7 @@ footer {
   /*padding-top: 20px;*/
   /*padding-bottom: 20px;*/
   color:#333;
+  font-size: 15px;
 }
 
 .nav input{
@@ -104,18 +105,6 @@ footer {
   width: 100%;
 }
 
-
-/*.navbar {
-    position: relative;
-}
-.brand {
-    position: absolute;
-    left: 50%;
-    margin-left: -46px !important;
-    display: block;
-    margin-top: 5px;
-}*/
-
 .nav-center {
     margin:0;
     float:none;
@@ -139,6 +128,7 @@ margin-bottom:0px;
 
 .loggedin .navbar-right li{
   background-color: #1C3C4A;
+  height: auto;
 }
 
 .loggedin .nav.navbar-nav li a{
@@ -148,6 +138,27 @@ margin-bottom:0px;
 .loggedin .dropdown-menu{
   background-color: #1C3C4A;
 }
+.loggedin .navbar-default{
+background-color:#1C3C4A;
+}
+
+.loggedin .centerlogo
+{
+    position: absolute;
+    left: 45%;
+  	top:20px;
+}
+
+.loggedin .centerlogo img
+{
+	width:94px;
+  left: 40%;
+}
+
+.loggedin .navbar-header{
+ margin-top:-60px;
+}
+
 /* CUSTOMIZE THE SPLASH
 -------------------------------------------------- */
 
