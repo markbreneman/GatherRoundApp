@@ -6,6 +6,7 @@
 
 body {
   color: #5a5a5a;
+  padding-top: 0px;
 }
 
 .section {
@@ -104,6 +105,47 @@ footer {
 }
 
 
+/*.navbar {
+    position: relative;
+}
+.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -46px !important;
+    display: block;
+    margin-top: 5px;
+}*/
+
+.nav-center {
+    margin:0;
+    float:none;
+}
+
+.navbar-inner{
+    text-align:center;
+}
+
+#NavLoggedIn{
+background: #1C3C4A;
+}
+
+#logologgedin{
+  width:94px;
+  height:auto;
+  margin-top: 20px;
+}
+
+.loggedin .navbar-right li{
+  background-color: #1C3C4A;
+}
+
+.loggedin .nav.navbar-nav li a{
+  color:white;
+}
+
+.loggedin .dropdown-menu{
+  background-color: #1C3C4A;
+}
 /* CUSTOMIZE THE SPLASH
 -------------------------------------------------- */
 

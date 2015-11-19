@@ -1,45 +1,56 @@
-#NavLoggedin.navbar.navbar-fixed-top.navbar-default(role='navigation')
-      .navbar-inner
-        .container
-          button.pull-left.btn.btn-navbar.navbar-toggle(type='button', style='float: left;', data-toggle='collapse', data-target='.nav-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand(style='margin: 0; float: none;', href='#')
-            img(src='http://chunlungsportclub.com/wp-content/themes/chunlungsportclub/images/logo.png')
-          .nav-collapse
-            ul.nav.navbar-nav
+#NavLoggedIn.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/')
+        img(src='/img/logo_navbar_invert.png')
+    .collapse.navbar-collapse(style='text-align:center;')
+      if user
+        //- li.col-md-offset-5
+        img#logologgedin(src='/img/logologgedin@2x.png')    
+      ul.nav.navbar-nav
+        if !user
+          //- li(class=title=='Home'?'active':undefined)
+          //-   a(href='#Top') Home
+          li(class=title=='Our Mission'?'active':undefined)
+            a(data-scroll='', href='#OurMission') Our Mission
+          li(class=title=='Features'?'active':undefined)
+            a(data-scroll='', href='#Features') Features
+          li(class=title=='How It Works'?'active':undefined)
+            a(data-scroll='', href='#HowItWorks') How It Works  
+          li(class=title=='Partners'?'active':undefined)
+            a(data-scroll='', href='#Partners') Partners
+          li(class=title=='Signup'?'active':undefined)
+              a(data-scroll='', href='#Signup') Signup
+      ul.nav.navbar-nav.navbar-right
+        if !user
+          li#menuLogin.dropdown
+            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') Log In
+            .dropdown-menu(style='padding:20px; background-color: #f8f8f8;')
+              form#formLogin.form(method="POST" action='/login')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus=true)
+                input.form-control(type='password', name='password', id='password', placeholder='Password')
+                br
+                button#btnLogin.btn(type='submit') Log In
+                a#ForgotLink.btn.btn-link(href='/forgot') Forgot your password?
+            
+        else
+          li.dropdown(class=title=='Account Management'?'active':undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              if user.profile.picture
+                img(src='#{user.profile.picture}')
+              else
+                img(src='#{user.gravatar(60)}')
+              | #{user.profile.name || user.email || user.id}&nbsp;
+              i.caret
+            ul.dropdown-menu
               li
-                a(href='#') Item 1
+                a(href='/account') My Account
+              //- li.divider
               li
-                a(href='#') Item 1
-              li
-                a(href='#') Item 1
-          ul.nav.pull-right
-            li
-              a(href='#')
-                .nextCog
-          span.navbar-text.pull-right superpup1 
-          
-      
-      //- a.brand(style='margin: 0; float: none;', href='#')
-      //-       img(src='/img/logologgedin.png')
-      //- img.navbar-brand(src='/img/logologgedin.png')
-      
-      
-      // Collect the nav links, forms, and other content for toggling
-      //- #navbar-collapse-1.collapse.navbar-collapse
-      //-   ul.nav.navbar-nav.navbar-right
-      //-     li.dropdown(class=title=='Account Management'?'active':undefined)
-      //-       a.dropdown-toggle(href='#', data-toggle='dropdown')
-      //-         if user.profile.picture
-      //-             img(src='#{user.profile.picture}')
-      //-         else
-      //-           img(src='#{user.gravatar(60)}')
-      //-         | #{user.profile.name || user.email || user.id}&nbsp;
-      //-         i.caret
-      //-         ul.dropdown-menu
-      //-           li
-      //-             a(href='/account') My Account
-      //-           li
-      //-             a(href='/logout') Logout
+                a(href='/logout') Logout
