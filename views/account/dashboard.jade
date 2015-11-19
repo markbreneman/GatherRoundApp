@@ -1,33 +1,45 @@
 extends ../layoutloggedin
 
 block content
-  #Home.jumbotron
-    #Top.container
-      .row
-        .col-md-4.col-md-offset-4.splash
-        p Hi #{user.profile.name}
-        a.btn.btn-primary(href='/placeorder')
-          | Place an Order
   .container
-    .row
-      .col-md-4
-        h3 Order History
-        p
-          | Gather curates a daily menu, sourcing high quality and nutiritous food for you and your team.
-      .col-md-4
-        h3 My Account
-        p
-          | Our ‘food mood’ selection process makes it easy to choose food that suits the entire team.
-      .col-md-4
-        h3 Help and Support
-        p
-          | We don’t just deliver, we set up your lunch family stlye so you can spend more time enjoying, and less time prepping.
-      .col-md-4
-        h3 Help and Support
-        p
-          | We don’t just deliver, we set up your lunch family stlye so you can spend more time enjoying, and less time prepping.
-      .col-md-4
-        h3 Help and Support
-        p
-          | We don’t just deliver, we set up your lunch family stlye so you can spend more time enjoying, and less time prepping.
-  
+    .container.section
+      .row
+        .col-md-4.col-md-offset-4
+          h2 Hi, #{user.profile.name}!
+          |       
+          h3
+            | You have 1 order in progress. Check its 
+            a(href='#') details
+            | .
+          |       
+          .create-order
+            a#PlaceOrderBtn.btn.btn-primary(href='/placeorder')
+                 | Place an Order
+    .container.section
+      .row
+        .col-md-4.admin-tab-bg
+          .admin-tab
+            h4 Order History
+            |         
+            p See your past orders, reprint receipts and check out your team&apos;s favorite meals.
+            |         
+            .admin-button View History
+        |     
+        .col-md-4.admin-tab-bg
+          .admin-tab
+            h4 My Account
+            |         
+            p Manage your payments, addresses, personal details and teams.
+            |         
+            .admin-button Account Details
+        |     
+        .col-md-4.admin-tab-bg
+          .admin-tab
+            h4 Help &amp; Suport
+            |         
+            p
+              | Got a question? Check out our 
+              a(href='#') FAQ
+              | ! Can&apos;t find an answer? Shoot us a note and we&apos;ll return shortly.
+            |         
+            .admin-button Contact Us

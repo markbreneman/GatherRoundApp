@@ -20,10 +20,11 @@ footer {
 }
 
 
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
+/*
+--------------------------------------------------
+------------------CUSTOM NAV----------------------
+--------------------------------------------------
+*/
 .navbar-wrapper {
   position: relative;
   top: 0;
@@ -34,13 +35,9 @@ footer {
   /* height: 40px; */
 }
 
-/* Flip around the padding for proper display in narrow viewports */
-
 .navbar .container {
   width: auto;
   height:60px;
-
-  /* Text Styling: */
   font-family: roboto_condensedregular;
   font-size: 16px;
   color: #1C3C4A;
@@ -159,9 +156,11 @@ background-color:#1C3C4A;
  margin-top:-60px;
 }
 
-/* CUSTOMIZE THE SPLASH
--------------------------------------------------- */
-
+/*
+--------------------------------------------------
+------------------CUSTOM SPLASH--------------------
+--------------------------------------------------
+*/
 .jumbotron {
   padding: 0;
   height: 500px;
@@ -185,8 +184,115 @@ background-color:#1C3C4A;
     padding-top: 110px;
 }
 
-/* HEADERS
--------------------------------------------------- */
+/*
+--------------------------------------------------
+------------------CUSTOM DASHBOARD----------------
+--------------------------------------------------
+*/
+#Dashboard{
+  background: url(/img/splash.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#Dashboard body{
+  background-color: transparent;
+}
+
+#PlaceOrderBtn {
+  font-family: roboto_condensedbold;
+  background-color: #FFCF74;
+  color: #fff;
+  border-radius: 3px;
+  height: 70px;
+  margin-top: 30px;
+  padding-top: 18px;
+  font-size: 21px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+  border:none;
+  width:100%;
+}
+
+#Dashboard h2 {
+    font-family: roboto_condensedregular;
+    font-size: 32px;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 40px;
+    display: table;
+    margin: none;
+    margin: auto;
+    border:none;
+    text-transform: none;
+}
+
+#Dashboard h3 {
+  color: #fff;
+  line-height: 32px;
+}
+
+#Dashboard h3 a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#Dashboard h4 {
+    font-family: roboto_condensedbold;
+    font-size: 21px;
+    color: #1C3C4A;
+    line-height: 30px;
+    text-transform: uppercase;
+    display: table;
+    margin: auto;
+    border-bottom: 5px solid #D8D8D8;
+    margin-top: 0;
+    padding-top: 30px;
+    margin-bottom: 20px;
+}
+
+#Dashboard .admin-tab {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  min-height: 300px;
+  padding: 0 7%;
+  margin-top: 40px;
+}
+
+#Dashboard .admin-tab p {
+  margin-top: 40px;
+}
+
+#Dashboard .admin-button {
+  font-family: RobotoCondensed-Regular;
+  font-size: 18px;
+  color: #8C8C8C;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: solid 2px #D8D8D8;
+  text-align: center;
+  position: absolute;
+  bottom: 7%;
+  width: 86%;
+  height: 70px;
+  padding-top: 20px;
+}
+
+#Dashboard .admin-button:hover {
+  background: rgba(216,216,216,0.60);
+  border: 2px solid #D8D8D8;
+  border-radius: 3px;
+}
+
+/*
+--------------------------------------------------
+-------------------HEADERS------------------------
+--------------------------------------------------
+*/
 
 h2 {
     font-family: roboto_condensedbold;
@@ -339,8 +445,11 @@ select {
 }
 
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
+/*
+--------------------------------------------------
+----------------MEDIA QUERIES---------------------
+--------------------------------------------------
+*/
 
 @media (min-width: 768px) {
   /* Navbar positioning foo */
