@@ -127,6 +127,8 @@ footer {
 
 #NavLoggedIn{
 background: #1C3C4A;
+border-radius: 0px;
+margin-bottom:0px;
 }
 
 #logologgedin{

@@ -1,4 +1,4 @@
-#NavLoggedIn.navbar.navbar-default.navbar-fixed-top
+#NavLoggedIn.navbar.navbar-default
   .container
     .navbar-header
       button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -6,26 +6,11 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/')
+      a.navbar-brand(href='/dashboard')
         img(src='/img/logo_navbar_invert.png')
     .collapse.navbar-collapse(style='text-align:center;')
       if user
-        //- li.col-md-offset-5
         img#logologgedin(src='/img/logologgedin@2x.png')    
-      ul.nav.navbar-nav
-        if !user
-          //- li(class=title=='Home'?'active':undefined)
-          //-   a(href='#Top') Home
-          li(class=title=='Our Mission'?'active':undefined)
-            a(data-scroll='', href='#OurMission') Our Mission
-          li(class=title=='Features'?'active':undefined)
-            a(data-scroll='', href='#Features') Features
-          li(class=title=='How It Works'?'active':undefined)
-            a(data-scroll='', href='#HowItWorks') How It Works  
-          li(class=title=='Partners'?'active':undefined)
-            a(data-scroll='', href='#Partners') Partners
-          li(class=title=='Signup'?'active':undefined)
-              a(data-scroll='', href='#Signup') Signup
       ul.nav.navbar-nav.navbar-right
         if !user
           li#menuLogin.dropdown
