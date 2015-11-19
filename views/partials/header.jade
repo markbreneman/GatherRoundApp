@@ -30,7 +30,7 @@
         if !user
           li#menuLogin.dropdown
             a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') Log In
-            .dropdown-menu(style='padding:17px;')
+            .dropdown-menu(style='padding:20px; background-color: #f8f8f8;')
               form#formLogin.form(method="POST" action='/login')
                 input(type='hidden', name='_csrf', value=_csrf)
                 input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus=true)

@@ -52,6 +52,7 @@ footer {
 
 .navbar-brand img {
   height: 40px;
+  margin-top: -5px;
 }
 
 .navbar-toggle .icon-bar {
@@ -59,16 +60,19 @@ footer {
 }
 
 .nav.navbar-nav{
-  height: 60px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .nav.navbar-nav li{
   height:60px;
+  padding-top: 5px;
+  background-color: #f8f8f8;
 }
 
 .nav.navbar-nav li a{
-  padding-top: 20px;
-  padding-bottom: 20px;
+  /*padding-top: 20px;*/
+  /*padding-bottom: 20px;*/
   color:#333;
 }
 
@@ -86,12 +90,17 @@ footer {
   border:0px;
   box-shadow:None;
   font-size:18px;
-  margin-left: 32%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 #ForgotLink{
   padding: 0px;
   color:#8C8C8C;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 

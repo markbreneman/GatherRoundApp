@@ -1,0 +1,45 @@
+#NavLoggedin.navbar.navbar-fixed-top.navbar-default(role='navigation')
+      .navbar-inner
+        .container
+          button.pull-left.btn.btn-navbar.navbar-toggle(type='button', style='float: left;', data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(style='margin: 0; float: none;', href='#')
+            img(src='http://chunlungsportclub.com/wp-content/themes/chunlungsportclub/images/logo.png')
+          .nav-collapse
+            ul.nav.navbar-nav
+              li
+                a(href='#') Item 1
+              li
+                a(href='#') Item 1
+              li
+                a(href='#') Item 1
+          ul.nav.pull-right
+            li
+              a(href='#')
+                .nextCog
+          span.navbar-text.pull-right superpup1 
+          
+      
+      //- a.brand(style='margin: 0; float: none;', href='#')
+      //-       img(src='/img/logologgedin.png')
+      //- img.navbar-brand(src='/img/logologgedin.png')
+      
+      
+      // Collect the nav links, forms, and other content for toggling
+      //- #navbar-collapse-1.collapse.navbar-collapse
+      //-   ul.nav.navbar-nav.navbar-right
+      //-     li.dropdown(class=title=='Account Management'?'active':undefined)
+      //-       a.dropdown-toggle(href='#', data-toggle='dropdown')
+      //-         if user.profile.picture
+      //-             img(src='#{user.profile.picture}')
+      //-         else
+      //-           img(src='#{user.gravatar(60)}')
+      //-         | #{user.profile.name || user.email || user.id}&nbsp;
+      //-         i.caret
+      //-         ul.dropdown-menu
+      //-           li
+      //-             a(href='/account') My Account
+      //-           li
+      //-             a(href='/logout') Logout
