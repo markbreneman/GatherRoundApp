@@ -1,5 +1,38 @@
 extends ../layoutloggedin
 
 block content
+  .container
+      .row
+      input(type='text', placeholder='Add a Team Name', data-items='8')
+  .container
+      .row
+        #fields.control-group
+          label.control-label(for='field1') Add Team Members
+          #profs.controls
+            #field
+              input#firstName.input(type='text', placeholder='First Name')
+              input#lastName.input(type='text', placeholder='Last Name')
+              input#email.input(type='text', placeholder='Email Name')
+              button.btn.add-more(type='button') +
+              .container
+                #TeamMembersList.row
+                  form.form-inline
+                    #teamMember1.teammember.row
+                      .form-group
+                        input#teamMemberFName1.form-control(type='text', placeholder='Jane Doe')
+                      .form-group
+                        input#teamMemberLName1.form-control(type='email', placeholder='jane.doe@example.com')
+                      .form-group
+                        input#teamMemberEmail1.form-control(type='email', placeholder='jane.doe@example.com')
+                      button.btn.remove-me(type='button') - 
+                    #teamMember2.teammember.row
+                      .form-group
+                        input#teamMemberFName2.form-control(type='text', placeholder='Jane Doe')
+                      .form-group
+                        input#teamMemberLName2.form-control(type='email', placeholder='jane.doe@example.com')
+                      .form-group
+                        input#teamMemberEmail2.form-control(type='email', placeholder='jane.doe@example.com')
+                      button.btn.remove-me(type='button') - 
+                    button.btn.btn-default(type='submit') Save
 
-  
+      
