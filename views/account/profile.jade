@@ -11,9 +11,13 @@ block content
       .col-sm-7
         input.form-control(type='email', name='email', id='email', value='#{user.email}')
     .form-group
-      label.col-sm-3.control-label(for='name') Name
+      label.col-sm-3.control-label(for='name') First Name
       .col-sm-7
-        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+        input.form-control(type='text', name='name', id='name', value='#{user.profile.firstname}')
+    .form-group
+      label.col-sm-3.control-label(for='name') Last Name
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', value='#{user.profile.lastname}')
     .form-group
       label.col-sm-3.control-label(for='gender') Gender
       .col-sm-4

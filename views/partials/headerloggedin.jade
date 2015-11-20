@@ -1,7 +1,7 @@
 #NavLoggedIn.nav.navbar.navbar-default(role='navigation')
   ul.navbar-nav.navbar-left
     li
-      a(href='#')
+      a(href='/Dashboard')
         img(style='width: 50px; margin:0; height:auto;' src='/img/logo_navbar_invert.png')
   |   &#x9;
   .navbar-header
@@ -15,16 +15,16 @@
       span.icon-bar
   |   
   |    
-  a.centerlogo(href='#')
+  a.centerlogo(href='/Dashboard')
     img(src='/img/logologgedin@2x.png')
   #navbar-collapse-1.collapse.navbar-collapse
     ul.nav.navbar-nav.navbar-right
       li.dropdown
         a.dropdown-toggle(href='#', data-toggle='dropdown')
           if user.profile.picture
-            img(src='#{user.profile.picture}')
+            img(id='ProfilePic' src='#{user.profile.picture}')
           else
-            img(src='#{user.gravatar(60)}')
+            img(id='ProfilePic' src='#{user.gravatar(60)}')
           | #{user.profile.name || user.email || user.id}&nbsp;
           i.caret
           //- b.caret

@@ -156,6 +156,9 @@ background-color:#1C3C4A;
  margin-top:-60px;
 }
 
+#ProfilePic{
+  border-radius: 20px;
+}
 /*
 --------------------------------------------------
 ------------------CUSTOM SPLASH--------------------
@@ -341,16 +344,105 @@ text-align:center;
 
 /*
 --------------------------------------------------
------------------CUSTOM PLACE ORDER---------------
+----------------CUSTOM CREATE TEAM----------------
 --------------------------------------------------
 */
 
-* {
-  .border-radius(0) !important;
+
+
+/*
+--------------------------------------------------
+----------------CUSTOM PLACE ORDER----------------
+--------------------------------------------------
+*/
+
+.whos-this-for h3 {
+  /* WHO IS THIS FOR?: */
+  font-family: RobotoCondensed-Bold;
+  font-size: 36px;
+  color: #1C3C4A;
+  letter-spacing: 2px;
+  line-height: 48px;
+  text-align: left;
+  text-transform: uppercase;
+  margin-left: 15px;
 }
 
-#field {
-    margin-bottom:20px;
+
+.who-its-for {
+  background-color: rgba(242, 242, 242, 0.8);
+}
+
+.spacer {
+    /*background-color: tomato;*/
+    margin: 20px 5px;
+}
+
+.spacer button{
+  width:100%;
+  background-color: white;
+  color: #1C3C4A;
+  border: 2px;
+  border-color: #123D34;
+  border-style: solid;
+  border-radius: 5px;
+  font-family: RobotoCondensed-Regular;
+  font-size: 18px;
+  color: #8C8C8C;
+  letter-spacing: 2px;
+  line-height: 24px;
+  min-height:113px;
+}
+
+.add-member {
+  position: relative;
+  min-height: 100px;
+}
+
+.add-member p{
+  background-color: white;
+  margin-top: 25px;
+  color: #1C3C4A;
+  border: 2px;
+  border-color: #123D34;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 30px 20px 30px 20px;
+  margin: 25px 10px 20px 10px;
+  font-family: RobotoCondensed-Regular;
+  font-size: 18px;
+  color: #8C8C8C;
+  letter-spacing: 2px;
+  line-height: 24px;
+}
+
+.add-member h3{
+font-family: RobotoCondensed-Regular;
+font-size: 24px;
+color: #000000;
+letter-spacing: 1px;
+line-height: 32px;
+}
+
+.your-team{
+      text-align: center;
+}
+.your-team p{
+  /* Tap “ + Add New Team: */
+font-family: RobotoCondensed-Light;
+font-size: 14px;
+color: #8C8C8C;
+letter-spacing: 1px;
+line-height: 19px;
+margin-top: 30px;
+}
+
+#TeamEmptyState h3{
+  margin-bottom: 30px;
+}
+
+#AddMemberBackgroundImg{
+  width:50%;
 }
 
 
