@@ -8,51 +8,72 @@ $(document).ready(function() {
   };
 
   var next = 1;
+
      $(".add-more").click(function(e){
          e.preventDefault();
 
-         var firstName=$('#firstName').val()
-         var lastName=$('#lastName').val()
-         var email=$('#email').val()
+         var firstName=$('#firstName').val();
+         var lastName=$('#lastName').val();
+         var email=$('#email').val();
         //  console.log("firstName " + firstName + " " + "lastName " + lastName  + " " + "email " + email);
-         var teamMember = {
-            firstName:firstName,
-            lastName:lastName,
-            email:email,
-            id:next,
-          };
-
-        console.log(teamMember);
-        teamMembers.push(teamMember)
-        console.log(teamMembers);
+        //  var teamMember = {
+        //     firstName:firstName,
+        //     lastName:lastName,
+        //     email:email,
+        //     id:next,
+        //   };
         next+=1;
-        var newFormFeild="<input class='input' id='teamMember1FName' type='text'/><input class='input' id='teamMember1LName' type='text'/><input class='input' id='teamMember1Email' type='text'/><button id='b1' class='btn remove-me' type='button'>-</button>"
+        var teamMemberIDtag= "teamMember"+next
+        var teamMemberFNameIDtag= "teamMemberFName"+next
+        var teamMemberLNameIDtag= "teamMemberLName"+next
+        var teamMemberEmailIDtag= "teamMemberEmail"+next
+
+        var newTeamMemberStringPt1 = "<div id='"+teamMemberIDtag+"'"+" class='teammember row'>"
+        var newTeamMemberStringPt2 = "<div class='form-group'><input id='"+teamMemberFNameIDtag+"'"+" type='text' placeholder='First Name' class='form-control'/></div>"
+        var newTeamMemberStringPt3 = "<div class='form-group'><input id='"+teamMemberLNameIDtag+"'"+" type='text' placeholder='Last Name' class='form-control'/></div>"
+        var newTeamMemberStringPt4 = "<div class='form-group'><input id='"+teamMemberEmailIDtag+"'"+" type='email' placeholder='Email' class='form-control'/></div>"
+        var newTeamMemberStringPt5 = "<button type='button' class='btn remove-me'> - </button></div>"
+
+        newFormFeild = newTeamMemberStringPt1+newTeamMemberStringPt2+newTeamMemberStringPt3+newTeamMemberStringPt4+newTeamMemberStringPt5
+
+        // console.log(teamMember);
+        // teamMembers.push(teamMember)
+        // console.log(teamMembers);
+
         $(newFormFeild).insertAfter( "#TeamMembersList" );
-        // $('#teamMember1FName')[0].value=firstName;
-        // $('#teamMember1LName')[0].value=lastName;
-        // $('#teamMember1Email')[0].value=email;
+        // console.log(teamMemberIDtag);
+        $('#SaveTeam').insertAfter('#teamMember2');
+        $('#'+teamMemberFNameIDtag)[0].value=firstName;
+        $('#'+teamMemberLNameIDtag)[0].value=lastName;
+        $('#'+teamMemberEmailIDtag)[0].value=email;
 
+        $('#firstName')[0].value=null;
+        $('#lastName')[0].value=null;
+        $('#email')[0].value=null;
+        checkTeamNumber();
 
-        //  var addto = "#field" + next;
-        //  var addRemove = "#field" + (next);
-        //  next = next + 1;
-        //  var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
-        //  var newInput = $(newIn);
-        //  var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-        //  console.log(newInput);
-        //  var removeButton = $(removeBtn);
-        //  $(addto).after(newInput);
-        //  $(addRemove).after(removeButton);
-        //  $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-        //  $("#count").val(next);
+        $('.remove-me').click(function(e){
+            console.log(next);
+            e.preventDefault();
+            $(this).parent().remove();
+            checkTeamNumber();
       });
 
-      $('.remove-me').click(function(e){
-          e.preventDefault();
-         console.log("fired");
-          $(this).parent().remove();
-          //  var fieldNum = this.id.charAt(this.id.length-1);
-          //  var fieldID = "#field" + fieldNum;
-      });
-
+      function checkTeamNumber(){
+        farts=$(".teammember").length;
+        console.log(farts);
+        if(farts<6){
+          $('#SaveTeam').prop("disabled", true);
+        }
+        else if(farts>=6 && farts<=10){
+          $('#SaveTeam').prop("disabled", false);
+        }
+        if(farts>=10){
+          $('#AddTeamMember').prop("disabled", true);
+        }
+        else if(farts<10){
+          $('#AddTeamMember').prop("disabled", false);
+        }
+      }
+    });
 });

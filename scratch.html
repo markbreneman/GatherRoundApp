@@ -31,3 +31,41 @@
     </form>
   </div>
 </div>
+
+
+#teamMember1.teammember.row
+  .form-group
+    input#teamMemberFName1.form-control(type='text', placeholder='First Name')
+  .form-group
+    input#teamMemberLName1.form-control(type='email', placeholder='Last Name')
+  .form-group
+    input#teamMemberEmail1.form-control(type='email', placeholder='Email')
+  button.btn.remove-me(type='button') -
+
+
+  <div id="teamMember1" class="teammember row">
+    <div class="form-group">
+      <input id="teamMemberFName1" type="text" placeholder="First Name" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <input id="teamMemberLName1" type="email" placeholder="Last Name" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <input id="teamMemberEmail1" type="email" placeholder="Email" class="form-control"/>
+    </div>
+    <button type="button" class="btn remove-me">- </button>
+  </div>
+
+next=1;
+var teamMemberIDtag= "teamMember"+next
+var teamMemberFNameIDtag= "teamMemberFName"+next
+var teamMemberLNameIDtag= "teamMemberLName"+next
+var teamMemberEmailIDtag= "teamMemberEmail"+next
+
+var newTeamMemberStringPt1 = "<div id='"+teamMemberIDtag+"'"+" class='teammember row'>"
+var newTeamMemberStringPt2 = "<div class='form-group'><input id='"+teamMemberFNameIDtag+"'"+" type='text' placeholder='First Name' class='form-control'/></div>"
+var newTeamMemberStringPt3 = "<div class='form-group'><input id='"+teamMemberLNameIDtag+"'"+" type='text' placeholder='Last Name' class='form-control'/></div>"
+var newTeamMemberStringPt4 = "<div class='form-group'><input id='"+teamMemberEmailIDtag+"'"+" type='email' placeholder='Email' class='form-control'/></div>"
+var newTeamMemberStringPt5 = "<button type='button' class='btn remove-me'> - </button></div>"
+
+teamMemberCumulative = newTeamMemberStringPt1+newTeamMemberStringPt2+newTeamMemberStringPt3+newTeamMemberStringPt4+newTeamMemberStringPt5

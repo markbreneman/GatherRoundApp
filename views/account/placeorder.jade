@@ -3,36 +3,43 @@ extends ../layoutloggedin
 block content
   .container
       .row
-      input(type='text', placeholder='Add a Team Name', data-items='8')
+      label(for='exampleInputName2') Team Name
+      input.form-control(type='text', placeholder='Add a Team Name')
   .container
       .row
         #fields.control-group
           label.control-label(for='field1') Add Team Members
           #profs.controls
-            #field
-              input#firstName.input(type='text', placeholder='First Name')
-              input#lastName.input(type='text', placeholder='Last Name')
-              input#email.input(type='text', placeholder='Email Name')
-              button.btn.add-more(type='button') +
+            form.form-inline
+              .form-group  
+                input#firstName.form-control(type='text', placeholder='First Name')
+              .form-group
+                input#lastName.form-control(type='text', placeholder='Last Name')
+              .form-group
+                input#email.form-control(type='text', placeholder='Email')
+              button#AddTeamMember.btn.add-more(type='button') +
               .container
                 #TeamMembersList.row
                   form.form-inline
-                    #teamMember1.teammember.row
-                      .form-group
-                        input#teamMemberFName1.form-control(type='text', placeholder='Jane Doe')
-                      .form-group
-                        input#teamMemberLName1.form-control(type='email', placeholder='jane.doe@example.com')
-                      .form-group
-                        input#teamMemberEmail1.form-control(type='email', placeholder='jane.doe@example.com')
-                      button.btn.remove-me(type='button') - 
-                    #teamMember2.teammember.row
-                      .form-group
-                        input#teamMemberFName2.form-control(type='text', placeholder='Jane Doe')
-                      .form-group
-                        input#teamMemberLName2.form-control(type='email', placeholder='jane.doe@example.com')
-                      .form-group
-                        input#teamMemberEmail2.form-control(type='email', placeholder='jane.doe@example.com')
-                      button.btn.remove-me(type='button') - 
-                    button.btn.btn-default(type='submit') Save
+                    //- #teamMember1.teammember.row
+                    //-   .form-group
+                    //-     input#teamMemberFName1.form-control(type='text', placeholder='First Name')
+                    //-   .form-group
+                    //-     input#teamMemberLName1.form-control(type='email', placeholder='Last Name')
+                    //-   .form-group
+                    //-     input#teamMemberEmail1.form-control(type='email', placeholder='Email')
+                    //-   button.btn.remove-me(type='button') - 
+                    //- #teamMember2.teammember.row
+                    //-   .form-group
+                    //-     input#teamMemberFName2.form-control(type='text', placeholder='Jane Doe')
+                    //-   .form-group
+                    //-     input#teamMemberLName2.form-control(type='email', placeholder='jane.doe@example.com')
+                    //-   .form-group
+                    //-     input#teamMemberEmail2.form-control(type='email', placeholder='jane.doe@example.com')
+                    //-   button.btn.remove-me(type='button') - 
+                    p At the current time Gather can only handle teams between 6 and 10 people
+                    button#SaveTeam.btn.btn-default(type='submit' disabled="disabled") Save
+                    
+                      
 
       
