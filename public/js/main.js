@@ -60,18 +60,18 @@ $(document).ready(function() {
       });
 
       function checkTeamNumber(){
-        farts=$(".teammember").length;
+        teamMemberCount=$(".teammember").length;
         console.log(farts);
-        if(farts<6){
+        if(teamMemberCount<6){
           $('#SaveTeam').prop("disabled", true);
         }
-        else if(farts>=6 && farts<=10){
+        else if(teamMemberCount>=6 && farts<=10){
           $('#SaveTeam').prop("disabled", false);
         }
-        if(farts>=10){
+        if(teamMemberCount>=10){
           $('#AddTeamMember').prop("disabled", true);
         }
-        else if(farts<10){
+        else if(teamMemberCount<10){
           $('#AddTeamMember').prop("disabled", false);
         }
       }
