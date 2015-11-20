@@ -177,11 +177,62 @@ background-color:#1C3C4A;
   text-align: center;
 }
 
-
 .splash img {
     width: 80%;
     max-width: 250px;
     padding-top: 110px;
+}
+
+#Signup{
+background: #1C3C4A;
+padding-top: 15px;
+}
+#Signup h3{
+font-family: RobotoCondensed-Regular;
+font-size: 24px;
+color: #F2F2F2;
+letter-spacing: 2px;
+line-height: 32px;
+
+}
+
+#Signup .container{
+  margin-top: 15px;
+}
+#Signup #EmailGroup{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#Signup .formgroup .col-md-6{
+  /*padding-left: 15px;
+  padding-right: 15px;*/
+  padding:0px;
+}
+#SignupBtn{
+font-family: RobotoCondensed-Light;
+font-size: 24px;
+color: #FFFFFF;
+letter-spacing: 2px;
+line-height: 32px;
+border: 2px solid #D8D8D8;
+border-radius: 3px;
+background-color: transparent;
+}
+
+.signupholder{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#Signup .form-group input{
+background: #FFFFFF;
+font-family: Montserrat-Regular;
+font-size: 14px;
+color: #8C8C8C;
+line-height: 17px;
+border-radius: 0px;
+text-align:center;
 }
 
 /*
