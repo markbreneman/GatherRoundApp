@@ -107,8 +107,8 @@ module.exports = {
   },
 
   stripe: {
-    secretKey: process.env.STRIPE_SKEY || 'sk_test_BQokikJOvBiI2HlWgH4olfQ2',
-    publishableKey: process.env.STRIPE_PKEY || 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'
+    secretKey: process.env.STRIPE_SKEY || 'sk_test_oAdhpdHKl96VPmaQ9SEeUhwo',
+    publishableKey: process.env.STRIPE_PKEY || 'pk_test_DlvNqn0uuoNZ7ufuKXzyVrP9'
   },
 
   tumblr: {

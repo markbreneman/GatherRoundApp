@@ -394,10 +394,11 @@ exports.postStripe = function(req, res, next) {
   var stripeToken = req.body.stripeToken;
   var stripeEmail = req.body.stripeEmail;
   stripe.charges.create({
-    amount: 395,
+    amount: 999,
     currency: 'usd',
     source: stripeToken,
-    description: stripeEmail
+    description: stripeEmail,
+    receipt_email:stripeEmail
   }, function(err, charge) {
     if (err && err.type === 'StripeCardError') {
       req.flash('errors', { msg: 'Your card has been declined.' });
