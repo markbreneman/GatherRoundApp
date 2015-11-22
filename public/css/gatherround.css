@@ -19,6 +19,16 @@ footer {
   text-align: center;
 }
 
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}*/
 
 /*
 --------------------------------------------------
@@ -371,14 +381,30 @@ text-align:center;
 
 .who-its-for {
   background-color: rgba(242, 242, 242, 0.8);
+  padding-top:30px;
+  padding-left: 15px;
+  padding-right:15px;
 }
 
-.spacer {
-    /*background-color: tomato;*/
-    margin: 20px 5px;
+.teamGroupButton a{
+  width:100%;
+  background-color: white;
+  color: #1C3C4A;
+  border: 2px;
+  border-color: #123D34;
+  border-style: solid;
+  border-radius: 5px;
+  font-family: RobotoCondensed-Regular;
+  font-size: 18px;
+  color: #8C8C8C;
+  letter-spacing: 2px;
+  line-height: 24px;
+  min-height:135px;
+  margin-bottom: 30px;
+  padding-top:50px;
 }
 
-.spacer button{
+.namedTeamWithMembers{
   width:100%;
   background-color: white;
   color: #1C3C4A;
@@ -392,6 +418,67 @@ text-align:center;
   letter-spacing: 2px;
   line-height: 24px;
   min-height:113px;
+  margin-bottom: 30px;
+  padding-top: 15px;
+}
+.teamName{
+  overflow-x:hidden;
+}
+.editBtns{
+  text-align: right;
+}
+
+hr {
+    height: 1px;
+    background-color:#8C8C8C;
+    opacity: 0.5;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    width: 95%;
+}
+
+.topRow a{
+font-family: Montserrat-Light;
+font-size: 18px;
+color: #1C3C4A;
+letter-spacing: 1px;
+line-height: 21px;
+}
+.btn.bottomRow{
+  display:block;
+}
+
+.bottomRow{
+  padding-left: 35px;
+  padding-right: 15px;
+  margin-top: -15px;  /*Only for a desktop*/
+
+}
+
+.btn-circle{
+  display: inline-block;
+  width: 49px;
+  height: 49px;
+  text-align: center;
+  padding: 14px 0;
+  font-size: 20px;
+  line-height: 2.00;
+  border-radius: 30px;
+  font-family: Montserrat-Light;
+  font-size: 14px;
+  color: #1C3C4A;
+  letter-spacing: 1px;
+  line-height: 17px;
+  text-transform: uppercase;
+  margin-right: 10px;
+  text-align: center;
+
+  background-color: #fff;
+  border:solid 2px #FFCF74;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  box-shadow: none;
 }
 
 .add-member {
