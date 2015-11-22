@@ -357,9 +357,26 @@ text-align:center;
 ----------------CUSTOM CREATE TEAM----------------
 --------------------------------------------------
 */
+.teamnamelabel, .teammemberlabel{
+  font-family: roboto_condensedregular;
+  font-size: 24px;
+  color: #1C3C4A;
+  letter-spacing: 1.33px;
+  line-height: 32px;
+}
 
+.teamnameinput{
+  width:80%;
+  font-family: montserratlight;
+  font-size: 14px;
+  color: #8C8C8C;
+  line-height: 18px;
+  border-radius: 0px;
+}
 
-
+#hiddenTeamName, #hiddenTeamSize{
+  /*display:none;*/
+}
 /*
 --------------------------------------------------
 ----------------CUSTOM PLACE ORDER----------------

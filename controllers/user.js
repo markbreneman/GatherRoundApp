@@ -4,6 +4,8 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
+var Team = require('../models/Team');
+var TeamMember = require('../models/TeamMember');
 var secrets = require('../config/secrets');
 
 /**
@@ -67,6 +69,74 @@ exports.placeOrder = function(req, res) {
   });
 };
 
+/**
+ * GET /createteam
+ */
+exports.getCreateTeam = function(req, res) {
+  res.render('account/createteam', {
+    title: 'Create a team',
+    username:"farts",
+  });
+};
+
+/**
+ * POST /Create a Team
+ * Create a new team
+ */
+exports.postCreateTeam = function(req, res, next) {
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+    //Create a Team Object with the teamMemberFName
+    var team=new Team({
+      teamname: req.body.teamname,
+    });
+
+
+    //Get the teamsize from the post request
+    var teamsizeinput = req.body.teamsize;
+    var teamArray = [];
+
+    // console.log("TeamSize = " + teamsizeinput);
+    //For the size of the team create a team member object for each team member
+    for (i = 0; i < teamsizeinput; i++){
+      var fnameString="teamMemberFName"+(i+2);
+      var lnameString="teamMemberLName"+(i+2);
+      var emailString="teamMemberEmail"+(i+2);
+
+      var teammember=new TeamMember({
+        firstname: req["body"][fnameString],
+        lastname: req["body"][lnameString],
+        email: req["body"][emailString],
+      });
+      teamArray.push(teammember);
+      // console.log("Created New Team Member! " + teammember);
+    }
+    team.members=teamArray;
+
+    user.teams=team;
+    // console.log(user.teams[0].teamname);
+    console.log(user.teams.length);
+
+
+    // user.save(function(err) {
+    //   if (err) return next(err);
+    //   req.flash('success', { msg: 'Profile information updated.' });
+    //   res.redirect('/account');
+    // });
+  });
+
+
+  res.render('account/placeorder',{
+    title: 'CreatedTeam',
+  });
+
+  // if (errors) {
+  //   req.flash('errors', errors);
+  //   return res.redirect('/createTeam');
+  // }
+};
+
+
 
 /**
  * GET /logout
@@ -87,6 +157,7 @@ exports.getSignup = function(req, res) {
     title: 'Create Account'
   });
 };
+
 
 /**
  * POST /signup

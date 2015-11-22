@@ -104,6 +104,8 @@ app.post('/login', userController.postLogin);
 
 app.get('/dashboard', userController.index);
 app.get('/placeorder', userController.placeOrder);
+app.get('/createteam', userController.getCreateTeam);
+app.post('/createteam', userController.postCreateTeam);
 
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);
