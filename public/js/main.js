@@ -73,7 +73,7 @@ $(document).ready(function() {
         console.log(teamMemberCount);
         //Add value to team member size form feild
         $('#hiddenTeamSize')[0].value=teamMemberCount;
-
+        //
         if(teamMemberCount<6){
           $('#SaveTeam').prop("disabled", true);
         }

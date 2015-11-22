@@ -391,9 +391,6 @@ box-shadow:none;
 background-color: transparent;
 }
 
-#TeamMembersList{
-  height:500px;
-}
 
 #AddedTeamNames{
     padding-left: 15px;
@@ -462,7 +459,6 @@ background-color: transparent;
 }
 
 button#SaveTeam{
-
 background: #FFC107;
 border-radius: 3px;
 font-family: roboto_condensedbold;
