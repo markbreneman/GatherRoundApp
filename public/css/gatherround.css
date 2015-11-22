@@ -431,6 +431,8 @@ background-color: transparent;
 #TeamBuilder{
   background-color: #F2F2F2;
   padding-top: 10px;
+  padding-bottom:15px;
+  margin-bottom: 100px;
 }
 #TeamNameRow{
   margin-bottom: 25px;
@@ -471,6 +473,8 @@ border: none;
 height:50px;
 text-transform: uppercase;
 margin-top: 30px;
+margin-top: 30px;
+
 }
 
 
