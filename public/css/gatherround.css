@@ -365,18 +365,120 @@ text-align:center;
   line-height: 32px;
 }
 
-.teamnameinput{
-  width:80%;
+.teamnameinput, #FirstName, #LastName, #Email{
   font-family: montserratlight;
   font-size: 14px;
   color: #8C8C8C;
   line-height: 18px;
   border-radius: 0px;
+  width:100%;
+  height: 40px;
+}
+
+.control-group .form-inline .form-group{
+  padding-left:0px;
+}
+
+#AddTeamMember{
+border: 2px solid #D8D8D8;
+border-radius: 3px;
+font-family: roboto_condensedregular;
+font-size: 18px;
+color: #8C8C8C;
+letter-spacing: 1px;
+line-height: 24px;
+box-shadow:none;
+background-color: transparent;
+}
+
+#TeamMembersList{
+  height:500px;
+}
+
+#AddedTeamNames{
+    padding-left: 15px;
+    padding-right: 15px;
+
+    padding-top:30px;
+    min-height:200px;
+    width:100%;
+    background: #FCFCFC;
+    border: 1px solid #8C8C8C;
+    margin-top: 15px;
+}
+
+#AddedTeamNames input{
+    border-radius: 0px;
+    border:transparent;
+    box-shadow: none;
+    font-family: montserratlight;
+    font-size: 14px;
+    color: #8C8C8C;
+    line-height: 18px;
+}
+
+#AddedTeamNames hr{
+  height: 1px;
+  background-color:#8C8C8C;
+  opacity: 0.5;
+  margin-top: 12px;
+  margin-bottom:12px;
+  width: 100%;
+
 }
 
 #hiddenTeamName, #hiddenTeamSize{
-  /*display:none;*/
+  display:none;
 }
+
+#TeamBuilder{
+  background-color: #F2F2F2;
+  padding-top: 10px;
+}
+#TeamNameRow{
+  margin-bottom: 25px;
+}
+
+#TeamMemberEntry{
+  padding-left: 16px;
+}
+.teammember.row{
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.teammemberemailinput{
+  width:100% !important;
+}
+
+.teammember button{
+  background-color: #FCFCFC;
+  box-shadow: none;
+}
+
+.teammember button img{
+  width:20px;
+  margin-left: 40px;
+}
+
+button#SaveTeam{
+
+background: #FFC107;
+border-radius: 3px;
+font-family: roboto_condensedbold;
+font-size: 18px;
+color: #FFFFFF;
+letter-spacing: 2px;
+line-height: 24px;
+box-shadow:none;
+border: none;
+height:50px;
+text-transform: uppercase;
+margin-top: 30px;
+}
+
+
+
 /*
 --------------------------------------------------
 ----------------CUSTOM PLACE ORDER----------------

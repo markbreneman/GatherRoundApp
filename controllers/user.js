@@ -115,16 +115,13 @@ exports.postCreateTeam = function(req, res, next) {
 
     user.teams=team;
     // console.log(user.teams[0].teamname);
-    console.log(user.teams.length);
-
-
-    // user.save(function(err) {
-    //   if (err) return next(err);
-    //   req.flash('success', { msg: 'Profile information updated.' });
-    //   res.redirect('/account');
-    // });
+    // console.log(user.teams.length);
+    user.save(function(err) {
+      if (err) return next(err);
+      req.flash('success', { msg: 'Profile information updated.' });
+      // res.redirect('/account');
+    });
   });
-
 
   res.render('account/placeorder',{
     title: 'CreatedTeam',
