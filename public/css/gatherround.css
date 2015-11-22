@@ -201,7 +201,7 @@ background: #1C3C4A;
 padding-top: 15px;
 }
 #Signup h3{
-font-family: RobotoCondensed-Regular;
+font-family: roboto_condensedregular;
 font-size: 24px;
 color: #F2F2F2;
 letter-spacing: 2px;
@@ -223,7 +223,7 @@ line-height: 32px;
   padding:0px;
 }
 #SignupBtn{
-font-family: RobotoCondensed-Light;
+font-family: roboto_condensedlight;
 font-size: 24px;
 color: #FFFFFF;
 letter-spacing: 2px;
@@ -240,7 +240,7 @@ background-color: transparent;
 
 #Signup .form-group input{
 background: #FFFFFF;
-font-family: Montserrat-Regular;
+font-family: montserratlight;
 font-size: 14px;
 color: #8C8C8C;
 line-height: 17px;
@@ -331,7 +331,7 @@ text-align:center;
 }
 
 #Dashboard .admin-button {
-  font-family: RobotoCondensed-Regular;
+  font-family: roboto_condensedregular;
   font-size: 18px;
   color: #8C8C8C;
   letter-spacing: 1px;
@@ -368,7 +368,7 @@ text-align:center;
 
 .whos-this-for h3 {
   /* WHO IS THIS FOR?: */
-  font-family: RobotoCondensed-Bold;
+  font-family: roboto_condensedbold;
   font-size: 36px;
   color: #1C3C4A;
   letter-spacing: 2px;
@@ -394,7 +394,7 @@ text-align:center;
   border-color: #123D34;
   border-style: solid;
   border-radius: 5px;
-  font-family: RobotoCondensed-Regular;
+  font-family: roboto_condensedregular;
   font-size: 18px;
   color: #8C8C8C;
   letter-spacing: 2px;
@@ -412,7 +412,7 @@ text-align:center;
   border-color: #123D34;
   border-style: solid;
   border-radius: 5px;
-  font-family: RobotoCondensed-Regular;
+  font-family: roboto_condensedregular;
   font-size: 18px;
   color: #8C8C8C;
   letter-spacing: 2px;
@@ -496,7 +496,7 @@ line-height: 21px;
   border-radius: 5px;
   padding: 30px 20px 30px 20px;
   margin: 25px 10px 20px 10px;
-  font-family: RobotoCondensed-Regular;
+  font-family: roboto_condensedregular;
   font-size: 18px;
   color: #8C8C8C;
   letter-spacing: 2px;
@@ -504,7 +504,7 @@ line-height: 21px;
 }
 
 .add-member h3{
-font-family: RobotoCondensed-Regular;
+font-family: roboto_condensedregular;
 font-size: 24px;
 color: #000000;
 letter-spacing: 1px;
@@ -516,7 +516,7 @@ line-height: 32px;
 }
 .your-team p{
   /* Tap “ + Add New Team: */
-font-family: RobotoCondensed-Light;
+font-family: roboto_condensedregular;
 font-size: 14px;
 color: #8C8C8C;
 letter-spacing: 1px;

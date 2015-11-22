@@ -135,18 +135,19 @@ block content
           .row
             form.form-horizontal.col-md-6.col-md-offset-3(id='signup-form', method='POST' action='/signup')
               input(type='hidden', name='_csrf', value=_csrf)
-              #EmailGroup.form-group
-                input.form-control(type='email', name='email', id='email', placeholder='Enter your Email')
-              .form-group
-                .col-md-6
-                  input.form-control(type='password', name='password', id='password', placeholder='Password')
-                .col-md-6
-                  input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
               .form-group
                 .col-md-6
                   input.form-control(type='text', name='userfirstname', id='userFirstname', placeholder='First Name')    
                 .col-md-6
                   input.form-control(type='text', name='userlastname', id='userLastname', placeholder='Last Name')
+              #EmailGroup.form-group
+                input.form-control(type='email', name='email', id='email', placeholder='Enter your Email')
+              .form-group
+                .col-md-12
+                  input.form-control(type='password', name='password', id='password', placeholder='Password')
+              .form-group  
+                .col-md-12
+                  input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
               .form-group.signupholder
                   button#SignupBtn.btn.col-md-12(type='submit')
                     | Signup
