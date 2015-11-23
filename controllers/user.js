@@ -121,7 +121,12 @@ exports.postCreateTeam = function(req, res, next) {
     user.save(function(err) {
       if (err) return next(err);
       req.flash('success', { msg: 'Team saved' });
-      res.redirect('/teams');
+      if(user.orders.length<=0){
+      res.redirect('/teams/'+req.body.teamname+"/placeorder");
+      }
+      else{
+      res.redirect('/teams/');
+      }
     });
   });
 };

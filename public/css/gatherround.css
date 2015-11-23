@@ -657,6 +657,30 @@ margin-top: 30px;
 --------------------------------------------------
 */
 
+#TeamReviewCol{
+  background-color: gray;
+}
+
+#TeamReviewCol .col-md-12{
+    background-color: white;
+    padding-top: 15px;
+}
+
+.teammemberrow{
+    padding-top:5px;
+    /*padding-bottom:5px;*/
+
+}
+
+.teammemberrow .col-md-8 p{
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.teammemberrow .switch{
+  margin-top:8px;
+}
+
 .cmn-toggle {
   position: absolute;
   margin-left: -9999px;
@@ -674,7 +698,7 @@ input.cmn-toggle-round-flat + label {
   padding: 2px;
   width: 50px;
   height: 30px;
-  background-color: #00B5A5;
+  background-color: #D8D8D8;
   border-radius: 60px;
   transition: background 0.4s;
 }
@@ -698,7 +722,7 @@ input.cmn-toggle-round-flat + label:after {
   left: 4px;
   bottom: 4px;
   width: 23px;
-  background-color: #00B5A5;
+  background-color: #D8D8D8;
   border-radius: 52px;
   transition: margin 0.4s, background 0.4s;
 }
@@ -708,6 +732,11 @@ input.cmn-toggle-round-flat:checked + label {
 input.cmn-toggle-round-flat:checked + label:after {
   margin-left: 19px;
   background-color: #00B5A5;
+}
+
+hr.teammemberreview{
+  width: 100%;
+  margin:0px;
 }
 
 

@@ -3,18 +3,41 @@ extends ../layoutloggedin
 block content
   .container
         .row.whos-this-for
-          col-md-12.whos-this-for
+          .col-md-12.whos-this-for
             h3 Order Review
-        p=teamname
-        h4 Team Members
-  .container
-    -for (i=0; i<teammembers.length; i++){
-      .col-md-6
-        p.btn-circle=teammembers[i].initials
-        p=teammembers[i].firstname+" "+teammembers[i].lastname
-        p=teammembers[i].email      
-        .switch
-          input.cmn-toggle.cmn-toggle-round-flat(type='checkbox' id="cmn-toggle-"+i)
-          |   
-          label(for='cmn-toggle-'+i)
-     -}
+        .container
+          .col-md-6
+            p=teamname
+        .container
+          #TeamReviewCol.col-md-6
+            h4 Team Members
+            .col-md-12
+              -for (i=0; i<teammembers.length; i++){
+                  .row.teammemberrow
+                    .col-md-2
+                      p.btn-circle=teammembers[i].initials
+                    .col-md-8
+                      p=teammembers[i].firstname+" "+teammembers[i].lastname
+                      p=teammembers[i].email      
+                    .col-md-2
+                      .switch
+                        input.cmn-toggle.cmn-toggle-round-flat(type='checkbox' checked id="cmn-toggle-"+i)
+                        |   
+                        label(for='cmn-toggle-'+i)
+                    hr.teammemberreview
+               -}
+            button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') + Add Guest 
+          .col-md-6
+            h4 Delivery time
+            input(type='text')
+            h4 Delivery Location
+            input(type='text')
+            input(type='text')
+            input(type='text')
+            input(type='text')
+            h4 Contact Information
+            input(type='text')
+            button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Pay
+            
+            
+            

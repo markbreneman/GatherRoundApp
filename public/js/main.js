@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
     //ADD REMOVE TEAM MEMBERS
+    var maxteamSize=10;
+    var minteamSize=2;
     var next = 1;
      $(".add-more").click(function(e){
          e.preventDefault();
@@ -55,19 +57,19 @@ $(document).ready(function() {
         //Add value to team member size form feild
         $('#hiddenTeamSize')[0].value=teamMemberCount;
 
-        // if(teamMemberCount<6){
-        //   $('#SaveTeam').prop("disabled", true);
-        // }
-        // else if(teamMemberCount>=6 && teamMemberCount<=10){
-        //   $('#SaveTeam').prop("disabled", false);
-        // }
-        // if(teamMemberCount>=10){
-        //   $('#AddTeamMember').prop("disabled", true);
-        // }
-        // else if(teamMemberCount<10){
-        //   $('#AddTeamMember').prop("disabled", false);
-        // }
-        //
+        if(teamMemberCount<minteamSize){
+          $('#SaveTeam').prop("disabled", true);
+        }
+        else if(teamMemberCount>=minteamSize && teamMemberCount<=maxteamSize){
+          $('#SaveTeam').prop("disabled", false);
+        }
+        if(teamMemberCount>=maxteamSize){
+          $('#AddTeamMember').prop("disabled", true);
+        }
+        else if(teamMemberCount<maxteamSize){
+          $('#AddTeamMember').prop("disabled", false);
+        }
+
       }
     });
 
