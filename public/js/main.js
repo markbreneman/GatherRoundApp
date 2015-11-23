@@ -73,18 +73,33 @@ $(document).ready(function() {
       }
     });
 
-    // //AJAX FOR SELECT TEAM
-    // $('namedTeamWithMembers').on("click",function(){
-    //   $.ajax({
-    //       url: "http://www.yourwebsite.com/page.php",
-    //       type: "POST",
-    //       data: { name: "John", location: "Boston" },
-    //       success: function(response){
-    //             //do action
-    //       },
-    //       error: function(){
-    //             // do action
-    //       }
-    //   });
-    // });
+    //ADD REMOVE TEAM MEMBERS PLACE Order
+    $('.switch').on('click',function(e){
+
+      //GET THE SELECTED INPUT ASSOCIATE WITH THE SWITCH
+      var selectedInput=$(this).children()[0];
+      // console.log(selectedInput);
+      //GET USER NAME EMAIL, AND CIRCLE NEXT TO SWITCH
+      var userNameEmail=$($($(this).parent()[0]).prev()[0]);
+      // console.log(userNameEmail[0]);
+      var userCircle=$($($(this).parent()[0]).prev()).prev()[0];
+      // console.log(usercircle);
+      //TOGGLE CHECKED STATE OF INPUT AND CHANGE LABEL OPACITY
+      if($(selectedInput).is(':checked'))
+        {
+          $(selectedInput).attr ( "checked" ,"checked" );
+          $(userNameEmail).css({'opacity':'1'});
+          $(userCircle).css({'opacity':'1'});
+
+        }
+      else
+        {
+           $(selectedInput).removeAttr('checked');
+           $(userNameEmail).css({'opacity':'.2'});
+           $(userCircle).css({'opacity':'.2'});
+
+        }
+
+      });
+
 });
