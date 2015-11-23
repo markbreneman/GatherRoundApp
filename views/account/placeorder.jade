@@ -14,9 +14,9 @@ block content
             .col-md-12
               -for (i=0; i<teammembers.length; i++){
                   .row.teammemberrow
-                    .col-md-2
+                    .col-md-2.hidden-xs
                       p.btn-circle=teammembers[i].initials
-                    .col-md-8
+                    .col-xs-8
                       p=teammembers[i].firstname+" "+teammembers[i].lastname
                       p=teammembers[i].email      
                     .col-md-2
@@ -26,18 +26,35 @@ block content
                         label(for='cmn-toggle-'+i)
                     hr.teammemberreview
                -}
-            button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') + Add Guest 
+            button#AddTeamMember.btn.add-more.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='.bs-example-modal-sm') + Add Guest
+
           .col-md-6
-            h4 Delivery time
-            input(type='text')
-            h4 Delivery Location
-            input(type='text')
-            input(type='text')
-            input(type='text')
-            input(type='text')
-            h4 Contact Information
-            input(type='text')
-            button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Pay
-            
-            
-            
+            form
+              -for (i=0; i<teammembers.length; i++){
+                  .row.teammemberrow
+                    .col-md-12
+                      .form-group.col-md-3
+                        input.form-control(type='text', value=teammembers[i].firstname)
+                      .form-group.col-md-3
+                        input.form-control(type='text', value=teammembers[i].lastname)
+                      .form-group.col-md-6
+                        input.form-control(type='text', value=teammembers[i].email)
+                    hr.teammemberreview
+               -}
+              h4 Delivery time
+              input(type='text')
+              h4 Delivery Location
+              input(type='text')
+              input(type='text')
+              input(type='text')
+              input(type='text')
+              h4 Contact Information
+              input(type='text')
+              button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Pay
+              
+            .modal.fade.bs-example-modal-sm(tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel')
+              .modal-dialog.modal-sm
+                .modal-content
+                  | Hello
+
+                        

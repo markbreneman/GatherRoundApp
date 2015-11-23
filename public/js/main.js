@@ -75,31 +75,64 @@ $(document).ready(function() {
 
     //ADD REMOVE TEAM MEMBERS PLACE Order
     $('.switch').on('click',function(e){
+        //GET THE SELECTED INPUT ASSOCIATE WITH THE SWITCH
+        var selectedInput=$(this).children()[0];
+        // console.log(selectedInput);
+        //GET USER NAME EMAIL DIV, AND CIRCLE NEXT TO SWITCH
+        var userNameEmail=$($($(this).parent()[0]).prev()[0]);
+        // console.log(userNameEmail[0]);
+        var userCircle=$($($(this).parent()[0]).prev()).prev()[0];
+        // console.log(usercircle);
+        var userEmailString=$(userNameEmail[0]).children('p')[1].innerHTML
+        // console.log(userEmailString);
 
-      //GET THE SELECTED INPUT ASSOCIATE WITH THE SWITCH
-      var selectedInput=$(this).children()[0];
-      // console.log(selectedInput);
-      //GET USER NAME EMAIL, AND CIRCLE NEXT TO SWITCH
-      var userNameEmail=$($($(this).parent()[0]).prev()[0]);
-      // console.log(userNameEmail[0]);
-      var userCircle=$($($(this).parent()[0]).prev()).prev()[0];
-      // console.log(usercircle);
-      //TOGGLE CHECKED STATE OF INPUT AND CHANGE LABEL OPACITY
-      if($(selectedInput).is(':checked'))
-        {
-          $(selectedInput).attr ( "checked" ,"checked" );
-          $(userNameEmail).css({'opacity':'1'});
-          $(userCircle).css({'opacity':'1'});
+        var inputsarray = $('.form-control');
 
+        //TOGGLE CHECKED STATE OF INPUT AND CHANGE LABEL OPACITY
+        if($(selectedInput).is(':checked'))
+          {
+            $(selectedInput).attr ( "checked" ,"checked" );
+            $(userNameEmail).css({'opacity':'1'});
+            $(userCircle).css({'opacity':'1'});
+            enableFormFeild();
+          }
+        else
+          {
+             $(selectedInput).removeAttr('checked');
+             $(userNameEmail).css({'opacity':'.2'});
+             $(userCircle).css({'opacity':'.2'});
+             disableFormFeild();
+
+          }
+
+        //THE FOLLOWING FUNCTIONS DO A QUERY ON FORM ELEMENTS TO FIND THE FORM FEILDS WHICH
+        //HAVE MATCHIN EMAIL ATTRIBUTES(ASSUMING NO TWO ALIKE EMAILS)THEN DISABLE/ENABLES THE
+        //USER FEILDS  
+        function enableFormFeild(){
+                    for (i=0; i<inputsarray.length; i++){
+                      console.log($(inputsarray[i]).attr('value'));
+                      if($(inputsarray[i]).attr('value')==userEmailString){
+                        // console.log("i=" + i );
+                        $(inputsarray[i]).prop('disabled',false);
+                        $(inputsarray[i-1]).prop('disabled',false);
+                        $(inputsarray[i-2]).prop('disabled',false);
+                      }
+                    }
         }
-      else
-        {
-           $(selectedInput).removeAttr('checked');
-           $(userNameEmail).css({'opacity':'.2'});
-           $(userCircle).css({'opacity':'.2'});
 
+        function disableFormFeild(){
+          for (i=0; i<inputsarray.length; i++){
+
+            console.log($(inputsarray[i]).attr('value'));
+            if($(inputsarray[i]).attr('value')==userEmailString){
+              // console.log("i=" + i );
+              $(inputsarray[i]).prop('disabled',true);
+              $(inputsarray[i-1]).prop('disabled',true);
+              $(inputsarray[i-2]).prop('disabled',true);
+
+            }
+          }
         }
-
       });
 
 });

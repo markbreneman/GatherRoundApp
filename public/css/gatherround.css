@@ -389,6 +389,7 @@ letter-spacing: 1px;
 line-height: 24px;
 box-shadow:none;
 background-color: transparent;
+padding:5px;
 }
 
 
@@ -658,21 +659,29 @@ margin-top: 30px;
 */
 
 #TeamReviewCol{
-  background-color: gray;
+  background-color: #F2F2F2;
+  padding-bottom: 55px;
 }
 
 #TeamReviewCol .col-md-12{
     background-color: white;
     padding-top: 5px;
+    margin-bottom: 15px;
+}
+
+#TeamReviewCol h4{
+  text-align: left;
+}
+
+.switch{
+  float: right;
 }
 
 .teammemberrow{
     padding-top:10px;
-    /*padding-bottom:5px;*/
-
 }
 
-.teammemberrow .col-md-8 p{
+.teammemberrow .col-xs-8 p{
   text-align: left;
   margin-bottom: 2px;
 }
@@ -737,6 +746,10 @@ input.cmn-toggle-round-flat:checked + label:after {
 hr.teammemberreview{
   width: 100%;
   margin:0px;
+}
+
+.modal-dialog{
+      width: 90%;
 }
 
 
