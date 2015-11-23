@@ -392,7 +392,7 @@ background-color: transparent;
 }
 
 
-#AddedTeamNames{
+#TeamMembersList{
     padding-left: 15px;
     padding-right: 15px;
 
@@ -404,7 +404,7 @@ background-color: transparent;
     margin-top: 15px;
 }
 
-#AddedTeamNames input{
+#TeamMembersList input{
     border-radius: 0px;
     border:transparent;
     box-shadow: none;
@@ -414,7 +414,7 @@ background-color: transparent;
     line-height: 18px;
 }
 
-#AddedTeamNames hr{
+#TeamMembersList hr{
   height: 1px;
   background-color:#8C8C8C;
   opacity: 0.5;
@@ -473,12 +473,7 @@ border: none;
 height:50px;
 text-transform: uppercase;
 margin-top: 30px;
-margin-top: 30px;
-
 }
-
-
-
 /*
 --------------------------------------------------
 ----------------CUSTOM PLACE ORDER----------------
@@ -562,6 +557,11 @@ font-size: 18px;
 color: #1C3C4A;
 letter-spacing: 1px;
 line-height: 21px;
+
+}
+
+.topRow a:hover{
+  text-decoration:none;
 }
 .btn.bottomRow{
   display:block;
@@ -648,7 +648,7 @@ margin-top: 30px;
 }
 
 #AddMemberBackgroundImg{
-  width:50%;
+  width:40%;
 }
 
 

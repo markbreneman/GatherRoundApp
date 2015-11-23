@@ -102,14 +102,10 @@ app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 
-///GATHER SPECIFIC ROUTES////
 app.get('/dashboard', userController.index);
-// app.get('/placeorder', userController.placeOrder);
+app.get('/teams', userController.teams);
 app.get('/createteam', userController.getCreateTeam);
 app.post('/createteam', userController.postCreateTeam);
-app.get('/teams', userController.getTeams);
-// app.post('/teams', userController.postTeams);
-/////////////////////////////
 
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);

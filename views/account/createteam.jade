@@ -25,7 +25,6 @@ block content
         button#AddTeamMember.btn.add-more(type='button') + Add Member
       form.form-inline(id='CreateTeamForm', method='POST' action='/createteam')
         #TeamMembersList
-          //- .row
           #AddedTeamNames.form-group
             input(type='hidden', name='_csrf', value=_csrf)
             input#hiddenTeamName.form-control(type='text',name='teamname' placeholder='Team Name')

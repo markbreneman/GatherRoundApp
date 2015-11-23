@@ -10,79 +10,68 @@ block content
               .col-md-6.teamGroupButton
                     a.btn(href="/createteam")
                       | + Add New Team
-              //- - for (var i = 0; i < user.teams.length; i++)
-              - for teams in user.teams
-                div.col-md-6
-                  .namedTeamWithMembers
-                    div.topRow
-                      div.col-xs-7.teamName
-                       a(href="#TeamSelect")=teams.teamname
-                      div.col-xs-5.editBtns
-                       a(href="#Edit") 
-                        img(style="width:20px;" src='img/edit.png') 
-                       a(href="#Copy") 
-                        img(style="width:20px;" src='img/copy.png') 
-                       a(href="#Delete") 
-                        img(style="width:20px;" src='img/delete.png') 
-                    hr    
-                    div.bottomRow
-                      a.circleholder(href="#TeamSelect")
-                        p.btn-circle
-                          |mb
-                        p.btn-circle
-                          | mb
-                        p.btn-circle
-                          | bs
-                        p.btn-circle
-                          |mb
-                        p.btn-circle
-                          |mb
-                        p.btn-circle
-                          | mb
-
-              //- div.col-md-6
-              //-   .namedTeamWithMembers
-              //-     div.topRow
-              //-       div.col-xs-7.teamName
-              //-        a(href="#TeamSelect") 
-              //-         |Multidisciplinary OSP (7)
-              //-       div.col-xs-5.editBtns
-              //-        a(href="#Edit") 
-              //-         img(style="width:20px;" src='img/edit.png') 
-              //-        a(href="#Copy") 
-              //-         img(style="width:20px;" src='img/copy.png') 
-              //-        a(href="#Delete") 
-              //-         img(style="width:20px;" src='img/delete.png') 
-              //-     hr    
-              //-     div.bottomRow
-              //-       a.circleholder(href="#TeamSelect")
-              //-         p.btn-circle
-              //-           |mb
-              //-         p.btn-circle
-              //-           | mb
-              //-         p.btn-circle
-              //-           | bs
-              //-         p.btn-circle
-              //-           |mb
-              //-         p.btn-circle
-              //-           |mb
-              //-         p.btn-circle
-              //-           | mb
-              //-         p.btn-circle
-              //-           | bs
-              //-         p.btn-circle
-              //-           |mb
-              //-         p.btn-circle
-              //-           |mb
-              //-         p.btn-circle
-              //-           |mb
-                
-              
-              #TeamEmptyState.row
-                .row
-                  .col-md-6.col-md-offset-3      
-                    h3 Who's On Your Team
-                .row
-                  .col-md-6.col-md-offset-3.your-team
-                    img(id="AddMemberBackgroundImg" src='img/addmember@2x.png')
-                    p  Tap “ + Add New Team” to get the party started!      
+              - for teams in user.teams.reverse()
+                  div.col-md-6
+                    .namedTeamWithMembers
+                      div.topRow
+                        div.col-xs-7.teamName
+                         a(href="#TeamSelect")=teams.teamname 
+                        div.col-xs-5.editBtns
+                         a(href="#Edit") 
+                          img(style="width:20px;" src='img/edit.png') 
+                         a(href="#Copy") 
+                          img(style="width:20px;" src='img/copy.png') 
+                         a(href="#Delete") 
+                          img(style="width:20px;" src='img/delete.png') 
+                      hr    
+                      div.bottomRow
+                        - for member in teams.members
+                          a.circleholder(href="#TeamSelect")
+                            p.btn-circle=member.firstname
+                          
+                  //- div.col-md-6
+                  //-   .namedTeamWithMembers
+                  //-     div.topRow
+                  //-       div.col-xs-7.teamName
+                  //-        a(href="#TeamSelect") 
+                  //-         |Multidisciplinary OSP (7)
+                  //-       div.col-xs-5.editBtns
+                  //-        a(href="#Edit") 
+                  //-         img(style="width:20px;" src='img/edit.png') 
+                  //-        a(href="#Copy") 
+                  //-         img(style="width:20px;" src='img/copy.png') 
+                  //-        a(href="#Delete") 
+                  //-         img(style="width:20px;" src='img/delete.png') 
+                  //-     hr    
+                  //-     div.bottomRow
+                  //-       a.circleholder(href="#TeamSelect")
+                  //-         p.btn-circle
+                  //-           |mb
+                  //-         p.btn-circle
+                  //-           | mb
+                  //-         p.btn-circle
+                  //-           | bs
+                  //-         p.btn-circle
+                  //-           |mb
+                  //-         p.btn-circle
+                  //-           |mb
+                  //-         p.btn-circle
+                  //-           | mb
+                  //-         p.btn-circle
+                  //-           | bs
+                  //-         p.btn-circle
+                  //-           |mb
+                  //-         p.btn-circle
+                  //-           |mb
+                  //-         p.btn-circle
+                  //-           |mb
+              - if (!user.teams.length){
+                #TeamEmptyState.row
+                  .row
+                    .col-md-6.col-md-offset-3      
+                      h3 Who's On Your Team
+                  .row
+                    .col-md-6.col-md-offset-3.your-team
+                      img(id="AddMemberBackgroundImg" src='img/addmember@2x.png')
+                      p  Tap “ + Add New Team” to get the party started!              
+                - }
