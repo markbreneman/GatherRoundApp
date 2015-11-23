@@ -15,7 +15,7 @@ block content
                     .namedTeamWithMembers
                       div.topRow
                         div.col-xs-7.teamName
-                         a(href="#TeamSelect")=teams.teamname 
+                         a(href="teams/"+teams.teamname+"/placeorder")=teams.teamname 
                         div.col-xs-5.editBtns
                          a(href="#Edit") 
                           img(style="width:20px;" src='img/edit.png') 
@@ -26,8 +26,8 @@ block content
                       hr    
                       div.bottomRow
                         - for member in teams.members
-                          a.circleholder(href="#TeamSelect")
-                            p.btn-circle=member.firstname
+                          a.circleholder(href="teams/"+teams.teamname+"/placeorder")
+                            p.btn-circle=member.initials
                           
                   //- div.col-md-6
                   //-   .namedTeamWithMembers

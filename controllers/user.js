@@ -53,22 +53,23 @@ exports.postLogin = function(req, res, next) {
  * GET /userDashboard
  */
 exports.index = function(req, res) {
-  res.render('account/dashboard', {
-    title: 'Dashboard',
-    username:"farts",
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+    res.render('account/dashboard', {
+      title: 'Dashboard',
+      name:user.firstname,
+    });
   });
 };
 
 /**
  * GET /teams
  */
-exports.teams = function(req, res) {
+exports.getTeams = function(req, res) {
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
-
     res.render('account/teams', {
       title: 'Teams',
-      
     });
   });
 };
@@ -78,8 +79,7 @@ exports.teams = function(req, res) {
  */
 exports.getCreateTeam = function(req, res) {
   res.render('account/createteam', {
-    title: 'Create a team',
-    username:"farts",
+    title: 'Create A Team',
   });
 };
 
@@ -99,7 +99,6 @@ exports.postCreateTeam = function(req, res, next) {
     var teamsizeinput = req.body.teamsize;
     var teamArray = [];
 
-    // console.log("TeamSize = " + teamsizeinput);
     //For the size of the team create a team member object for each team member
     for (i = 0; i < teamsizeinput; i++){
       var fnameString="teamMemberFName"+(i+2);
@@ -110,24 +109,40 @@ exports.postCreateTeam = function(req, res, next) {
         firstname: req["body"][fnameString],
         lastname: req["body"][lnameString],
         email: req["body"][emailString],
+        initials:req["body"][fnameString].charAt(0)+req["body"][lnameString].charAt(0)
       });
       teamArray.push(teammember);
-      console.log("Created New Team Member! " + teammember);
+      // console.log("Created New Team Member! " + teammember);
     }
     team.members=teamArray;
 
     user.teams.push(team);
-    console.log(user.teams[0].teamname);
-    console.log(user.teams.length);
 
     user.save(function(err) {
       if (err) return next(err);
-      req.flash('success', { msg: 'Teaminfo saved' });
+      req.flash('success', { msg: 'Team saved' });
       res.redirect('/teams');
     });
   });
 };
 
+/**
+ * GET /:teamname/placeorder
+ */
+exports.PlaceOrder = function(req, res) {
+  User.findById(req.user.id, function(err, user) {
+    var teamid;
+    for(i=0; i<req.user.teams.length; i++){
+      if(req.user.teams[i].teamname==req.name){
+        teamid=i;
+      }
+    }
+    res.render('account/placeorder', {
+      teamname:req.user.teams[teamid].teamname,
+      teammembers:req.user.teams[teamid].members
+    });
+  });
+};
 
 
 /**

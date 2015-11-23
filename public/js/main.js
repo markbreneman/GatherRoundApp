@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-  var next = 1;
-
+    //ADD REMOVE TEAM MEMBERS
+    var next = 1;
      $(".add-more").click(function(e){
          e.preventDefault();
          //Add the team name to the hidden team name input feild
@@ -70,4 +70,19 @@ $(document).ready(function() {
         //
       }
     });
+
+    // //AJAX FOR SELECT TEAM
+    // $('namedTeamWithMembers').on("click",function(){
+    //   $.ajax({
+    //       url: "http://www.yourwebsite.com/page.php",
+    //       type: "POST",
+    //       data: { name: "John", location: "Boston" },
+    //       success: function(response){
+    //             //do action
+    //       },
+    //       error: function(){
+    //             // do action
+    //       }
+    //   });
+    // });
 });

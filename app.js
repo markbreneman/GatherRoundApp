@@ -103,9 +103,18 @@ app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 
 app.get('/dashboard', userController.index);
-app.get('/teams', userController.teams);
+app.get('/teams', userController.getTeams);
 app.get('/createteam', userController.getCreateTeam);
 app.post('/createteam', userController.postCreateTeam);
+app.param('teamname', function(req, res, next, name) {
+	var sentTeamName = name;
+	// save name to the request
+	req.name = sentTeamName;
+	next();
+});
+
+app.get('/teams/:teamname/placeorder', userController.PlaceOrder);
+
 
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);

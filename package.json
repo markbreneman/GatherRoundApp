@@ -54,6 +54,7 @@
     "serve-favicon": "^2.3.0",
     "smooth-scroll": "cferdinandi/smooth-scroll",
     "stripe": "^4.0.0",
+    "switchery": "0.0.2",
     "tumblr.js": "^0.0.7",
     "twilio": "^2.5.2",
     "twit": "^2.1.1",
