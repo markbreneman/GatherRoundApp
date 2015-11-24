@@ -79,7 +79,7 @@ exports.getTeams = function(req, res) {
  */
 exports.getCreateTeam = function(req, res) {
   res.render('account/createteam', {
-    title: 'Create A Team',
+    title: 'CreateATeam',
   });
 };
 
