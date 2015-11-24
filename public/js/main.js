@@ -227,6 +227,43 @@ $(document).ready(function() {
         updateCostTotal(teamOrderSize);
       }
 
+      var orderTime;
+
+      $('#sel1').change(function(){
+        var timeSelected=$('#sel1 option:selected').val();
+        // console.log(timeSelected);
+        setTeamMemberTime(timeSelected);
+      });
+
+      function setTeamMemberTime(timeChosen){
+
+        if (timeChosen=="12:30-1:00pm"){
+            orderTime="11:00am"
+        }
+        if (timeChosen=="1:00-1:30pm") {
+            orderTime="11:30pm"
+        }
+
+        if (timeChosen=="1:30-2:00pm") {
+            orderTime="12:00pm"
+        }
+
+        if (timeChosen=="2:00-2:30pm") {
+            orderTime="12:30pm"
+        }
+
+        if (timeChosen=="2:30-3:00pm") {
+            orderTime="1:00pm"
+        }
+
+        if (timeChosen=="3:00-3:30pm") {
+            orderTime="1:30pm"
+        }
+
+        $('.disclosuretime')[0].innerHTML="Team members vote order before " + orderTime
+      }
+
+
     }
 
 

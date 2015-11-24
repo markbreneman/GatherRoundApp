@@ -67,13 +67,13 @@ block content
               .row
                 .form-group.col-xs-6
                   select#sel1.form-control
-                    option 12:30-1:00pm
-                    |                   
+                    option(value='', disabled='', selected='')
+                      | Select Time                   
+                    option 12:30-1:00pm                   
                     option 1:00-1:30pm
-                    |                   
                     option 1:30-2:00pm
-                    |                   
                     option 2:00-2:30pm
+                    option 3:00-3:30pm
               .col-xs-12.disclosuretime(style="text-align:center")
               h4 Delivery Location
                 .row

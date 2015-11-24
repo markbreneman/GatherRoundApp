@@ -154,6 +154,54 @@ exports.OrderDetails = function(req, res) {
   });
 };
 
+/**
+ * POST /Create a Team
+ * Create a new team
+ */
+exports.postReviewandPay = function(req, res, next) {
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+    //Create a Team Object with the teamMemberFName
+    var team=new Team({
+      teamname: req.body.teamname,
+    });
+
+    //Get the teamsize from the post request
+    var teamsizeinput = req.body.teamsize;
+    var teamArray = [];
+
+    //For the size of the team create a team member object for each team member
+    for (i = 0; i < teamsizeinput; i++){
+      var fnameString="teamMemberFName"+(i+2);
+      var lnameString="teamMemberLName"+(i+2);
+      var emailString="teamMemberEmail"+(i+2);
+
+      var teammember=new TeamMember({
+        firstname: req["body"][fnameString],
+        lastname: req["body"][lnameString],
+        email: req["body"][emailString],
+        initials:req["body"][fnameString].charAt(0)+req["body"][lnameString].charAt(0)
+      });
+      teamArray.push(teammember);
+      // console.log("Created New Team Member! " + teammember);
+    }
+    team.members=teamArray;
+
+    user.teams.push(team);
+
+    user.save(function(err) {
+      if (err) return next(err);
+      req.flash('success', { msg: 'Team saved' });
+      if(user.orders.length<=0){
+      res.redirect('/teams/'+req.body.teamname+"/orderdetails");
+      }
+      else{
+      res.redirect('/teams/');
+      }
+    });
+  });
+};
+
 
 /**
  * GET /logout
