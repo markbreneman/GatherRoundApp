@@ -113,7 +113,7 @@ app.param('teamname', function(req, res, next, name) {
 	next();
 });
 
-app.get('/teams/:teamname/placeorder', userController.PlaceOrder);
+app.get('/teams/:teamname/orderdetails', userController.OrderDetails);
 
 
 app.get('/logout', userController.logout);

@@ -122,7 +122,7 @@ exports.postCreateTeam = function(req, res, next) {
       if (err) return next(err);
       req.flash('success', { msg: 'Team saved' });
       if(user.orders.length<=0){
-      res.redirect('/teams/'+req.body.teamname+"/placeorder");
+      res.redirect('/teams/'+req.body.teamname+"/orderdetails");
       }
       else{
       res.redirect('/teams/');
@@ -132,9 +132,9 @@ exports.postCreateTeam = function(req, res, next) {
 };
 
 /**
- * GET /:teamname/placeorder
+ * GET /:teamname/orderdetails
  */
-exports.PlaceOrder = function(req, res) {
+exports.OrderDetails = function(req, res) {
   User.findById(req.user.id, function(err, user) {
     var teamid;
     for(i=0; i<req.user.teams.length; i++){
@@ -144,8 +144,8 @@ exports.PlaceOrder = function(req, res) {
     }
     stripe = require('stripe')(secrets.stripe.secretKey);
 
-    res.render('account/placeorder', {
-      title:"PlaceOrder",
+    res.render('account/orderdetails', {
+      title:"OrderDetails",
       teamname:req.user.teams[teamid].teamname,
       teammembers:req.user.teams[teamid].members,
       publishableKey: secrets.stripe.publishableKey

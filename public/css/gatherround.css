@@ -31,6 +31,15 @@ select {
   line-height: 24px;
   display: block;
 }
+
+.form-control{
+  border-radius: 0px;
+  border:0px;
+  box-shadow: none;
+  font-family: montserratlight;
+  font-size: 14px;
+  line-height: 18px;
+}
 /*
 --------------------------------------------------
 ------------------CUSTOM NAV----------------------
@@ -660,9 +669,9 @@ margin-top: 30px;
 --------------------------------------------------
 */
 
-#PlaceOrder #MainContainer{
-  /*background-color:#FCFCFC;*/
-  background-color:gray;
+#OrderDetails #MainContainer{
+  background-color:#FCFCFC;
+
 }
 #TeamReviewCol{
   background-color: #F2F2F2;
@@ -766,9 +775,9 @@ hr.teammemberreview{
   /*border-bottom: none !important;*/
 }
 
-#PlaceOrder select{
+#OrderDetails select{
   border: 0px;
-  font-size: 16px;
+  font-size: 14px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -777,31 +786,32 @@ hr.teammemberreview{
   background-color: transparent ;
 }
 
-#PlaceOrder #sel1 {
+#OrderDetails #sel1 {
   background: url("/img/SelectListArrow@2x.png") 96% / 15% no-repeat #ffffff;
 }
 
-#PlaceOrder #sel2 {
+#OrderDetails #sel2 {
   background: url("/img/SelectListArrow@2x.png") 92% / 45% no-repeat #ffffff ;
 }
 
-#PlaceOrder #sel3 {
+#OrderDetails #sel3 {
   background: url("/img/SelectListArrow@2x.png") 92% / 15% no-repeat #ffffff ;
 }
 
-#PlaceOrder select option {
+#OrderDetails select option {
 font-family: montserratlight;
 font-size: 14px;
 color: #D8D8D8;
 line-height: 18px;
 }
 
-#OrderDetails{
+#OrderDetailsForm{
   padding-left: 5%;
   padding-right: 5%;
+  margin-bottom: 50px
 }
 
-#OrderDetails h4,#OrderDetails p{
+#OrderDetailsForm h4,#OrderDetailsForm p{
   text-align:left;
 }
 
@@ -814,6 +824,33 @@ font-family: montserratlight;
 font-size: 14px;
 color: #1C3C4A;
 line-height: 18px;
+}
+
+.disclosure, .disclosuretime{
+font-family: montserratregular;
+font-size: 10px;
+color: #FF533F;
+line-height: 14px;
+}
+
+#ReviewOrder{
+background: #FFC107;
+border:0px;
+border-radius: 3px;
+font-family: roboto_condensedbold;
+font-size: 18px;
+color: #FFFFFF;
+letter-spacing: 2px;
+line-height: 24px;
+}
+
+.hiddenTeam{
+  display:none;
+}
+
+
+.unitcost{
+  margin-left:-35px;
 }
 
 

@@ -4,6 +4,11 @@ $(document).ready(function() {
     var maxteamSize=10;
     var minteamSize=2;
     var next = 1;
+
+    //ORDER DETAILS
+    checkTeamSize()
+    var teamOrderSize;
+
      $(".add-more").click(function(e){
          e.preventDefault();
          //Add the team name to the hidden team name input feild
@@ -99,6 +104,7 @@ $(document).ready(function() {
               $(userNameEmail).css({'opacity':'1'});
               $(userCircle).css({'opacity':'1'});
               enableFormFeild();
+              checkTeamSize()
             }
           else
             {
@@ -106,7 +112,7 @@ $(document).ready(function() {
                $(userNameEmail).css({'opacity':'.2'});
                $(userCircle).css({'opacity':'.2'});
                disableFormFeild();
-
+               checkTeamSize()
             }
 
           //THE FOLLOWING FUNCTIONS DO A QUERY ON FORM ELEMENTS TO FIND THE FORM FEILDS WHICH
@@ -115,9 +121,9 @@ $(document).ready(function() {
           function enableFormFeild(){
 
                       for (i=0; i<inputsarray.length; i++){
-                        console.log($(inputsarray[i]).attr('value'));
+                        // console.log($(inputsarray[i]).attr('value'));
                         if($(inputsarray[i]).attr('value')==userEmailString){
-                          console.log("i=" + i );
+                          // console.log("i=" + i );
                           $(inputsarray[i]).prop('disabled',false);
                           $(inputsarray[i-1]).prop('disabled',false);
                           $(inputsarray[i-2]).prop('disabled',false);
@@ -143,11 +149,6 @@ $(document).ready(function() {
 
     //ADD GUEST MODAL
     $('#AddGuest').on('click',function(e){
-
-      // function checkTeamNumber(){
-      //
-      // }
-
       //Get the values of the guest form
       var guestfname =  $('#GuestFName').val();
       var guestlname =  $('#GuestLName').val();
@@ -201,12 +202,28 @@ $(document).ready(function() {
       $('#'+teamMemberLNameIDtag)[0].value=guestlname;
       $('#'+teamMemberEmailIDtag)[0].value=guestemail;
 
-
-
+      updateCostTotal();
+      checkTeamSize();
 
     });
 
-    $('#MinTeamCheck').click(function() {
-    $('.prueba').attr('disabled',!(this.checked))
-});
+    function updateCostTotal(teammemberstally){
+      TotalCostValue=teammemberstally*10;
+      $('#TotalCost')[0].innerHTML=" $ " + TotalCostValue;
+
+    }
+
+    function checkTeamSize(){
+    teamSize=$('.teamtogglelist .teammemberrow').length;
+    //Find out how many team memebers are turned "off" disabled fieldsets in threes first last email.
+    disabledTeamMembers=($( "input:disabled").length)/3
+    teamOrderSize=teamSize-disabledTeamMembers;
+    console.log("Team Order Size + " + teamOrderSize);
+    console.log("Team Size + " + teamSize);
+    updateCostTotal(teamOrderSize);
+    }
+
+
+
+
 });

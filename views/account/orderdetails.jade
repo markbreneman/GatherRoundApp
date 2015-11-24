@@ -48,10 +48,10 @@ block content
                -}
             button#AddTeamMember.btn.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='#myModal') + Add Guest
 
-          .col-md-6#OrderDetails
-            form.teamorderinfo
-              .hiddenTeam(style="display:none")
-                //comment out hidden team and bump for loop out for debug
+          .col-md-6#OrderDetailsForm
+            form.teamorderinfo(method='POST' action='/')
+              //this hiddden team is what really gets subbmitted.
+              .hiddenTeam 
                 -for (i=0; i<teammembers.length; i++){
                     .row.teammemberrow(id="teammemberform"+i)
                       .col-md-12
@@ -74,6 +74,7 @@ block content
                     option 1:30-2:00pm
                     |                   
                     option 2:00-2:30pm
+              .col-xs-12.disclosuretime(style="text-align:center")
               h4 Delivery Location
                 .row
                   .form-group.col-xs-12
@@ -121,6 +122,13 @@ block content
               .row    
                 .col-md-12.disclosure
                   | (Dont worry we will refund the difference from your full order)<br><br> If less than 6 members opt in, Gather will send you and email giving you the option to cancel the order or proceed with 6 peoples worth of food.
-                  
+              .row
+                h4 Total
+                .row
+                  #TotalCost.col-xs-2.teammin="$"+teammembers.length*10
+                    
+                  .col-xs-3.teammin.unitcost
+                    | ($10/person)
+                    
               button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order
               
