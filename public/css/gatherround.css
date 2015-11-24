@@ -24,12 +24,13 @@ footer {
   margin-right: 0;
 }
 
-/*.row.no-gutter [class*='col-']:not(:first-child),
-.row.no-gutter [class*='col-']:not(:last-child) {
-  padding-right: 0;
-  padding-left: 0;
-}*/
-
+select {
+  font-family: montserratlight;
+  color: #123D34;
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+}
 /*
 --------------------------------------------------
 ------------------CUSTOM NAV----------------------
@@ -458,7 +459,8 @@ padding:5px;
 
 .teammember button img{
   width:20px;
-  margin-left: 40px;
+  /*margin-left: 40px;//makes trashcan loop.*/
+
 }
 
 button#SaveTeam{
@@ -658,6 +660,9 @@ margin-top: 30px;
 --------------------------------------------------
 */
 
+#PlaceOrder #MainContainer{
+  background-color:#FCFCFC;
+}
 #TeamReviewCol{
   background-color: #F2F2F2;
   padding-bottom: 55px;
@@ -736,11 +741,11 @@ input.cmn-toggle-round-flat + label:after {
   transition: margin 0.4s, background 0.4s;
 }
 input.cmn-toggle-round-flat:checked + label {
-  background-color: #00B5A5;
+  background-color: #346B83;
 }
 input.cmn-toggle-round-flat:checked + label:after {
   margin-left: 19px;
-  background-color: #00B5A5;
+  background-color: #346B83;
 }
 
 hr.teammemberreview{
@@ -759,6 +764,36 @@ hr.teammemberreview{
 .modal-header{
   /*border-bottom: none !important;*/
 }
+
+#PlaceOrder select {
+  border: 0px;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: transparent !important;
+  background: url("/img/SelectListArrow@2x.png") 96% / 15% no-repeat #ffffff !important;
+}
+
+#PlaceOrder select option {
+font-family: montserratlight;
+font-size: 14px;
+color: #D8D8D8;
+line-height: 18px;
+}
+
+#OrderDetails{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#OrderDetails h4,#OrderDetails p{
+  text-align:left;
+}
+
+
 
 /*
 --------------------------------------------------
@@ -864,7 +899,7 @@ p {
   min-height: 120px;
 }
 
-select {
+/*#PreSigngup select {
   font-family: montserratlight;
   color: #123D34;
   font-size: 16px;
@@ -874,8 +909,7 @@ select {
   margin: auto;
   margin-bottom: 60px;
   margin-top: -20px;
-
-}
+}*/
 
 .ss-q-short {
   width: 320px;

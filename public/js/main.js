@@ -73,69 +73,81 @@ $(document).ready(function() {
       }
     });
 
-    //ADD REMOVE TEAM MEMBERS PLACE Order
-    $('.switch').on('click',function(e){
-        //GET THE SELECTED INPUT ASSOCIATE WITH THE SWITCH
-        var selectedInput=$(this).children()[0];
-        // console.log(selectedInput);
-        //GET USER NAME EMAIL DIV, AND CIRCLE NEXT TO SWITCH
-        var userNameEmail=$($($(this).parent()[0]).prev()[0]);
-        // console.log(userNameEmail[0]);
-        var userCircle=$($($(this).parent()[0]).prev()).prev()[0];
-        // console.log(usercircle);
-        var userEmailString=$(userNameEmail[0]).children('p')[1].innerHTML
-        // console.log(userEmailString);
+    //ADD REMOVE TEAM MEMBERS PLACE ORDER
+    attachSwitchListener();
 
-        var inputsarray = $('.form-control');
+    function attachSwitchListener(){
+      $('.switch').on('click',function(e){
+          //GET THE SELECTED INPUT ASSOCIATE WITH THE SWITCH
+          var selectedInput=$(this).children()[0];
+          // console.log(selectedInput);
+          //GET USER NAME EMAIL DIV, AND CIRCLE NEXT TO SWITCH
+          var userNameEmail=$($($(this).parent()[0]).prev()[0]);
+          // console.log(userNameEmail[0]);
+          var userCircle=$($($(this).parent()[0]).prev()).prev()[0];
+          // console.log(usercircle);
+          var userEmailString=$(userNameEmail[0]).children('p')[1].innerHTML
+          // console.log(userEmailString);
 
-        //TOGGLE CHECKED STATE OF INPUT AND CHANGE LABEL OPACITY
-        if($(selectedInput).is(':checked'))
-          {
-            $(selectedInput).attr ( "checked" ,"checked" );
-            $(userNameEmail).css({'opacity':'1'});
-            $(userCircle).css({'opacity':'1'});
-            enableFormFeild();
-          }
-        else
-          {
-             $(selectedInput).removeAttr('checked');
-             $(userNameEmail).css({'opacity':'.2'});
-             $(userCircle).css({'opacity':'.2'});
-             disableFormFeild();
+          var inputsarray = $('.form-control');
+          // console.log(inputsarray);
 
-          }
-
-        //THE FOLLOWING FUNCTIONS DO A QUERY ON FORM ELEMENTS TO FIND THE FORM FEILDS WHICH
-        //HAVE MATCHIN EMAIL ATTRIBUTES(ASSUMING NO TWO ALIKE EMAILS)THEN DISABLE/ENABLES THE
-        //USER FEILDS
-        function enableFormFeild(){
-                    for (i=0; i<inputsarray.length; i++){
-                      // console.log($(inputsarray[i]).attr('value'));
-                      if($(inputsarray[i]).attr('value')==userEmailString){
-                        // console.log("i=" + i );
-                        $(inputsarray[i]).prop('disabled',false);
-                        $(inputsarray[i-1]).prop('disabled',false);
-                        $(inputsarray[i-2]).prop('disabled',false);
-                      }
-                    }
-        }
-
-        function disableFormFeild(){
-          for (i=0; i<inputsarray.length; i++){
-            // console.log($(inputsarray[i]).attr('value'));
-            if($(inputsarray[i]).attr('value')==userEmailString){
-              // console.log("i=" + i );
-              $(inputsarray[i]).prop('disabled',true);
-              $(inputsarray[i-1]).prop('disabled',true);
-              $(inputsarray[i-2]).prop('disabled',true);
+          //TOGGLE CHECKED STATE OF INPUT AND CHANGE LABEL OPACITY
+          if($(selectedInput).is(':checked'))
+            {
+              $(selectedInput).attr ( "checked" ,"checked" );
+              $(userNameEmail).css({'opacity':'1'});
+              $(userCircle).css({'opacity':'1'});
+              enableFormFeild();
+            }
+          else
+            {
+               $(selectedInput).removeAttr('checked');
+               $(userNameEmail).css({'opacity':'.2'});
+               $(userCircle).css({'opacity':'.2'});
+               disableFormFeild();
 
             }
+
+          //THE FOLLOWING FUNCTIONS DO A QUERY ON FORM ELEMENTS TO FIND THE FORM FEILDS WHICH
+          //HAVE MATCHIN EMAIL ATTRIBUTES(ASSUMING NO TWO ALIKE EMAILS)THEN DISABLE/ENABLES THE
+          //USER FEILDS
+          function enableFormFeild(){
+
+                      for (i=0; i<inputsarray.length; i++){
+                        console.log($(inputsarray[i]).attr('value'));
+                        if($(inputsarray[i]).attr('value')==userEmailString){
+                          console.log("i=" + i );
+                          $(inputsarray[i]).prop('disabled',false);
+                          $(inputsarray[i-1]).prop('disabled',false);
+                          $(inputsarray[i-2]).prop('disabled',false);
+                        }
+                      }
           }
-        }
-      });
+
+          function disableFormFeild(){
+
+            for (i=0; i<inputsarray.length; i++){
+              // console.log($(inputsarray[i]).attr('value'));
+              if($(inputsarray[i]).attr('value')==userEmailString){
+                // console.log("i=" + i );
+                $(inputsarray[i]).prop('disabled',true);
+                $(inputsarray[i-1]).prop('disabled',true);
+                $(inputsarray[i-2]).prop('disabled',true);
+
+              }
+            }
+          }
+        });
+      }
 
     //ADD GUEST MODAL
     $('#AddGuest').on('click',function(e){
+
+      // function checkTeamNumber(){
+      //
+      // }
+
       //Get the values of the guest form
       var guestfname =  $('#GuestFName').val();
       var guestlname =  $('#GuestLName').val();
@@ -150,27 +162,51 @@ $(document).ready(function() {
       $('#GuestEmail')[0].value=null;
       //How many team members?+new guest
       var teamlength = $('.teamtogglelist .teammemberrow').length
-      console.log("teamlength= " + teamlength)
-
+      // console.log("teamlength= " + teamlength);
+      //Create HTML to Insert into Toggle List
       var newTeamToggle1="<div class='row teammemberrow' id='teammembertoggle"+teamlength+"'"+ "><div class='col-md-2 hidden-xs'><p class='btn-circle'>";
       var newTeamToggle2="</p></div><div class='col-xs-8'><p>"
       var newTeamToggle3="</p><p>"
       var newTeamToggle4="</p></div><div class='col-md-2'><div class='switch'><input type='checkbox' checked='checked' id='cmn-toggle-"
       var newTeamToggle5="' class='cmn-toggle cmn-toggle-round-flat'/><label for='cmn-toggle-"
       var newTeamToggle6="'></label></div></div><hr class='teammemberreview'/></div>"
-
       teamtogglestring = newTeamToggle1 + guestinitials + newTeamToggle2 + guestfullname + newTeamToggle3 + guestemail + newTeamToggle4 + teamlength + newTeamToggle5 + teamlength + newTeamToggle6
       // console.log(teamtogglestring);
-      // console.log($('.teamtogglelist .teammemberrow')[teamlength]);
-      var stupd = "teammembertoggle"+(teamlength-1);
-      console.log(stupd);
-      $(teamtogglestring).insertAfter($("#"+stupd));
+      var domEleAfter = "teammembertoggle"+(teamlength-1);
+      $(teamtogglestring).insertAfter($("#"+domEleAfter));
 
-      // console.log(guestinitials);
+      //UpdateSwitchListener
+      attachSwitchListener();
+
+      //Add a form element to the team submission form;
+      var teamMemberIDtag= "teammemberform"+teamlength
+      var teamMemberFNameIDtag= "teamMemberFName"+teamlength
+      var teamMemberLNameIDtag= "teamMemberLName"+teamlength
+      var teamMemberEmailIDtag= "teamMemberEmail"+teamlength
+
+
+      var newTeamMemberStringPt1 = "<div id='"+teamMemberIDtag+"'"+" class='row teammemberrow';'><div class='col-md-12'>"
+      var newTeamMemberStringPt2 = "<div class='form-group col-md-3'><input id='"+teamMemberFNameIDtag+"'"+'name='+teamMemberFNameIDtag+"' value='"+guestfname+"'"+"type='text' placeholder='First Name' class='form-control teammemberfnameinput'/></div>"
+      var newTeamMemberStringPt3 = "<div class='form-group col-md-3'><input id='"+teamMemberLNameIDtag+"'"+'name='+teamMemberLNameIDtag+"' value='"+guestlname+"'"+"type='text' placeholder='Last Name' class='form-control teammemberlnameinput'/></div>"
+      var newTeamMemberStringPt4 = "<div class='form-group col-md-6'><input id='"+teamMemberEmailIDtag+"'"+'name='+teamMemberEmailIDtag+"' value='"+guestemail+"'"+"type='email' placeholder='Email' class='form-control teammemberemailinput'/></div></div>"
+      var newTeamMemberStringPt5 = "<hr class='teammemberreview'></div>"
+
+      newFormFeild = newTeamMemberStringPt1+newTeamMemberStringPt2+newTeamMemberStringPt3+newTeamMemberStringPt4+newTeamMemberStringPt5
+
+      var domEleAfter2 = "teammemberform"+(teamlength-1);
+      $(newFormFeild).insertAfter( $("#"+ domEleAfter2));
+
+
+      $('#'+teamMemberFNameIDtag)[0].value=guestfname;
+      $('#'+teamMemberLNameIDtag)[0].value=guestlname;
+      $('#'+teamMemberEmailIDtag)[0].value=guestemail;
+
 
 
 
     });
 
-
+    $('#MinTeamCheck').click(function() {
+    $('.prueba').attr('disabled',!(this.checked))
+});
 });

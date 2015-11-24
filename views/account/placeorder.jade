@@ -16,12 +16,12 @@ block content
           .form-group.col-md-3
             input.form-control#GuestLName(type='text', placeholder="Last Name")
           .form-group.col-md-6
-            input.form-control#GuestEmail(type='text', placeholder="Email")
+            input.form-control#GuestEmail(type='email', placeholder="Email")
               
         .modal-footer
           button.btn#AddGuest(type='button' data-dismiss="modal") + Add Guest
           
-  .container
+  #MainContainer.container
         .row.whos-this-for
           .col-md-12.whos-this-for
             h3 Order Review
@@ -29,7 +29,7 @@ block content
           .col-md-6
             p=teamname
         .container
-          #TeamReviewCol.col-md-6
+          #TeamReviewCol.col-md-7
             h4 Team Members
             .col-md-12.teamtogglelist
               -for (i=0; i<teammembers.length; i++){
@@ -48,26 +48,67 @@ block content
                -}
             button#AddTeamMember.btn.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='#myModal') + Add Guest
 
-          .col-md-6
+          .col-md-5#OrderDetails
             form.teamorderinfo
-              -for (i=0; i<teammembers.length; i++){
-                  .row.teammemberrow
-                    .col-md-12
-                      .form-group.col-md-3
-                        input.form-control(type='text', value=teammembers[i].firstname)
-                      .form-group.col-md-3
-                        input.form-control(type='text', value=teammembers[i].lastname)
-                      .form-group.col-md-6
-                        input.form-control(type='text', value=teammembers[i].email)
-                    hr.teammemberreview
-               -}
+              .hiddenTeam(style="display:none")
+                //comment out hidden team and bump for loop out for debug
+                -for (i=0; i<teammembers.length; i++){
+                    .row.teammemberrow(id="teammemberform"+i)
+                      .col-md-12
+                        .form-group.col-md-3
+                          input.form-control(type='text', value=teammembers[i].firstname)
+                        .form-group.col-md-3
+                          input.form-control(type='text', value=teammembers[i].lastname)
+                        .form-group.col-md-6
+                          input.form-control(type='text', value=teammembers[i].email)
+                      hr.teammemberreview
+                 -}
               h4 Delivery time
-              input(type='text')
+              .row
+                .form-group.col-xs-6
+                  select#sel1.form-control
+                    option 12:30-1:00pm
+                    |                   
+                    option 1:00-1:30pm
+                    |                   
+                    option 1:30-2:00pm
+                    |                   
+                    option 2:00-2:30pm
               h4 Delivery Location
-              input(type='text')
-              input(type='text')
-              input(type='text')
-              input(type='text')
+                .row
+                  .form-group.col-xs-12
+                    input.form-control#Address(type='text', placeholder="Address")
+                .row
+                  .form-group.col-xs-6
+                    input.form-control#City(type='text', placeholder="City")
+                  .form-group.col-xs-6
+                    input.form-control#PostalCode(type='text', placeholder="Postal Code")
               h4 Contact Information
-              input(type='text')
-              button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Pay
+                .row
+                  .form-group.col-xs-12
+                    input.form-control#PhoneNumber(type='text', placeholder="Phone")
+              h4 Minimum Team Member Amount
+              p If team members opt out of Gather, I want;
+                .row
+                  .form-group.col-xs-12
+                    .btn-group
+                      label
+                        input#MinTeamCheck(type='checkbox')
+                    p A Minimum of 
+                    input.prueba(type='text', disabled='disabled')
+                    p lunches no matter what
+                    p with
+                    input.prueba(type='text', disabled='disabled')
+                    p preselected.  
+                    p 
+                      | (Dont worry we will refund the difference from your full order)
+                    p If less than 6 members opt in, Gather will send you and email giving you the option to cancel the order or proceed with 6 peoples worth of food.
+                    
+
+
+
+
+                      
+              
+              button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Review Order
+              

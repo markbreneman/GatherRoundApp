@@ -142,9 +142,14 @@ exports.PlaceOrder = function(req, res) {
         teamid=i;
       }
     }
+    stripe = require('stripe')(secrets.stripe.secretKey);
+
     res.render('account/placeorder', {
+      title:"PlaceOrder",
       teamname:req.user.teams[teamid].teamname,
-      teammembers:req.user.teams[teamid].members
+      teammembers:req.user.teams[teamid].members,
+      publishableKey: secrets.stripe.publishableKey
+
     });
   });
 };
