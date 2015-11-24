@@ -29,7 +29,7 @@ block content
           .col-md-6
             p=teamname
         .container
-          #TeamReviewCol.col-md-7
+          #TeamReviewCol.col-md-6
             h4 Team Members
             .col-md-12.teamtogglelist
               -for (i=0; i<teammembers.length; i++){
@@ -48,7 +48,7 @@ block content
                -}
             button#AddTeamMember.btn.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='#myModal') + Add Guest
 
-          .col-md-5#OrderDetails
+          .col-md-6#OrderDetails
             form.teamorderinfo
               .hiddenTeam(style="display:none")
                 //comment out hidden team and bump for loop out for debug
@@ -88,27 +88,39 @@ block content
                   .form-group.col-xs-12
                     input.form-control#PhoneNumber(type='text', placeholder="Phone")
               h4 Minimum Team Member Amount
-              p If team members opt out of Gather, I want;
-                .row
-                  .form-group.col-xs-12
-                    .btn-group
-                      label
-                        input#MinTeamCheck(type='checkbox')
-                    p A Minimum of 
-                    input.prueba(type='text', disabled='disabled')
-                    p lunches no matter what
-                    p with
-                    input.prueba(type='text', disabled='disabled')
-                    p preselected.  
-                    p 
-                      | (Dont worry we will refund the difference from your full order)
-                    p If less than 6 members opt in, Gather will send you and email giving you the option to cancel the order or proceed with 6 peoples worth of food.
-                    
-
-
-
-
-                      
-              
-              button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Review Order
+              p.teammin If team members opt out of Gather, I want;
+                  .form-group.row.teammin
+                    div(style="width: 27%; margin-right:15px; float: left;") A minimum of 
+                    div.form-group(style="width: 15%;float: left;margin-right: 15px;")
+                      select#sel2.form-control
+                        option 6
+                        |                   
+                        option 7
+                        |                   
+                        option 8
+                        |                   
+                        option 9
+                        |                   
+                        option 10        
+                    div lunches no matter what,
+                  .form-group.row.teammin
+                  .col-md-2 with    
+                  .form-group.col-md-6
+                    select#sel3.form-control
+                      option(value='', disabled='', selected='')
+                        | Food Mood
+                      option Hearty
+                      |                   
+                      option Healthy
+                      |                   
+                      option Light
+                      |                   
+                      option Comforting
+                      |                                 
+                  .col-md-3 preselected.  
+              .row    
+                .col-md-12 
+                  | (Dont worry we will refund the difference from your full order)<br><br> If less than 6 members opt in, Gather will send you and email giving you the option to cancel the order or proceed with 6 peoples worth of food.
+                  
+              button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order
               

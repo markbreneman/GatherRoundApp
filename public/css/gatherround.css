@@ -661,7 +661,8 @@ margin-top: 30px;
 */
 
 #PlaceOrder #MainContainer{
-  background-color:#FCFCFC;
+  /*background-color:#FCFCFC;*/
+  background-color:gray;
 }
 #TeamReviewCol{
   background-color: #F2F2F2;
@@ -765,7 +766,7 @@ hr.teammemberreview{
   /*border-bottom: none !important;*/
 }
 
-#PlaceOrder select {
+#PlaceOrder select{
   border: 0px;
   font-size: 16px;
   -webkit-appearance: none;
@@ -773,8 +774,19 @@ hr.teammemberreview{
   appearance: none;
   border-radius: 0px;
   box-shadow: none;
-  background-color: transparent !important;
-  background: url("/img/SelectListArrow@2x.png") 96% / 15% no-repeat #ffffff !important;
+  background-color: transparent ;
+}
+
+#PlaceOrder #sel1 {
+  background: url("/img/SelectListArrow@2x.png") 96% / 15% no-repeat #ffffff;
+}
+
+#PlaceOrder #sel2 {
+  background: url("/img/SelectListArrow@2x.png") 92% / 45% no-repeat #ffffff ;
+}
+
+#PlaceOrder #sel3 {
+  background: url("/img/SelectListArrow@2x.png") 92% / 15% no-repeat #ffffff ;
 }
 
 #PlaceOrder select option {
@@ -793,6 +805,16 @@ line-height: 18px;
   text-align:left;
 }
 
+.form-group.teammin.row{
+  padding-left:15px;
+}
+
+.teammin{
+font-family: montserratlight;
+font-size: 14px;
+color: #1C3C4A;
+line-height: 18px;
+}
 
 
 /*
