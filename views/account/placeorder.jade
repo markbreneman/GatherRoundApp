@@ -1,6 +1,26 @@
 extends ../layoutloggedin
 
 block content
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') &times;
+          
+          h4#myModalLabel.modal-title Temporarily Add a Guest
+              
+        .modal-body
+          .form-group.col-md-3
+            input.form-control#GuestFName(type='text', placeholder="First Name")
+          .form-group.col-md-3
+            input.form-control#GuestLName(type='text', placeholder="Last Name")
+          .form-group.col-md-6
+            input.form-control#GuestEmail(type='text', placeholder="Email")
+              
+        .modal-footer
+          button.btn#AddGuest(type='button' data-dismiss="modal") + Add Guest
+          
   .container
         .row.whos-this-for
           .col-md-12.whos-this-for
@@ -11,9 +31,9 @@ block content
         .container
           #TeamReviewCol.col-md-6
             h4 Team Members
-            .col-md-12
+            .col-md-12.teamtogglelist
               -for (i=0; i<teammembers.length; i++){
-                  .row.teammemberrow
+                  .row.teammemberrow(id="teammembertoggle"+i)
                     .col-md-2.hidden-xs
                       p.btn-circle=teammembers[i].initials
                     .col-xs-8
@@ -26,10 +46,10 @@ block content
                         label(for='cmn-toggle-'+i)
                     hr.teammemberreview
                -}
-            button#AddTeamMember.btn.add-more.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='.bs-example-modal-sm') + Add Guest
+            button#AddTeamMember.btn.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='#myModal') + Add Guest
 
           .col-md-6
-            form
+            form.teamorderinfo
               -for (i=0; i<teammembers.length; i++){
                   .row.teammemberrow
                     .col-md-12
@@ -51,10 +71,3 @@ block content
               h4 Contact Information
               input(type='text')
               button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-3(type='submit') Pay
-              
-            .modal.fade.bs-example-modal-sm(tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel')
-              .modal-dialog.modal-sm
-                .modal-content
-                  | Hello
-
-                        

@@ -107,10 +107,10 @@ $(document).ready(function() {
 
         //THE FOLLOWING FUNCTIONS DO A QUERY ON FORM ELEMENTS TO FIND THE FORM FEILDS WHICH
         //HAVE MATCHIN EMAIL ATTRIBUTES(ASSUMING NO TWO ALIKE EMAILS)THEN DISABLE/ENABLES THE
-        //USER FEILDS  
+        //USER FEILDS
         function enableFormFeild(){
                     for (i=0; i<inputsarray.length; i++){
-                      console.log($(inputsarray[i]).attr('value'));
+                      // console.log($(inputsarray[i]).attr('value'));
                       if($(inputsarray[i]).attr('value')==userEmailString){
                         // console.log("i=" + i );
                         $(inputsarray[i]).prop('disabled',false);
@@ -122,8 +122,7 @@ $(document).ready(function() {
 
         function disableFormFeild(){
           for (i=0; i<inputsarray.length; i++){
-
-            console.log($(inputsarray[i]).attr('value'));
+            // console.log($(inputsarray[i]).attr('value'));
             if($(inputsarray[i]).attr('value')==userEmailString){
               // console.log("i=" + i );
               $(inputsarray[i]).prop('disabled',true);
@@ -134,5 +133,44 @@ $(document).ready(function() {
           }
         }
       });
+
+    //ADD GUEST MODAL
+    $('#AddGuest').on('click',function(e){
+      //Get the values of the guest form
+      var guestfname =  $('#GuestFName').val();
+      var guestlname =  $('#GuestLName').val();
+      var guestemail =  $('#GuestEmail').val();
+      var guestinitials = guestfname.charAt(0)+guestlname.charAt(0);
+      var guestfullname = guestfname+" "+guestlname;
+
+
+      //Clear the add guest form
+      $('#GuestFName')[0].value=null;
+      $('#GuestLName')[0].value=null;
+      $('#GuestEmail')[0].value=null;
+      //How many team members?+new guest
+      var teamlength = $('.teamtogglelist .teammemberrow').length
+      console.log("teamlength= " + teamlength)
+
+      var newTeamToggle1="<div class='row teammemberrow' id='teammembertoggle"+teamlength+"'"+ "><div class='col-md-2 hidden-xs'><p class='btn-circle'>";
+      var newTeamToggle2="</p></div><div class='col-xs-8'><p>"
+      var newTeamToggle3="</p><p>"
+      var newTeamToggle4="</p></div><div class='col-md-2'><div class='switch'><input type='checkbox' checked='checked' id='cmn-toggle-"
+      var newTeamToggle5="' class='cmn-toggle cmn-toggle-round-flat'/><label for='cmn-toggle-"
+      var newTeamToggle6="'></label></div></div><hr class='teammemberreview'/></div>"
+
+      teamtogglestring = newTeamToggle1 + guestinitials + newTeamToggle2 + guestfullname + newTeamToggle3 + guestemail + newTeamToggle4 + teamlength + newTeamToggle5 + teamlength + newTeamToggle6
+      // console.log(teamtogglestring);
+      // console.log($('.teamtogglelist .teammemberrow')[teamlength]);
+      var stupd = "teammembertoggle"+(teamlength-1);
+      console.log(stupd);
+      $(teamtogglestring).insertAfter($("#"+stupd));
+
+      // console.log(guestinitials);
+
+
+
+    });
+
 
 });

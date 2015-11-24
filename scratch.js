@@ -1,40 +1,20 @@
-/**
- * POST /Create a Team
- * Create a new team
- */
-exports.createTeam = function(req, res, next) {
-  console.log(req);
-  // req.assert('email', 'Email is not valid').isEmail();
-  // req.assert('userfirstname', 'Missing First Name').len(2);
-  // req.assert('userlastname', 'Missing Last Name').len(3);
-  // var errors = req.validationErrors();
-  //
-  // if (errors) {
-  //   req.flash('errors', errors);
-  //   return res.redirect('/createTeam');
-  // }
-  //
-  // var team = new team({
-  //   teamname: req.body.teamname,
-  //   members:{}
-  // });
-  //
-  // var teammember = new teammember({
-  //   teamname: req.body.teamname,
-  //   members:{}
-  // });
+"<div class='row teammemberrow'><div class='col-md-2 hidden-xs'><p class='btn-circle'>"
 
-  // User.findOne({ email: req.body.email }, function(err, existingUser) {
-  //   if (existingUser) {
-  //     req.flash('errors', { msg: 'Account with that email address already exists.' });
-  //     return res.redirect('/signup');
-  //   }
-  //   user.save(function(err) {
-  //     if (err) return next(err);
-  //     req.logIn(user, function(err) {
-  //       if (err) return next(err);
-  //       res.redirect('/dashboard');
-  //     });
-  //   });
-  // });
-};
++guestinitials+
+
+"</p></div><div class='col-xs-8'><p>"
+
++guestfullname+
+
+"</p><p>"
++guestemail+
+
+"</p></div><div class='col-md-2'><div class='switch'><input type='checkbox' checked='checked' id='cmn-toggle-"
+
++$('.teamtogglelist .teammemberrow').length+
+
+"' class='cmn-toggle cmn-toggle-round-flat'/><label for='cmn-toggle-"
+
++$('.teamtogglelist .teammemberrow').length+
+
+"'></label></div></div><hr class='teammemberreview'/></div>"

@@ -379,7 +379,7 @@ text-align:center;
   padding-left:0px;
 }
 
-#AddTeamMember{
+#AddTeamMember, #AddGuest{
 border: 2px solid #D8D8D8;
 border-radius: 3px;
 font-family: roboto_condensedregular;
@@ -749,9 +749,16 @@ hr.teammemberreview{
 }
 
 .modal-dialog{
-      width: 90%;
+  /*margin-right: 25px;*/
 }
 
+.modal-footer{
+  border-top: none !important;
+}
+
+.modal-header{
+  /*border-bottom: none !important;*/
+}
 
 /*
 --------------------------------------------------
