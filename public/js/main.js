@@ -81,6 +81,8 @@ $(document).ready(function() {
       //ORDER DETAILS PAGE
       checkTeamSize()
       var teamOrderSize;
+      //RESET SWITCHES
+      $('.switch input').attr('checked',true);
 
 
       $('#datetimepicker1').datetimepicker({
