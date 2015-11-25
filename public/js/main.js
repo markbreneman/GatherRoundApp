@@ -261,6 +261,7 @@ $(document).ready(function() {
         }
 
         $('.disclosuretime')[0].innerHTML="Team members vote order before " + orderTime
+        $('#HiddenVoteTime')[0].innerHTML=orderTime
       }
 
 

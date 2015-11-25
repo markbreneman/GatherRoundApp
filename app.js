@@ -114,6 +114,7 @@ app.param('teamname', function(req, res, next, name) {
 });
 
 app.get('/teams/:teamname/orderdetails', userController.OrderDetails);
+app.post('/reviewandpay', userController.postReviewandPay);
 
 
 app.get('/logout', userController.logout);
