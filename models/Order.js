@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var orderSchema = new mongoose.Schema({
   teamname: String,
   team:Array,
+  orderteamsize:String,
   dateplaced: String,
   orderfordate: String,
   totalcost: String,
@@ -14,8 +15,9 @@ var orderSchema = new mongoose.Schema({
   city: String,
   state: String,
   postalcode: String,
-
-
+  draft:Boolean,
+  refund:String,
+  paid:Boolean,
 });
 
 module.exports = mongoose.model('Order', orderSchema);

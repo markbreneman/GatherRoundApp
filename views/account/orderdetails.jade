@@ -83,8 +83,10 @@ block content
                     option 1:30-2:00pm
                     option 2:00-2:30pm
                     option 3:00-3:30pm
-                #HiddenVoteTime.form-group.col-xs-6.hiddenTeam
-                  input.form-control(type='number', name='votingtime')
+                .form-group.col-xs-6.hiddenTeam
+                  input#HiddenVoteTime.form-control(type='number', name='votingtime')
+                .form-group.col-xs-6.hiddenTeam
+                  input#HiddenOrderTeamSize.form-control(type='number', name='orderteamsize')
               .col-xs-12.disclosuretime(style="text-align:center")
               h4 Delivery Location
                 .row

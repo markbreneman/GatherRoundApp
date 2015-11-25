@@ -6,6 +6,7 @@ var passport = require('passport');
 var User = require('../models/User');
 var Team = require('../models/Team');
 var TeamMember = require('../models/TeamMember');
+var Order = require('../models/Order');
 var secrets = require('../config/secrets');
 
 /**
@@ -161,10 +162,15 @@ exports.postReviewandPay = function(req, res, next) {
   res.send(req.body)
   // User.findById(req.user.id, function(err, user) {
   //   if (err) return next(err);
-  //   //Create a Team Object with the teamMemberFName
+  //   //Create a Team Object
   //   var teamOrder=new Team({
   //     teamname: req.body.teamname,
+  //   });
+  //
+  //   var newOrder= new Order({
+  //     orderteamsize:req.body.orderteamsize,
   //     dateplaced:Date(),
+  //     orderfordate:req.body.orderfordate,
   //     totalcost:req.body.totalcost,
   //     deliverytime: req.body.deliverytime,
   //     teamMinimum: req.body.minteamsize,
@@ -173,16 +179,11 @@ exports.postReviewandPay = function(req, res, next) {
   //     city: req.body.city,
   //     state: req.body.state,
   //     postalcode: req.body.postalcode,
-  //     // status: String,
-  //     defaultfoodmood:req.body.defaultfoodmood
-  //
-  //   });
-  //   var newOrder= new Order({
-  //
+  //     defaultfoodmood:req.body.defaultfoodmood,
   //   })
   //
   //   //Get the teamsize from the post request
-  //   var teamsizeinput = req.body.teamsize;
+  //   var teamsizeinput = req.body.orderteamsize;
   //   var teamArray = [];
   //
   //   //For the size of the team create a team member object for each team member
@@ -190,30 +191,29 @@ exports.postReviewandPay = function(req, res, next) {
   //     var fnameString="teamMemberFName"+(i+2);
   //     var lnameString="teamMemberLName"+(i+2);
   //     var emailString="teamMemberEmail"+(i+2);
+  //     console.log(req["body"][fnameString])
   //
   //     var teammember=new TeamMember({
   //       firstname: req["body"][fnameString],
   //       lastname: req["body"][lnameString],
   //       email: req["body"][emailString],
-  //       initials:req["body"][fnameString].charAt(0)+req["body"][lnameString].charAt(0)
+  //       // initials:req["body"][fnameString].charAt(0)+req["body"][lnameString].charAt(0)
   //     });
   //     teamArray.push(teammember);
   //     // console.log("Created New Team Member! " + teammember);
   //   }
   //   teamOrder.team=teamArray;
+  //   console.log(teamArray[0]);
+  //   // newOrder.team.push();
   //   user.orders.push(newOrder);
-
+  //
   //
   //   user.save(function(err) {
   //     if (err) return next(err);
-  //     req.flash('success', { msg: 'Team saved' });
-  //     if(user.orders.length<=0){
-  //     res.redirect('/teams/'+req.body.teamname+"/orderdetails");
-  //     }
-  //     else{
-  //     res.redirect('/teams/');
-  //     }
+  //     req.flash('success', { msg: 'order Created' });
+  //     res.redirect('/dashboard');
   //   });
+
   // });
 };
 

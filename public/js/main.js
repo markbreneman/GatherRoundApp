@@ -229,6 +229,7 @@ $(document).ready(function() {
         TotalCostValue=teammemberstally*10;
         $('#TotalCost')[0].innerHTML=" $ " + TotalCostValue;
         $('#HiddenTotal')[0].value=TotalCostValue;
+
       }
 
       function checkTeamSize(){
@@ -238,7 +239,9 @@ $(document).ready(function() {
         teamOrderSize=teamSize-disabledTeamMembers;
         console.log("Team Order Size + " + teamOrderSize);
         console.log("Team Size + " + teamSize);
+        $('#HiddenOrderTeamSize')[0].value=teamOrderSize;
         updateCostTotal(teamOrderSize);
+
       }
 
       var orderTime;
