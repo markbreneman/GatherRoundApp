@@ -158,13 +158,16 @@ exports.OrderDetails = function(req, res) {
  * Create a new team
  */
 exports.postReviewandPay = function(req, res, next) {
-    res.send(req.body)
+  res.send(req.body)
   // User.findById(req.user.id, function(err, user) {
   //   if (err) return next(err);
   //   //Create a Team Object with the teamMemberFName
-  //   var team=new Team({
+  //   var teamOrder=new Team({
   //     teamname: req.body.teamname,
   //   });
+  //   var newOrder= new Order({
+  //
+  //   })
   //
   //   //Get the teamsize from the post request
   //   var teamsizeinput = req.body.teamsize;
@@ -185,7 +188,7 @@ exports.postReviewandPay = function(req, res, next) {
   //     teamArray.push(teammember);
   //     // console.log("Created New Team Member! " + teammember);
   //   }
-  //   team.members=teamArray;
+  //   teamOrder.members=teamArray;
   //
   //   user.teams.push(team);
   //

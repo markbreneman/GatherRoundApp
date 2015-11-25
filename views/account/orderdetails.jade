@@ -58,11 +58,11 @@ block content
                     .row.teammemberrow(id="teammemberform"+i)
                       .col-md-12
                         .form-group.col-md-3
-                          input.form-control(type='text',name='teammemberfirst' , value=teammembers[i].firstname)
+                          input.form-control(type='text',name='teamMemberFName'+i , value=teammembers[i].firstname)
                         .form-group.col-md-3
-                          input.form-control(type='text',name='teammemberlast' , value=teammembers[i].lastname)
+                          input.form-control(type='text',name='teamMemberLName'+i, value=teammembers[i].lastname)
                         .form-group.col-md-6
-                          input.form-control(type='text',name='teamemail' , value=teammembers[i].email)
+                          input.form-control(type='text',name='teamMemberEmail'+i, value=teammembers[i].email)
                       hr.teammemberreview(name="testingadd")
                  -}
               h4 Delivery time
@@ -192,11 +192,11 @@ block content
                       option(value='WY') Wyoming
 
                   .form-group.col-xs-4
-                    input.form-control#PostalCode(type='text',name='PostalCode', placeholder="Postal Code")
+                    input.form-control#PostalCode(type='text',name='postalcode', placeholder="Postal Code")
               h4 Contact Information
                 .row
                   .form-group.col-xs-12
-                    input.form-control#PhoneNumber(type='text',name='Phone' placeholder="Phone")
+                    input.form-control#PhoneNumber(type='text',name='phone' placeholder="Phone")
               h4 Minimum Team Member Amount
               p.teammin If team members opt out of Gather, I want;
                   .form-group.row.teammin(style="margin-bottom:0px")
