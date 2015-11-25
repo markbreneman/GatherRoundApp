@@ -88,7 +88,7 @@ exports.getCreateTeam = function(req, res) {
  * Create a new team
  */
 exports.postCreateTeam = function(req, res, next) {
-  // res.send(req.body)
+
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
     //Create a Team Object with the teamMemberFName
@@ -143,14 +143,12 @@ exports.OrderDetails = function(req, res) {
         teamid=i;
       }
     }
-    stripe = require('stripe')(secrets.stripe.secretKey);
-
+    // stripe = require('stripe')(secrets.stripe.secretKey);
     res.render('account/orderdetails', {
       title:"OrderDetails",
       teamname:req.user.teams[teamid].teamname,
       teammembers:req.user.teams[teamid].members,
-      publishableKey: secrets.stripe.publishableKey
-
+      // publishableKey: secrets.stripe.publishableKey
     });
   });
 };

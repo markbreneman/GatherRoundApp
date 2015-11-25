@@ -53,6 +53,7 @@ block content
               input(type='hidden', name='_csrf', value=_csrf)
               //this hiddden team is what really gets subbmitted.
               .hiddenTeam 
+                input(type='hidden', name='teamname', value=teamname)
                 -for (i=0; i<teammembers.length; i++){
                     .row.teammemberrow(id="teammemberform"+i)
                       .col-md-12
@@ -62,7 +63,7 @@ block content
                           input.form-control(type='text',name='teammemberlast' , value=teammembers[i].lastname)
                         .form-group.col-md-6
                           input.form-control(type='text',name='teamemail' , value=teammembers[i].email)
-                      hr.teammemberreview
+                      hr.teammemberreview(name="testingadd")
                  -}
               h4 Delivery time
               .row
@@ -86,6 +87,111 @@ block content
                   .form-group.col-xs-6
                     input.form-control#City(type='text',name='city', placeholder="City")
                   .form-group.col-xs-6
+                    select#Sel.form-control(type='text',name='state', placeholder="State")
+                      option(value='', disabled='', selected='')
+                        | Select State
+                      option(value='AL') Alabama
+                      option(value='AK') Alaska
+                      |                      
+                      option(value='AZ') Arizona
+                      |                      
+                      option(value='AR') Arkansas
+                      |                      
+                      option(value='CA') California
+                      |                      
+                      option(value='CO') Colorado
+                      |                      
+                      option(value='CT') Connecticut
+                      |                      
+                      option(value='DE') Delaware
+                      |                      
+                      option(value='DC') District Of Columbia
+                      |                      
+                      option(value='FL') Florida
+                      |                      
+                      option(value='GA') Georgia
+                      |                      
+                      option(value='HI') Hawaii
+                      |                      
+                      option(value='ID') Idaho
+                      |                      
+                      option(value='IL') Illinois
+                      |                      
+                      option(value='IN') Indiana
+                      |                      
+                      option(value='IA') Iowa
+                      |                      
+                      option(value='KS') Kansas
+                      |                      
+                      option(value='KY') Kentucky
+                      |                      
+                      option(value='LA') Louisiana
+                      |                      
+                      option(value='ME') Maine
+                      |                      
+                      option(value='MD') Maryland
+                      |                      
+                      option(value='MA') Massachusetts
+                      |                      
+                      option(value='MI') Michigan
+                      |                      
+                      option(value='MN') Minnesota
+                      |                      
+                      option(value='MS') Mississippi
+                      |                      
+                      option(value='MO') Missouri
+                      |                      
+                      option(value='MT') Montana
+                      |                      
+                      option(value='NE') Nebraska
+                      |                      
+                      option(value='NV') Nevada
+                      |                      
+                      option(value='NH') New Hampshire
+                      |                      
+                      option(value='NJ') New Jersey
+                      |                      
+                      option(value='NM') New Mexico
+                      |                      
+                      option(value='NY') New York
+                      |                      
+                      option(value='NC') North Carolina
+                      |                      
+                      option(value='ND') North Dakota
+                      |                      
+                      option(value='OH') Ohio
+                      |                      
+                      option(value='OK') Oklahoma
+                      |                      
+                      option(value='OR') Oregon
+                      |                      
+                      option(value='PA') Pennsylvania
+                      |                      
+                      option(value='RI') Rhode Island
+                      |                      
+                      option(value='SC') South Carolina
+                      |                      
+                      option(value='SD') South Dakota
+                      |                      
+                      option(value='TN') Tennessee
+                      |                      
+                      option(value='TX') Texas
+                      |                      
+                      option(value='UT') Utah
+                      |                      
+                      option(value='VT') Vermont
+                      |                      
+                      option(value='VA') Virginia
+                      |                      
+                      option(value='WA') Washington
+                      |                      
+                      option(value='WV') West Virginia
+                      |                      
+                      option(value='WI') Wisconsin
+                      |                      
+                      option(value='WY') Wyoming
+
+                  .form-group.col-xs-4
                     input.form-control#PostalCode(type='text',name='PostalCode', placeholder="Postal Code")
               h4 Contact Information
                 .row
