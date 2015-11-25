@@ -159,62 +159,60 @@ exports.OrderDetails = function(req, res) {
  * Create a new team
  */
 exports.postReviewandPay = function(req, res, next) {
-  res.send(req.body)
-  // User.findById(req.user.id, function(err, user) {
-  //   if (err) return next(err);
-  //   //Create a Team Object
-  //   var teamOrder=new Team({
-  //     teamname: req.body.teamname,
-  //   });
-  //
-  //   var newOrder= new Order({
-  //     orderteamsize:req.body.orderteamsize,
-  //     dateplaced:Date(),
-  //     orderfordate:req.body.orderfordate,
-  //     totalcost:req.body.totalcost,
-  //     deliverytime: req.body.deliverytime,
-  //     teamMinimum: req.body.minteamsize,
-  //     defaultfoodmood: String,
-  //     address: req.body.address,
-  //     city: req.body.city,
-  //     state: req.body.state,
-  //     postalcode: req.body.postalcode,
-  //     defaultfoodmood:req.body.defaultfoodmood,
-  //   })
-  //
-  //   //Get the teamsize from the post request
-  //   var teamsizeinput = req.body.orderteamsize;
-  //   var teamArray = [];
-  //
-  //   //For the size of the team create a team member object for each team member
-  //   for (i = 0; i < teamsizeinput; i++){
-  //     var fnameString="teamMemberFName"+(i+2);
-  //     var lnameString="teamMemberLName"+(i+2);
-  //     var emailString="teamMemberEmail"+(i+2);
-  //     console.log(req["body"][fnameString])
-  //
-  //     var teammember=new TeamMember({
-  //       firstname: req["body"][fnameString],
-  //       lastname: req["body"][lnameString],
-  //       email: req["body"][emailString],
-  //       // initials:req["body"][fnameString].charAt(0)+req["body"][lnameString].charAt(0)
-  //     });
-  //     teamArray.push(teammember);
-  //     // console.log("Created New Team Member! " + teammember);
-  //   }
-  //   teamOrder.team=teamArray;
-  //   console.log(teamArray[0]);
-  //   // newOrder.team.push();
-  //   user.orders.push(newOrder);
-  //
-  //
-  //   user.save(function(err) {
-  //     if (err) return next(err);
-  //     req.flash('success', { msg: 'order Created' });
-  //     res.redirect('/dashboard');
-  //   });
+  // res.send(req.body)
+  // console.log(req.body.teamMemberFName[2]);
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+    //Create a Team Object
+    var teamOrder=new Team({
+      teamname: req.body.teamname,
+    });
 
-  // });
+    //Get the teamsize from the post request
+    var teamsizeinput = req.body.orderteamsize;
+    var teamArray = [];
+
+    //For the size of the team create a team member object for each team member
+    for (i = 0; i < teamsizeinput; i++){
+      var teammember=new TeamMember({
+        firstname: req.body.teamMemberFName[i],
+        lastname: req.body.teamMemberLName[i],
+        email: req.body.teamMemberEmail[i],
+        initials:req.body.teamMemberFName[i].charAt(0)+req.body.teamMemberLName[i].charAt(0)
+      });
+      //Add the teammember to the array of team members
+      teamArray.push(teammember);
+      console.log("Created New Team Member! " + teammember);
+    }
+    //Add the array to the Team Object under the "team" property
+    teamOrder.members=teamArray;
+
+    //Create a new Order Object
+    var newOrder= new Order({
+      orderteamsize:req.body.orderteamsize,
+      dateplaced:Date(),
+      orderfordate:req.body.orderfordate,
+      totalcost:req.body.totalcost,
+      deliverytime: req.body.deliverytime,
+      teamMinimum: req.body.minteamsize,
+      defaultfoodmood: String,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      postalcode: req.body.postalcode,
+      defaultfoodmood:req.body.defaultfoodmood,
+      team:teamOrder
+    })
+
+    user.orders.push(newOrder);
+
+    user.save(function(err) {
+      if (err) return next(err);
+      req.flash('success', { msg: 'order Created' });
+      res.redirect('/dashboard');
+    });
+
+  });
 };
 
 

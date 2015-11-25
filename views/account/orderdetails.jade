@@ -58,11 +58,11 @@ block content
                     .row.teammemberrow(id="teammemberform"+i)
                       .col-md-12
                         .form-group.col-md-3
-                          input.form-control(type='text',name='teamMemberFName'+i , value=teammembers[i].firstname)
+                          input.form-control(type='text',name='teamMemberFName[]' , value=teammembers[i].firstname)
                         .form-group.col-md-3
-                          input.form-control(type='text',name='teamMemberLName'+i, value=teammembers[i].lastname)
+                          input.form-control(type='text',name='teamMemberLName[]', value=teammembers[i].lastname)
                         .form-group.col-md-6
-                          input.form-control(type='text',name='teamMemberEmail'+i, value=teammembers[i].email)
+                          input.form-control(type='text',name='teamMemberEmail[]', value=teammembers[i].email)
                       hr.teammemberreview(name="testingadd")
                  -}
               h4 Delivery Date and Time

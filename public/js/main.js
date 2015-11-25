@@ -206,10 +206,10 @@ $(document).ready(function() {
         var teamMemberEmailIDtag= "teamMemberEmail"+teamlength
 
 
-        var newTeamMemberStringPt1 = "<div id='"+teamMemberIDtag+"'"+" class='row teammemberrow';'><div class='col-md-12'>"
-        var newTeamMemberStringPt2 = "<div class='form-group col-md-3'><input id='"+teamMemberFNameIDtag+"'"+'name='+teamMemberFNameIDtag+"' value='"+guestfname+"'"+"type='text' placeholder='First Name' class='form-control teammemberfnameinput'/></div>"
-        var newTeamMemberStringPt3 = "<div class='form-group col-md-3'><input id='"+teamMemberLNameIDtag+"'"+'name='+teamMemberLNameIDtag+"' value='"+guestlname+"'"+"type='text' placeholder='Last Name' class='form-control teammemberlnameinput'/></div>"
-        var newTeamMemberStringPt4 = "<div class='form-group col-md-6'><input id='"+teamMemberEmailIDtag+"'"+'name='+teamMemberEmailIDtag+"' value='"+guestemail+"'"+"type='text' placeholder='Email' class='form-control teammemberemailinput'/></div></div>"
+        var newTeamMemberStringPt1 = "<div id='"+teamMemberIDtag+"'"+" class='row teammemberrow'><div class='col-md-12'>"
+        var newTeamMemberStringPt2 = "<div class='form-group col-md-3'><input id='"+teamMemberFNameIDtag+"'"+'name='+"teamMemberFName[]"+" value='"+guestfname+"'"+"type='text' placeholder='First Name' class='form-control teammemberfnameinput'/></div>"
+        var newTeamMemberStringPt3 = "<div class='form-group col-md-3'><input id='"+teamMemberLNameIDtag+"'"+'name='+"teamMemberLName[]"+" value='"+guestlname+"'"+"type='text' placeholder='Last Name' class='form-control teammemberlnameinput'/></div>"
+        var newTeamMemberStringPt4 = "<div class='form-group col-md-6'><input id='"+teamMemberEmailIDtag+"'"+'name='+"teamMemberEmail[]"+" value='"+guestemail+"'"+"type='text' placeholder='Email' class='form-control teammemberemailinput'/></div></div>"
         var newTeamMemberStringPt5 = "<hr class='teammemberreview'></div>"
 
         newFormFeild = newTeamMemberStringPt1+newTeamMemberStringPt2+newTeamMemberStringPt3+newTeamMemberStringPt4+newTeamMemberStringPt5
