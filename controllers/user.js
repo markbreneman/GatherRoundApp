@@ -182,7 +182,7 @@ exports.postReviewandPay = function(req, res, next) {
       });
       //Add the teammember to the array of team members
       teamArray.push(teammember);
-      console.log("Created New Team Member! " + teammember);
+      // console.log("Created New Team Member! " + teammember);
     }
     //Add the array to the Team Object under the "team" property
     teamOrder.members=teamArray;
