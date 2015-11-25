@@ -65,10 +65,17 @@ block content
                           input.form-control(type='text',name='teamMemberEmail'+i, value=teammembers[i].email)
                       hr.teammemberreview(name="testingadd")
                  -}
-              h4 Delivery time
+              h4 Delivery Date and Time
               .row
+                .col-sm-6
+                  .form-group
+                    #datetimepicker1.input-group.date
+                      input.form-control(type='text' name='orderfordate')
+                      |                  
+                      span.input-group-addon
+                        span.glyphicon.glyphicon-calendar
                 .form-group.col-xs-6
-                  select#sel1.form-control(type='text', name='deliverytime')
+                  select#sel1.form-control(type='text', name='deliverytime' required)
                     option(value='', disabled='', selected='')
                       | Select Time                   
                     option 12:30-1:00pm                   
@@ -82,12 +89,12 @@ block content
               h4 Delivery Location
                 .row
                   .form-group.col-xs-12
-                    input.form-control#Address(type='text',name='address', placeholder="Address")
+                    input.form-control#Address(type='text',name='address', placeholder="Address" required)
                 .row
                   .form-group.col-xs-6
-                    input.form-control#City(type='text',name='city', placeholder="City")
+                    input.form-control#City(type='text',name='city', placeholder="City" required)
                   .form-group.col-xs-6
-                    select#Sel.form-control(type='text',name='state', placeholder="State")
+                    select#Sel.form-control(type='text',name='state', placeholder="State" required)
                       option(value='', disabled='', selected='')
                         | Select State
                       option(value='AL') Alabama
@@ -192,17 +199,17 @@ block content
                       option(value='WY') Wyoming
 
                   .form-group.col-xs-4
-                    input.form-control#PostalCode(type='text',name='postalcode', placeholder="Postal Code")
+                    input.form-control#PostalCode(type='text',name='postalcode', placeholder="Postal Code" required)
               h4 Contact Information
                 .row
                   .form-group.col-xs-12
-                    input.form-control#PhoneNumber(type='text',name='phone' placeholder="Phone")
+                    input.form-control#PhoneNumber(type='text',name='phone' placeholder="Phone" required)
               h4 Minimum Team Member Amount
               p.teammin If team members opt out of Gather, I want;
                   .form-group.row.teammin(style="margin-bottom:0px")
                     div(style="width: 30%; margin-right:5px; float: left;padding-top: 8px;") A minimum of 
                     div.form-group(style="width: 15%;float: left;margin-right: 15px;")
-                      select#sel2.form-control(type='text',name='minteamsize')
+                      select#sel2.form-control(type='text',name='minteamsize' required)
                         option 6
                         |                   
                         option 7
@@ -216,7 +223,7 @@ block content
                   .form-group.row.teammin
                     div(style="width: 10%; margin-right:15px; float: left;padding-top: 8px;") with    
                     .form-group(style="width: 50%; margin-right:5px; float: left;")
-                      select#sel3.form-control(type='text',name='defaultfoodmood')
+                      select#sel3.form-control(type='text',name='defaultfoodmood' required)
                         option(value='', disabled='', selected='')
                           | Food Mood
                         option Hearty
@@ -238,6 +245,7 @@ block content
                     
                   .col-xs-3.teammin.unitcost
                     | ($10/person)
-                    
+                .form-group.col-xs-12.hiddenTotal
+                  input.form-control#HiddenTotal(value=teammembers.length*10 type='text',name='totalcost' placeholder="")    
               button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order
   

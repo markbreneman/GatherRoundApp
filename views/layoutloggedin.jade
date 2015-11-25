@@ -8,7 +8,11 @@ html(id = title)
     title #{title} - Gather:Team Lunches Made Simple.
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')
     link(rel='stylesheet', href='/css/gatherround.css')
+    
+
+
   body.loggedin
     include partials/headerloggedin
 
@@ -21,6 +25,8 @@ html(id = title)
     script(src='/js/lib/jquery.min.js')
     script(src='/js/lib/bootstrap.min.js')
     script(src='/js/lib/smooth-scroll.js')
+    script(type='text/javascript', src='/js/lib/moment.min.js')
+    script(type='text/javascript', src='/js/lib/bootstrap-datetimepicker.min.js')
     script(src='/js/main.js')
     
     

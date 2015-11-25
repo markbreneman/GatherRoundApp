@@ -164,6 +164,18 @@ exports.postReviewandPay = function(req, res, next) {
   //   //Create a Team Object with the teamMemberFName
   //   var teamOrder=new Team({
   //     teamname: req.body.teamname,
+  //     dateplaced:Date(),
+  //     totalcost:req.body.totalcost,
+  //     deliverytime: req.body.deliverytime,
+  //     teamMinimum: req.body.minteamsize,
+  //     defaultfoodmood: String,
+  //     address: req.body.address,
+  //     city: req.body.city,
+  //     state: req.body.state,
+  //     postalcode: req.body.postalcode,
+  //     // status: String,
+  //     defaultfoodmood:req.body.defaultfoodmood
+  //
   //   });
   //   var newOrder= new Order({
   //
@@ -188,9 +200,9 @@ exports.postReviewandPay = function(req, res, next) {
   //     teamArray.push(teammember);
   //     // console.log("Created New Team Member! " + teammember);
   //   }
-  //   teamOrder.members=teamArray;
-  //
-  //   user.teams.push(team);
+  //   teamOrder.team=teamArray;
+  //   user.orders.push(newOrder);
+
   //
   //   user.save(function(err) {
   //     if (err) return next(err);

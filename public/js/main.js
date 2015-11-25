@@ -82,6 +82,20 @@ $(document).ready(function() {
       checkTeamSize()
       var teamOrderSize;
 
+
+      $('#datetimepicker1').datetimepicker({
+        defaultDate: moment().format('MM DD YYYY'),
+        debug:true,
+        format: "MM/DD/YYYY",
+        disabledDates: [
+                        moment("12/25/2013"),
+                        new Date(2013, 11 - 1, 21),
+                        "11/22/2013 00:53"
+                      ]
+      });
+
+
+
       //ADD REMOVE TEAM MEMBERS PLACE ORDER
       attachSwitchListener();
 
@@ -214,7 +228,7 @@ $(document).ready(function() {
       function updateCostTotal(teammemberstally){
         TotalCostValue=teammemberstally*10;
         $('#TotalCost')[0].innerHTML=" $ " + TotalCostValue;
-
+        $('#HiddenTotal')[0].value=TotalCostValue;
       }
 
       function checkTeamSize(){
@@ -260,7 +274,7 @@ $(document).ready(function() {
             orderTime="1:30pm"
         }
 
-        $('.disclosuretime')[0].innerHTML="Team members vote order before " + orderTime
+        $('.disclosuretime')[0].innerHTML="Team members must vote before " + orderTime
         $('#HiddenVoteTime')[0].innerHTML=orderTime
       }
 

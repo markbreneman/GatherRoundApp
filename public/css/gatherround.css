@@ -434,7 +434,7 @@ padding:5px;
 
 }
 
-#hiddenTeamName, #hiddenTeamSize{
+#hiddenTeamName, #hiddenTeamSize, #HiddenTotal{
   display:none;
 }
 
@@ -851,6 +851,31 @@ line-height: 24px;
   margin-left:-35px;
 }
 
+.bootstrap-datetimepicker-widget.dropdown-menu{
+  background-color: #FCFCFC !important;
+}
+
+.table-condensed td{
+  font-family: montserratlight;
+  font-size: 14px;
+  color: #1C3C4A;
+  line-height: 18px;
+}
+
+.dow, .picker-switch{
+  font-family: roboto_condensedregular;
+  font-size: 14px;
+}
+
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover{
+  background-color: #346B83;
+}
+
+#OrderDetails .input-group-addon{
+  background-color: white;
+  border-radius: 0px;
+  border:0px;
+}
 
 /*
 --------------------------------------------------
