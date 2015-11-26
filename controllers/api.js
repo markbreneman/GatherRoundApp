@@ -405,7 +405,7 @@ exports.postStripe = function(req, res, next) {
       res.redirect('/api/stripe');
     }
     req.flash('success', { msg: 'Your card has been charged successfully.' });
-    res.redirect('/api/stripe');
+    res.redirect('/dashboard');
   });
 };
 

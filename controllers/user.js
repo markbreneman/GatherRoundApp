@@ -222,13 +222,14 @@ exports.postOrderDetails = function(req, res, next) {
  */
 exports.getReviewandPay = function(req, res) {
   User.findById(req.user.id, function(err, user) {
-    console.log(user.orders);
-    // var teamid;
-    // for(i=0; i<req.user.teams.length; i++){
-    //   if(req.user.teams[i].teamname==req.name){
-    //     teamid=i;
-    //   }
-    // }
+    var orderID=req.name;
+    for(i=0; i<req.user.orders.length; i++){
+      console.log(req.user.orders[i]._id);
+      if(req.user.orders[i]._id==req.name){
+        orderIndex=i
+      }
+    }
+    console.log(req.user.orders[orderIndex].dateplaced);
     //SHOULD ADD IF STATEMENT IN CASE TEAM DOESN"T EXIST.
 
     // stripe = require('stripe')(secrets.stripe.secretKey);
