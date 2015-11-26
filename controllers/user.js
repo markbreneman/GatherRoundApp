@@ -202,8 +202,10 @@ exports.postOrderDetails = function(req, res, next) {
       city: req.body.city,
       state: req.body.state,
       postalcode: req.body.postalcode,
+      phone:req.body.phone,
       defaultfoodmood:req.body.defaultfoodmood,
-      team:teamOrder
+      team:teamOrder,
+      draft:true
     })
     console.log(newOrder.id);
     user.orders.push(newOrder);
@@ -223,21 +225,58 @@ exports.postOrderDetails = function(req, res, next) {
 exports.getReviewandPay = function(req, res) {
   User.findById(req.user.id, function(err, user) {
     var orderID=req.name;
+
     for(i=0; i<req.user.orders.length; i++){
       console.log(req.user.orders[i]._id);
       if(req.user.orders[i]._id==req.name){
         orderIndex=i
       }
     }
+    username=req.user.profile.firstname+" "+ req.user.profile.lastname
+    dateplaced=req.user.orders[orderIndex].dateplaced
+    orderfordate=req.user.orders[orderIndex].orderfordate
+    teamname=req.user.orders[orderIndex].team[0].teamname
+    orderteamsize=req.user.orders[orderIndex].orderteamsize
+    deliverytime=req.user.orders[orderIndex].deliverytime
+    totalcost=req.user.orders[orderIndex].totalcost
+    teamminimum=req.user.orders[orderIndex].teamminimum
+    defaultfoodmood=req.user.orders[orderIndex].defaultfoodmood
+    address=req.user.orders[orderIndex].address
+    city=req.user.orders[orderIndex].city
+    state=req.user.orders[orderIndex].state
+    postalcode=req.user.orders[orderIndex].postalcode
+    phone=req.user.orders[orderIndex].phone
+
+    ordermembersarray=req.user.orders[orderIndex].team[0].members
+
+    // team:Array,
+    // status: String,
+    // draft:Boolean,
+    // refund:String,
+    // paid:Boolean,
+
+
+
     console.log(req.user.orders[orderIndex].dateplaced);
     //SHOULD ADD IF STATEMENT IN CASE TEAM DOESN"T EXIST.
 
     // stripe = require('stripe')(secrets.stripe.secretKey);
     res.render('account/reviewandpay', {
+      username:username,
       title:"ReviewandPay",
-      // teamname:req.user.teams[teamid].teamname,
-      // teammembers:req.user.teams[teamid].members,
-      // publishableKey: secrets.stripe.publishableKey
+      teamname:teamname,
+      orderfordate:orderfordate,
+      deliverytime:deliverytime,
+      totalcost:totalcost,
+      teamminimum:teamminimum,
+      defaultfoodmood:defaultfoodmood,
+      address:address,
+      city:city,
+      state:state,
+      postalcode:postalcode,
+      ordermembersarray:ordermembersarray,
+
+      publishableKey: secrets.stripe.publishableKey
     });
   });
 };
