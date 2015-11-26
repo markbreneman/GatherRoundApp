@@ -113,9 +113,17 @@ app.param('teamname', function(req, res, next, name) {
 	next();
 });
 
-app.get('/teams/:teamname/orderdetails', userController.OrderDetails);
-app.post('/reviewandpay', userController.postReviewandPay);
+app.param('orderid', function(req, res, next, order) {
+	var orderid = order;
+	// save name to the request
+	req.name = orderid;
+	next();
+});
 
+app.get('/teams/:teamname/orderdetails', userController.getOrderDetails);
+app.post('/teams/:teamname/orderdetails', userController.postOrderDetails);
+// app.get('/reviewandpay', userController.getReviewandPay);
+app.get('/order/:orderid/reviewandpay', userController.getReviewandPay);
 
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);

@@ -1,0 +1,36 @@
+extends ../layoutloggedin
+
+block content
+  #MainContainer.container
+        .row
+          .col-xs-10
+            h3 Order confirmation
+          .col-xs-2
+            img(style="width:20px;" src='/img/edit.png') 
+        .row
+          .col-xs-3
+            h4 Order Date
+            p :orderfordate
+            h4 Team
+            p :teamname
+          .col-xs-3
+            h4 Deliver To
+            p :orderfordate
+          .col-xs-3
+            h4 Phone
+            p :phonenumber
+            h4 Payment Method
+            p :credit card
+          .col-xs-3
+            h4 Minimum Team Instructions
+            p :A minimum of 6 lunches will be ordered no matter. If teammembers don't vote meals will be chosen with Healthy food mood.
+        .row
+          #TeamOrderContainer.container
+            .row
+              h4 Order Information
+            //- -for     
+
+  button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order
+
+            
+          

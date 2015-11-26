@@ -134,9 +134,9 @@ exports.postCreateTeam = function(req, res, next) {
 };
 
 /**
- * GET /:teamname/orderdetails
+ * GET /teams/:teamname/orderdetails
  */
-exports.OrderDetails = function(req, res) {
+exports.getOrderDetails = function(req, res) {
   User.findById(req.user.id, function(err, user) {
     var teamid;
     for(i=0; i<req.user.teams.length; i++){
@@ -144,6 +144,8 @@ exports.OrderDetails = function(req, res) {
         teamid=i;
       }
     }
+    //SHOULD ADD IF STATEMENT IN CASE TEAM DOESN"T EXIST.
+
     // stripe = require('stripe')(secrets.stripe.secretKey);
     res.render('account/orderdetails', {
       title:"OrderDetails",
@@ -158,7 +160,7 @@ exports.OrderDetails = function(req, res) {
  * POST /Create a Team
  * Create a new team
  */
-exports.postReviewandPay = function(req, res, next) {
+exports.postOrderDetails = function(req, res, next) {
   // res.send(req.body)
   // console.log(req.body.teamMemberFName[2]);
   User.findById(req.user.id, function(err, user) {
@@ -203,17 +205,42 @@ exports.postReviewandPay = function(req, res, next) {
       defaultfoodmood:req.body.defaultfoodmood,
       team:teamOrder
     })
-
+    console.log(newOrder.id);
     user.orders.push(newOrder);
 
     user.save(function(err) {
       if (err) return next(err);
       req.flash('success', { msg: 'order Created' });
-      res.redirect('/dashboard');
+      res.redirect('/order/'+newOrder.id+'/reviewandpay');
     });
 
   });
 };
+
+/**
+ * GET reviewandpay
+ */
+exports.getReviewandPay = function(req, res) {
+  User.findById(req.user.id, function(err, user) {
+    console.log(user.orders);
+    // var teamid;
+    // for(i=0; i<req.user.teams.length; i++){
+    //   if(req.user.teams[i].teamname==req.name){
+    //     teamid=i;
+    //   }
+    // }
+    //SHOULD ADD IF STATEMENT IN CASE TEAM DOESN"T EXIST.
+
+    // stripe = require('stripe')(secrets.stripe.secretKey);
+    res.render('account/reviewandpay', {
+      title:"ReviewandPay",
+      // teamname:req.user.teams[teamid].teamname,
+      // teammembers:req.user.teams[teamid].members,
+      // publishableKey: secrets.stripe.publishableKey
+    });
+  });
+};
+
 
 
 /**

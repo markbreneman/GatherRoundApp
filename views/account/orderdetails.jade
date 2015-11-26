@@ -49,7 +49,7 @@ block content
             button#AddTeamMember.btn.col-xs-offset-7.col-xs-5(type='button', data-toggle='modal', data-target='#myModal') + Add Guest
 
           .col-md-6#OrderDetailsForm
-            form.teamorderinfo(method='POST' action='/reviewandpay')
+            form.teamorderinfo(method='POST' action='/teams/:teamname/orderdetails')
               input(type='hidden', name='_csrf', value=_csrf)
               //this hiddden team is what really gets subbmitted.
               .hiddenTeam 
