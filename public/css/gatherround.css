@@ -663,7 +663,7 @@ margin-top: 30px;
 
 /*
 --------------------------------------------------
--------------------PLACEORDER---------------------
+-------------------ORDERDETAILS-------------------
 --------------------------------------------------
 */
 
@@ -878,9 +878,103 @@ line-height: 24px;
 
 /*
 --------------------------------------------------
--------------------HEADERS------------------------
+------------------REVIEWANDPAY--------------------
 --------------------------------------------------
 */
+
+#ReviewandPay h4, #ReviewandPay h3, #ReviewandPay p{
+  text-align: left;
+}
+
+#ReviewandPay h3{
+font-family: roboto_condensedregular;
+font-size: 24px;
+color: #000000;
+letter-spacing: 1px;
+line-height: 30px;
+}
+
+#ReviewandPay h4{
+font-family: roboto_condensedregular;
+font-size: 18px;
+color: #1C3C4A;
+line-height: 18px;
+}
+
+#ReviewandPay p{
+font-family: montserratlight;
+font-size: 14px;
+color: #8C8C8C;
+line-height: 20px;
+}
+
+#ReviewandPay #ReviewAddress p{
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+#ReviewandPay .ordername, #ReviewandPay .orderemail, #ReviewandPay .orderamt {
+font-family: montserratlight;
+font-size: 14px;
+color: #8C8C8C;
+line-height: 18px;
+padding-top:15px;
+}
+
+.orderinfoheader{
+  margin-left: 0px;
+  margin-top:5px;
+  margin-bottom:5px;
+  font-family: roboto_condensedregular;
+  font-size: 18px;
+  color: #1C3C4A;
+  letter-spacing: 1px;
+  line-height: 24px;
+}
+
+#TeamOrderContainer{
+background-color: #F2F2F2;
+padding-bottom: 20px;
+}
+.ordermemberrow{
+  background-color:white;
+  padding-left: 15px;
+  padding-right:15px;
+  padding-top:15px;
+  height: 80px;
+  border-bottom: solid 1px #F2F2F2;
+}
+
+.orderamt{
+      text-align: right;
+}
+
+#OrderTotal {
+  padding-left: 30px;
+}
+#ReviewandPay img{
+  text-align: center;
+  margin-left: 42%;
+  margin-bottom: 5px;
+
+}
+#PrintButton{
+  padding-top: 18px;
+}
+#ReviewandPay p.printcaption{
+  text-align: center;
+  font-family: roboto_condensedregular;
+  font-size: 10px;
+  color: #1C3C4A;
+  letter-spacing: 1px;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+
+/*--------------------------------------------------
+-------------------HEADERS------------------------
+--------------------------------------------------*/
+
 
 h2 {
     font-family: roboto_condensedbold;

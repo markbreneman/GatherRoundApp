@@ -5,15 +5,17 @@ block content
         .row
           .col-xs-10
             h3 Order confirmation
-          .col-xs-2
-            img(style="width:20px;" src='/img/edit.png') 
+          .col-xs-2#PrintButton
+            img(style="width:20px;" src='/img/print@2x.png') 
+            p.printcaption 
+              | print
         .row
           .col-xs-3
             h4 Order Date
             p=orderfordate
             h4 Team
             p=teamname
-          .col-xs-3
+          .col-xs-3#ReviewAddress
             h4 Deliver To
             p=username
             p=address
@@ -26,18 +28,19 @@ block content
           .col-xs-3
             h4 Minimum Team Instructions
             p A minimum of #{teamminimum} lunches will be ordered no matter. If teammembers don't vote meals will be chosen with a #{defaultfoodmood} food mood.
-        .row
-          #TeamOrderContainer.container
-            .row
-              h4 Order Information
+        #TeamOrderContainer.col-xs-12
+          .row.orderinfoheader
+            h4 Order Information
+          div 
             -for member in ordermembersarray
-              .row
-                .col-xs-2=member.initials
-                .col-xs-5=member.firstname+" "+member.lastname
-                .col-xs-4=member.email
-                .col-xs-1 $10
-                hr
+              .ordermemberrow
+                .col-xs-1.btn-circle=member.initials
+                .col-xs-4.ordername=member.firstname+" "+member.lastname
+                .col-xs-4.orderemail=member.email
+                .col-xs-1.col-xs-offset-2.orderamt $10
+          .col-xs.2.col-xs-offset-10
+            h4#OrderTotal| Total:$ #{totalcost}
   button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order
 
-            
           
+        
