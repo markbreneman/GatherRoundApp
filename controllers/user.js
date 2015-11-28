@@ -355,15 +355,15 @@ exports.postReviewandPay = function(req, res, next) {
           {
             email: 'mark.breneman@smartdesignworldwide.com',
             name: {
-              first: 'Pappa',
+              first: 'Laura',
               last: 'Pizza'
             }
           },
           {
             email: 'mark.breneman@gmail.com',
             name: {
-              first: 'Mister',
-              last: 'Geppetto'
+              first: 'mark',
+              last: 'breneman'
             }
           }
         ]
