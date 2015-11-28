@@ -8,6 +8,8 @@ var Team = require('../models/Team');
 var TeamMember = require('../models/TeamMember');
 var Order = require('../models/Order');
 var secrets = require('../config/secrets');
+var stripe;
+
 
 /**
  * GET /login
@@ -212,7 +214,7 @@ exports.postOrderDetails = function(req, res, next) {
 
     user.save(function(err) {
       if (err) return next(err);
-      req.flash('success', { msg: 'order Created' });
+      // req.flash('success', { msg: 'order Created' });
       res.redirect('/order/'+newOrder.id+'/reviewandpay');
     });
 
@@ -221,6 +223,7 @@ exports.postOrderDetails = function(req, res, next) {
 
 /**
  * GET reviewandpay
+ * Get the review and final invoice
  */
 exports.getReviewandPay = function(req, res) {
   User.findById(req.user.id, function(err, user) {
@@ -260,11 +263,12 @@ exports.getReviewandPay = function(req, res) {
     console.log(req.user.orders[orderIndex].dateplaced);
     //SHOULD ADD IF STATEMENT IN CASE TEAM DOESN"T EXIST.
 
-    // stripe = require('stripe')(secrets.stripe.secretKey);
+    stripe = require('stripe')(secrets.stripe.secretKey);
     res.render('account/reviewandpay', {
       username:username,
       title:"ReviewandPay",
       teamname:teamname,
+      orderid:orderID,
       orderfordate:orderfordate,
       deliverytime:deliverytime,
       totalcost:totalcost,
@@ -275,11 +279,42 @@ exports.getReviewandPay = function(req, res) {
       state:state,
       postalcode:postalcode,
       ordermembersarray:ordermembersarray,
-
       publishableKey: secrets.stripe.publishableKey
+
     });
   });
 };
+
+
+/**
+ * POST /Review and Pay
+ * Charged Card
+ */
+exports.postReviewandPay = function(req, res, next) {
+  // res.send(req.body)
+  // stripe = require('stripe')(secrets.stripe.secretKey);
+
+  var stripeToken = req.body.stripeToken;
+  var stripeEmail = req.body.stripeEmail;
+  var stripeAmount = req.body.stripeTotalAmount*100;
+
+  stripe.charges.create({
+    amount: stripeAmount,
+    currency: 'usd',
+    source: stripeToken,
+    description: stripeEmail,
+    receipt_email:stripeEmail
+  }, function(err, charge) {
+    if (err && err.type === 'StripeCardError') {
+      req.flash('errors', { msg: 'Your card has been declined.' });
+      res.redirect('/order/'+gatherorderid+'/reviewandpay');
+    }
+    req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
+    res.redirect('/dashboard');
+  });
+
+};
+
 
 
 

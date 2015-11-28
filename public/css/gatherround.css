@@ -103,6 +103,10 @@ select {
   color:#8C8C8C;
 }
 
+.navbar ul{
+  list-style: none;
+}
+
 .nav #btnLogin{
   background-color:transparent;
   border-radius:0px;
@@ -669,8 +673,10 @@ margin-top: 30px;
 
 #OrderDetails #MainContainer{
   background-color:#FCFCFC;
-
+  /*Footer issue*/
+  margin-bottom: 50px;
 }
+
 #TeamReviewCol{
   background-color: #F2F2F2;
   padding-bottom: 55px;
@@ -949,17 +955,10 @@ padding-bottom: 20px;
       text-align: right;
 }
 
-#OrderTotal {
-  padding-left: 30px;
-}
-#ReviewandPay img{
-  text-align: center;
-  margin-left: 42%;
-  margin-bottom: 5px;
 
-}
 #PrintButton{
   padding-top: 18px;
+  box-shadow:none
 }
 #ReviewandPay p.printcaption{
   text-align: center;
@@ -969,6 +968,40 @@ padding-bottom: 20px;
   letter-spacing: 1px;
   line-height: 13px;
   text-transform: uppercase;
+}
+
+#ReviewandPay #MainContainer{
+  background-color:#FCFCFC;
+  /*Footer issue*/
+  margin-bottom: 50px;
+}
+
+/*#ReviewandPay #PayButton{*/
+.stripe-button-el{
+  background-color:transparent;
+  background-image: none !important;
+  margin-top: 30px;
+  border-radius: 3px !important;
+  box-shadow: none !important;
+  border:0px;
+  margin-left: 44%;
+  border: 0px;
+
+}
+
+.stripe-button-el span{
+  background: #346B83 !important;
+  background-image: none !important;
+  text-transform:uppercase;
+  box-shadow: none;
+  border:0px;
+  font-family: roboto_condensedbold !important;
+  font-size: 18px  !important;
+  color: #FFFFFF !important;
+  letter-spacing: 2px;
+  line-height: 24px;
+  height:50px !important;
+  padding-top:10px !important;
 }
 
 /*--------------------------------------------------

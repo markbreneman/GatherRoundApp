@@ -124,6 +124,7 @@ app.get('/teams/:teamname/orderdetails', userController.getOrderDetails);
 app.post('/teams/:teamname/orderdetails', userController.postOrderDetails);
 // app.get('/reviewandpay', userController.getReviewandPay);
 app.get('/order/:orderid/reviewandpay', userController.getReviewandPay);
+app.post('/order/:orderid/reviewandpay', userController.postReviewandPay);
 
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);

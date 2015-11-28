@@ -286,5 +286,31 @@ $(document).ready(function() {
 
     }
 
+    //SCRIPT FOR REVIEWANDPAY
+    if($('html').attr('id')=='ReviewandPay'){
 
-});
+      // For the print Button
+
+      $('#PrintButton').click(function(e) {
+         e.preventDefault();
+        printDiv('MainContainer');
+      });
+
+      function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+      }
+
+      // For customizing Strip Button
+      // $('.stripe-button-el span')[0].innerHTML= "Pay $ " + $('.ordermemberrow').length*10
+      // $('.stripe-button-el span')[0].innerHTML= "Pay $ " + $('.ordermemberrow').length*10
+
+    };
+
+});//End document ready

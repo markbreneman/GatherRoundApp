@@ -4,9 +4,10 @@ block content
   #MainContainer.container
         .row
           .col-xs-10
-            h3 Order confirmation
-          .col-xs-2#PrintButton
-            img(style="width:20px;" src='/img/print@2x.png') 
+            h3 Order Confirmation
+          
+          a#PrintButton.col-xs-1.btn(href="#print")
+            img(style="width:20px; margin-bottom:6px;" src='/img/print@2x.png') 
             p.printcaption 
               | print
         .row
@@ -27,20 +28,33 @@ block content
             p=deliverytime
           .col-xs-3
             h4 Minimum Team Instructions
-            p A minimum of #{teamminimum} lunches will be ordered no matter. If teammembers don't vote meals will be chosen with a #{defaultfoodmood} food mood.
+            p Min. of #{teamminimum} Default #{defaultfoodmood} food mood.
         #TeamOrderContainer.col-xs-12
           .row.orderinfoheader
             h4 Order Information
           div 
             -for member in ordermembersarray
               .ordermemberrow
-                .col-xs-1.btn-circle=member.initials
+                .col-xs-1.btn-circle.hidden-xs=member.initials
                 .col-xs-4.ordername=member.firstname+" "+member.lastname
                 .col-xs-4.orderemail=member.email
                 .col-xs-1.col-xs-offset-2.orderamt $10
-          .col-xs.2.col-xs-offset-10
+          .col-sm-2.col-sm-offset-11
             h4#OrderTotal| Total:$ #{totalcost}
-  button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order
+        form(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          input(type='hidden', name='stripeTotalAmount', value=totalcost)
+          input(type='hidden', name='gatherorderid', value=orderid)
+          script(
+          src='https://checkout.stripe.com/checkout.js',
+          class='stripe-button',
+          data-key=publishableKey,
+          data-image='/img/GatherLogoforStripe@2x.png',
+          data-name='Gather Round Lunch',
+          data-description= "for " +teamname+ " $" +totalcost,
+          data-amount=totalcost*100
+          )
+
 
           
         
