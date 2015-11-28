@@ -230,9 +230,12 @@ exports.getReviewandPay = function(req, res) {
     var orderID=req.name;
 
     for(i=0; i<req.user.orders.length; i++){
-      console.log(req.user.orders[i]._id);
+      // console.log(req.user.orders[i]._id);
+      // console.log("total orders ="+ req.user.orders.length);
       if(req.user.orders[i]._id==req.name){
         orderIndex=i
+        // console.log("order Number= " +orderIndex);
+        break
       }
     }
     username=req.user.profile.firstname+" "+ req.user.profile.lastname
@@ -252,15 +255,8 @@ exports.getReviewandPay = function(req, res) {
 
     ordermembersarray=req.user.orders[orderIndex].team[0].members
 
-    // team:Array,
-    // status: String,
-    // draft:Boolean,
-    // refund:String,
-    // paid:Boolean,
+    // console.log(req.user.orders[orderIndex].dateplaced);
 
-
-
-    console.log(req.user.orders[orderIndex].dateplaced);
     //SHOULD ADD IF STATEMENT IN CASE TEAM DOESN"T EXIST.
 
     stripe = require('stripe')(secrets.stripe.secretKey);
@@ -291,12 +287,15 @@ exports.getReviewandPay = function(req, res) {
  * Charged Card
  */
 exports.postReviewandPay = function(req, res, next) {
-  // res.send(req.body)
-  // stripe = require('stripe')(secrets.stripe.secretKey);
+  // res.send(req.body);
+
+  //PAY UP - Charging Stripe
+  stripe = require('stripe')(secrets.stripe.secretKey);
 
   var stripeToken = req.body.stripeToken;
   var stripeEmail = req.body.stripeEmail;
   var stripeAmount = req.body.stripeTotalAmount*100;
+  var gatherorderid = req.body.gatherorderid;
 
   stripe.charges.create({
     amount: stripeAmount,
@@ -309,8 +308,34 @@ exports.postReviewandPay = function(req, res, next) {
       req.flash('errors', { msg: 'Your card has been declined.' });
       res.redirect('/order/'+gatherorderid+'/reviewandpay');
     }
-    req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
-    res.redirect('/dashboard');
+    //IF STRIPE IS SUCCESSFUL
+    //Find the user
+    User.findById(req.user.id, function(err, user) {
+      var orderID=gatherorderid;
+      //Find the index of the order in the order array
+      for(i=0; i<req.user.orders.length; i++){
+        // console.log(req.user.orders[i]._id);
+        if(req.user.orders[i]._id==req.name){
+          orderIndex=i
+          break
+        }
+      }
+
+      //Set Order to placed and draft to false.
+      req.user.orders[orderIndex].status="placed";
+      req.user.orders[orderIndex].draft=false;
+      req.user.orders[orderIndex].paid=true;
+      // console.log(req.user.orders[orderIndex])
+
+      user.save(function(err) {
+        if (err) return next(err);
+        // res.send(req.user.orders[orderIndex])
+        req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
+        res.redirect('/dashboard');
+      });
+
+    });//End find user
+
   });
 
 };
