@@ -15,7 +15,7 @@ var secrets = require('../config/secrets');
 
 var path = require('path');
 var templatesDir = path.resolve(__dirname, '..', 'emailtemplates')
-var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
+
 
 
 /**
@@ -340,6 +340,8 @@ exports.postReviewandPay = function(req, res, next) {
         if (err) return next(err);
         // res.send(req.user.orders[orderIndex])
 
+        var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
+
         //SEND EMAILS
         var transporter = nodemailer.createTransport({
           service: 'SendGrid',
@@ -351,14 +353,14 @@ exports.postReviewandPay = function(req, res, next) {
 
         var users = [
           {
-            email: 'pappa.pizza@spaghetti.com',
+            email: 'mark.breneman@smartdesignworldwide.com',
             name: {
               first: 'Pappa',
               last: 'Pizza'
             }
           },
           {
-            email: 'mister.geppetto@spaghetti.com',
+            email: 'mark.breneman@gmail.com',
             name: {
               first: 'Mister',
               last: 'Geppetto'
@@ -366,11 +368,11 @@ exports.postReviewandPay = function(req, res, next) {
           }
         ]
         // Send 10 mails at once
-        async.mapLimit(users, 10, function (item, next) {
+        async.mapLimit(users, 2, function (item, next) {
           template.render(item, function (err, results) {
             if (err) return next(err)
-            transport.sendMail({
-              from: 'Spicy Meatball <spicy.meatball@spaghetti.com>',
+            transporter.sendMail({
+              from: 'team@gatherround.io',
               to: item.email,
               subject: 'Mangia gli spaghetti con polpette!',
               html: results.html,
