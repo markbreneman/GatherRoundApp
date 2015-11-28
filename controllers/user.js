@@ -345,7 +345,8 @@ exports.postReviewandPay = function(req, res, next) {
           to: 'mark.breneman@smartdesignworldwide.com',
           from: 'team@gatherround.io',
           subject: 'Your invited to Gather for lunch',
-          text: 'request headers host = ' + req.headers.host
+          text: 'request headers host = ' + req.headers.host,
+          html:"<html><body><img src='https://marketing-image-production.s3.amazonaws.com/uploads/706b6a3db4b35dd816fb1a5023fa491fe67c9cb382f7dfd2753cdec0d6ec7c6eb485b85b3767e7d674a2ee3815df91e3eeb73144903decc928c2346a6be780d3.png'>"
         };
         transporter.sendMail(mailOptions, function(err) {
           req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
@@ -588,7 +589,7 @@ exports.postReset = function(req, res, next) {
         }
       });
       var mailOptions = {
-        to: 'mark.breneman@gmail.com',
+        to: user.email,
         from: 'team@gatherround.io',
         subject: 'Your Gather Round password has been changed',
         text: 'Hello,\n\n' +

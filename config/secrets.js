@@ -35,10 +35,10 @@ module.exports = {
     user: process.env.MANDRILL_USER || 'hackathonstarterdemo',
     password: process.env.MANDRILL_PASSWORD || 'E1K950_ydLR4mHw12a0ldA'
   },
-
+//These are temp ids for sendgrid
   sendgrid: {
-    user: process.env.SENDGRID_USER || 'hslogin',
-    password: process.env.SENDGRID_PASSWORD || 'hspassword00'
+    user: process.env.SENDGRID_USER || 'markbreneman',
+    password: process.env.SENDGRID_PASSWORD || 'T46r294vNm4'
   },
 
   nyt: {
