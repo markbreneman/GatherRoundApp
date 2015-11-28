@@ -304,8 +304,10 @@ exports.postReviewandPay = function(req, res, next) {
     description: stripeEmail,
     receipt_email:stripeEmail
   }, function(err, charge) {
+
+    //IF STRIPE IS UNSUCCESSFUL
     if (err && err.type === 'StripeCardError') {
-      req.flash('errors', { msg: 'Your card has been declined.' });
+      req.flash('errors', { msg: 'Your card has been declined. Please try again.' });
       res.redirect('/order/'+gatherorderid+'/reviewandpay');
     }
     //IF STRIPE IS SUCCESSFUL
@@ -330,13 +332,33 @@ exports.postReviewandPay = function(req, res, next) {
       user.save(function(err) {
         if (err) return next(err);
         // res.send(req.user.orders[orderIndex])
+
+        //SEND EMAILS
+        var transporter = nodemailer.createTransport({
+          service: 'SendGrid',
+          auth: {
+            user: secrets.sendgrid.user,
+            pass: secrets.sendgrid.password
+          }
+        });
+        var mailOptions = {
+          to: 'mark.breneman@smartdesignworldwide.com',
+          from: 'team@gatherround.io',
+          subject: 'Your invited to Gather for lunch',
+          text: 'request headers host = ' + req.headers.host
+        };
+        transporter.sendMail(mailOptions, function(err) {
+          req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+        });
+
+
         req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
         res.redirect('/dashboard');
       });
 
     });//End find user
 
-  });
+  });//End Stripe Charge
 
 };
 
@@ -566,7 +588,7 @@ exports.postReset = function(req, res, next) {
         }
       });
       var mailOptions = {
-        to: user.email,
+        to: 'mark.breneman@gmail.com',
         from: 'team@gatherround.io',
         subject: 'Your Gather Round password has been changed',
         text: 'Hello,\n\n' +
