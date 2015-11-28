@@ -2,13 +2,20 @@ var _ = require('lodash');
 var async = require('async');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
+var EmailTemplate = require('email-templates').EmailTemplate;
+var wellknown = require('nodemailer-wellknown')
+
 var passport = require('passport');
 var User = require('../models/User');
 var Team = require('../models/Team');
 var TeamMember = require('../models/TeamMember');
 var Order = require('../models/Order');
-var secrets = require('../config/secrets');
 var stripe;
+var secrets = require('../config/secrets');
+
+var path = require('path');
+var templatesDir = path.resolve(__dirname, '..', 'emailtemplates')
+var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
 
 
 /**
@@ -341,21 +348,64 @@ exports.postReviewandPay = function(req, res, next) {
             pass: secrets.sendgrid.password
           }
         });
-        var mailOptions = {
-          to: 'mark.breneman@smartdesignworldwide.com',
-          from: 'team@gatherround.io',
-          subject: 'Your invited to Gather for lunch',
-          text: 'request headers host = ' + req.headers.host,
-          html:"<html><body><img src='https://marketing-image-production.s3.amazonaws.com/uploads/706b6a3db4b35dd816fb1a5023fa491fe67c9cb382f7dfd2753cdec0d6ec7c6eb485b85b3767e7d674a2ee3815df91e3eeb73144903decc928c2346a6be780d3.png'>"
-        };
-        transporter.sendMail(mailOptions, function(err) {
-          req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
-        });
 
+        var users = [
+          {
+            email: 'pappa.pizza@spaghetti.com',
+            name: {
+              first: 'Pappa',
+              last: 'Pizza'
+            }
+          },
+          {
+            email: 'mister.geppetto@spaghetti.com',
+            name: {
+              first: 'Mister',
+              last: 'Geppetto'
+            }
+          }
+        ]
+        // Send 10 mails at once
+        async.mapLimit(users, 10, function (item, next) {
+          template.render(item, function (err, results) {
+            if (err) return next(err)
+            transport.sendMail({
+              from: 'Spicy Meatball <spicy.meatball@spaghetti.com>',
+              to: item.email,
+              subject: 'Mangia gli spaghetti con polpette!',
+              html: results.html,
+              text: results.text
+            }, function (err, responseStatus) {
+              if (err) {
+                return next(err)
+              }
+              next(null, responseStatus.message)
+            })
+          })
+        }, function (err) {
+          if (err) {
+            console.error(err)
+          }
+          console.log('Succesfully sent %d messages', users.length)
+        })
 
-        req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
-        res.redirect('/dashboard');
-      });
+      });//End User Save
+      //   var mailOptions = {
+      //     to: 'mark.breneman@smartdesignworldwide.com',
+      //     from: 'team@gatherround.io',
+      //     subject: 'Your invited to Gather for lunch',
+      //     text: 'request headers host = ' + req.headers.host,
+      //     html:"<html><body><img src='https://marketing-image-production.s3.amazonaws.com/uploads/706b6a3db4b35dd816fb1a5023fa491fe67c9cb382f7dfd2753cdec0d6ec7c6eb485b85b3767e7d674a2ee3815df91e3eeb73144903decc928c2346a6be780d3.png'>"
+      //   };
+      //   transporter.sendMail(mailOptions, function(err) {
+      //     req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+      //   });
+      //
+      //
+      //   req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
+      //   res.redirect('/dashboard');
+      // });
+
 
     });//End find user
 
@@ -363,6 +413,16 @@ exports.postReviewandPay = function(req, res, next) {
 
 };
 
+
+/**
+ * GET /emailTest DEBUG ONLY
+ *
+ */
+exports.getemailTest = function(req, res) {
+  res.render('emailtest', {
+    title: 'emailtest'
+  });
+};
 
 
 

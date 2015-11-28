@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='csrf-token', content=_csrf)
+    title #{title} - Gather:Team Lunches Made Simple.
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    
+  body
+    .container(style="")
+      .row.topHeader(style='background-color:#1C3C4A;')
+        .col-xs-4.col-xs-offset-4(style='text-align:center; padding-top:15px;padding-bottom:15px ')
+          img(style='height:50px;' src='/img/GatherLogoandText@2x.png')
+      .row
+        img(style='width: 100%;' src='/img/foodmood-vote@2x.png')
+      //- .row
+      p 
+      | Hi #{name.first} #{name.last} is using Gather to organize lunch for you today! Let us know what food you’re in the mood for, by 11am and we’ll have lunch ready for you and your team to enjoy between #{deliverytime}. Hooray! <br> Looking forward to serving you lunch! <br><br> Gather <br><br> PS. Don’t worry if you forget we’ll order food for you anyway!
+      //- .row
+      h4 Are you joining us for lunch? #{email}
+      //- .row
+      a.col-xs-10.col-xs-offset-1.btn(href="#yes" style="background-color: #00B5A5; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:15px;") 
+        | Yes
+      a.col-xs-10.col-xs-offset-1.btn(href="#no" style="background-color: #FF533F; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:50px;") 
+        | Nah
+    .container
+      .col.xs-12(style='background-color:#1C3C4A; height:50px')
+      
+          
+          
+        
