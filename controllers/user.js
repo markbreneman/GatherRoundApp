@@ -355,24 +355,8 @@ exports.postReviewandPay = function(req, res, next) {
         numvoters=req.user.orders[orderIndex].team[0].members.length;
         voters=req.user.orders[orderIndex].team[0].members;
 
-        // var users = [
-        //   {
-        //     email: 'mark.breneman@smartdesignworldwide.com',
-        //     name: {
-        //       first: 'Laura',
-        //       last: 'Pizza'
-        //     }
-        //   },
-        //   {
-        //     email: 'mark.breneman@gmail.com',
-        //     name: {
-        //       first: 'mark',
-        //       last: 'breneman'
-        //     }
-        //   }
-        // ]
 
-        async.mapLimit(voters, numvoters, function (item, next) {
+      async.mapLimit(voters, numvoters, function (item, next) {
           template.render(item, function (err, results) {
             if (err) return next(err)
             transporter.sendMail({
@@ -392,7 +376,9 @@ exports.postReviewandPay = function(req, res, next) {
           if (err) {
             console.error(err)
           }
-          console.log('Succesfully sent %d messages', users.length)
+          req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
+          res.redirect('/dashboard');
+          console.log('Succesfully sent %d messages', voters.length)
         })
 
       });//End User Save
