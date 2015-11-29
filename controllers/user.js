@@ -367,14 +367,14 @@ exports.postReviewandPay = function(req, res, next) {
             }
           }
         ]
-        // Send 10 mails at once
+        
         async.mapLimit(users, 2, function (item, next) {
           template.render(item, function (err, results) {
             if (err) return next(err)
             transporter.sendMail({
               from: 'team@gatherround.io',
               to: item.email,
-              subject: 'Mangia gli spaghetti con polpette!',
+              subject: 'You\'ve Been Invited to Gather!',
               html: results.html,
               text: results.text
             }, function (err, responseStatus) {
@@ -388,8 +388,6 @@ exports.postReviewandPay = function(req, res, next) {
           if (err) {
             console.error(err)
           }
-          req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
-          res.redirect('/dashboard');
           console.log('Succesfully sent %d messages', users.length)
         })
 

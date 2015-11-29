@@ -12,23 +12,23 @@ html
     
   body
     .container
-      .row(style='background-color:#1C3C4A;')
-        img(style='height:50px;' src='http://gatherroundio.herokuapp.com/img/EmailHeader@2x.png')
+      .row(style='background-color:#1C3C4A; text-align:center')
+        col-xs-12
+          img(style='width:75%' src='http://gatherroundio.herokuapp.com/img/EmailHeader@2x.png')
       .row
-        img(style='width: 100%;' src='http://gatherroundio.herokuapp.com/img/FoodMood-Vote@2x.png')
+        img(style='width:100%;' src='http://gatherroundio.herokuapp.com/img/FoodMood-Vote@2x.png')
       //- .row
-      p(style="font-family: Montserrat; font-size: 15px; color: #123D34;line-height: 18px;") 
-      | Hi #{name.first} #{name.last} is using Gather to organize lunch for you today! Let us know what food you’re in the mood for, by 11am and we’ll have lunch ready for you and your team to enjoy between #{deliverytime}. Hooray! <br> Looking forward to serving you lunch! <br><br> Gather <br><br> PS. Don’t worry if you forget we’ll order food for you anyway!
+      p(style="margin-top:30px; margin-bottom:30px; font-family: Montserrat; font-size: 15px; color: #123D34;line-height: 18px;") Hi #{name.first} #{name.last} <br><br> is using Gather to organize lunch for you today! Let us know what food you’re in the mood for, by 11am and we’ll have lunch ready for you and your team to enjoy between #{deliverytime}. Hooray! <br><br> Looking forward to serving you lunch! <br><br> Gather <br><br> PS. Don’t worry if you forget we’ll order food for you anyway!
       //- .row
-      h4(style="font-family: Roboto+Condensed; font-size: 18px; color: #123D34; line-height: 20px;") Are you joining us for lunch? 
+      h4(style="margin-bottom:30px; font-family: Roboto Condensed; font-size: 18px; color: #123D34; line-height: 20px;") Are you joining us for lunch? 
       //- .row
-      a.col-xs-10.col-xs-offset-1.btn(href="http://gatheround.io" style="font-family: Roboto+Condensed; background-color: #00B5A5; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:15px;") 
+      a.col-xs-10.col-xs-offset-1.btn(href="http://gatherround.io" style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #00B5A5; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:20px;") 
         | Yes
-      a.col-xs-10.col-xs-offset-1.btn(href="http://gatheround.io/#signup" style="font-family: Roboto+Condensed; background-color: #FF533F; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:50px;") 
+      a.col-xs-10.col-xs-offset-1.btn(href="http://gatherround.io/#signup" style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #FF533F; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:50px;") 
         | Nah
-    .container
-      //- .col.xs-12(style='background-color:#1C3C4A; height:50px;')
-        img(style='width: 100%;' src='http://gatherroundio.herokuapp.com/img/EmailFooter2x.png')
+      col-xs-12
+        img(style='height:75px; width:100%' src='http://gatherroundio.herokuapp.com/img/EmailFooter@2x.png')
+      
       
   
         
