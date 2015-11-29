@@ -19,6 +19,7 @@ var orderSchema = new mongoose.Schema({
   draft:Boolean,
   refund:String,
   paid:Boolean,
+  votingtime:String
 });
 
 module.exports = mongoose.model('Order', orderSchema);

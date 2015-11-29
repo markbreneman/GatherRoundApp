@@ -279,8 +279,8 @@ $(document).ready(function() {
             orderTime="1:30pm"
         }
 
-        $('.disclosuretime')[0].innerHTML="Team members must vote before " + orderTime
-        $('#HiddenVoteTime')[0].innerHTML=orderTime
+        $('.disclosuretime')[0].innerHTML="Team members must vote before " + orderTime;
+        $('#HiddenVoteTime').val(orderTime);
       }
 
 

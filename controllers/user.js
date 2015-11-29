@@ -214,7 +214,8 @@ exports.postOrderDetails = function(req, res, next) {
       phone:req.body.phone,
       defaultfoodmood:req.body.defaultfoodmood,
       team:teamOrder,
-      draft:true
+      draft:true,
+      votingtime:req.body.votingtime
     })
     console.log(newOrder.id);
     user.orders.push(newOrder);
@@ -259,8 +260,9 @@ exports.getReviewandPay = function(req, res) {
     state=req.user.orders[orderIndex].state
     postalcode=req.user.orders[orderIndex].postalcode
     phone=req.user.orders[orderIndex].phone
-
+    votingtime=req.user.orders[orderIndex].votingtime
     ordermembersarray=req.user.orders[orderIndex].team[0].members
+
 
     // console.log(req.user.orders[orderIndex].dateplaced);
 
@@ -282,6 +284,7 @@ exports.getReviewandPay = function(req, res) {
       state:state,
       postalcode:postalcode,
       ordermembersarray:ordermembersarray,
+      votingtime:votingtime,
       publishableKey: secrets.stripe.publishableKey
 
     });
@@ -355,16 +358,17 @@ exports.postReviewandPay = function(req, res, next) {
         numvoters=req.user.orders[orderIndex].team[0].members.length;
         voters=req.user.orders[orderIndex].team[0].members;
 
-
       async.mapLimit(voters, numvoters, function (item, next) {
           template.render(item, function (err, results) {
             if (err) return next(err)
+            // console.log(req.user.orders[orderIndex]);
             transporter.sendMail({
               from: 'team@gatherround.io',
               to: item.email,
               subject: 'You\'ve Been Invited to Gather!',
               html: results.html,
               text: results.text
+
             }, function (err, responseStatus) {
               if (err) {
                 return next(err)
@@ -382,21 +386,6 @@ exports.postReviewandPay = function(req, res, next) {
         })
 
       });//End User Save
-      //   var mailOptions = {
-      //     to: 'mark.breneman@smartdesignworldwide.com',
-      //     from: 'team@gatherround.io',
-      //     subject: 'Your invited to Gather for lunch',
-      //     text: 'request headers host = ' + req.headers.host,
-      //     html:"<html><body><img src='https://marketing-image-production.s3.amazonaws.com/uploads/706b6a3db4b35dd816fb1a5023fa491fe67c9cb382f7dfd2753cdec0d6ec7c6eb485b85b3767e7d674a2ee3815df91e3eeb73144903decc928c2346a6be780d3.png'>"
-      //   };
-      //   transporter.sendMail(mailOptions, function(err) {
-      //     req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
-      //   });
-      //
-      //
-      //   req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
-      //   res.redirect('/dashboard');
-      // });
 
 
     });//End find user
