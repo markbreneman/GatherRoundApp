@@ -218,6 +218,8 @@ exports.postOrderDetails = function(req, res, next) {
       votingtime:req.body.votingtime
     })
     console.log(newOrder.id);
+
+    newOrder.orderidforemail=newOrder.id;
     user.orders.push(newOrder);
 
     user.save(function(err) {
@@ -261,6 +263,7 @@ exports.getReviewandPay = function(req, res) {
     postalcode=req.user.orders[orderIndex].postalcode
     phone=req.user.orders[orderIndex].phone
     votingtime=req.user.orders[orderIndex].votingtime
+    orderidforemail=req.user.orders[orderIndex].orderidforemail
     ordermembersarray=req.user.orders[orderIndex].team[0].members
 
 
@@ -285,7 +288,9 @@ exports.getReviewandPay = function(req, res) {
       postalcode:postalcode,
       ordermembersarray:ordermembersarray,
       votingtime:votingtime,
+      orderidforemail:orderidforemail,
       publishableKey: secrets.stripe.publishableKey
+
 
     });
   });
