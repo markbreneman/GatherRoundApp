@@ -334,6 +334,7 @@ exports.postReviewandPay = function(req, res, next) {
       req.user.orders[orderIndex].status="placed";
       req.user.orders[orderIndex].draft=false;
       req.user.orders[orderIndex].paid=true;
+      req.user.orders[orderIndex].team
       // console.log(req.user.orders[orderIndex])
 
       user.save(function(err) {
@@ -351,24 +352,27 @@ exports.postReviewandPay = function(req, res, next) {
           }
         });
 
-        var users = [
-          {
-            email: 'mark.breneman@smartdesignworldwide.com',
-            name: {
-              first: 'Laura',
-              last: 'Pizza'
-            }
-          },
-          {
-            email: 'mark.breneman@gmail.com',
-            name: {
-              first: 'mark',
-              last: 'breneman'
-            }
-          }
-        ]
-        
-        async.mapLimit(users, 2, function (item, next) {
+        numvoters=req.user.orders[orderIndex].team[0].members.length;
+        voters=req.user.orders[orderIndex].team[0].members;
+
+        // var users = [
+        //   {
+        //     email: 'mark.breneman@smartdesignworldwide.com',
+        //     name: {
+        //       first: 'Laura',
+        //       last: 'Pizza'
+        //     }
+        //   },
+        //   {
+        //     email: 'mark.breneman@gmail.com',
+        //     name: {
+        //       first: 'mark',
+        //       last: 'breneman'
+        //     }
+        //   }
+        // ]
+
+        async.mapLimit(voters, numvoters, function (item, next) {
           template.render(item, function (err, results) {
             if (err) return next(err)
             transporter.sendMail({
