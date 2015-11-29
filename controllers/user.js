@@ -388,6 +388,8 @@ exports.postReviewandPay = function(req, res, next) {
           if (err) {
             console.error(err)
           }
+          req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
+          res.redirect('/dashboard');
           console.log('Succesfully sent %d messages', users.length)
         })
 
