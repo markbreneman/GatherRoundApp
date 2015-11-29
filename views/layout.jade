@@ -1,5 +1,5 @@
 doctype html
-html
+html(id = title)
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -8,6 +8,8 @@ html
     title #{title} - Gather:Team Lunches Made Simple.
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='/css/bootstrap.min.css')
+    if (title=="Vote")
+      link(rel='stylesheet', href='/css/awesome-bootstrap-checkbox.css')
     link(rel='stylesheet', href='/css/gatherround.css')
   body
     include partials/header

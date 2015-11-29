@@ -1004,6 +1004,33 @@ padding-bottom: 20px;
   padding-top:10px !important;
 }
 
+/*
+--------------------------------------------------
+----------------------VOTE------------------------
+--------------------------------------------------
+*/
+#Vote #Voting{
+  margin-top: 50px;
+}
+
+#Vote h3{
+font-family: roboto_condensedbold;
+font-size: 36px;
+color: #1C3C4A;
+letter-spacing: 2px;
+line-height: 55px;
+text-transform: uppercase;
+}
+
+#Vote hr{
+  margin-top: 5px;
+  width:100%;
+  height:7px;
+  border-radius: 7px;
+}
+
+
+
 /*--------------------------------------------------
 -------------------HEADERS------------------------
 --------------------------------------------------*/

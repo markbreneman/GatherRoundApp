@@ -29,6 +29,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var voteController = require('./controllers/vote');
 
 /**
  * API keys and Passport configuration.
@@ -120,13 +121,22 @@ app.param('orderid', function(req, res, next, order) {
 	next();
 });
 
+app.param('teammemberemail', function(req, res, next, teammemberemail) {
+	var memberemail = teammemberemail;
+	// save name to the request
+	req.name = memberemail;
+	next();
+});
+
 app.get('/teams/:teamname/orderdetails', userController.getOrderDetails);
 app.post('/teams/:teamname/orderdetails', userController.postOrderDetails);
 // app.get('/reviewandpay', userController.getReviewandPay);
 app.get('/order/:orderid/reviewandpay', userController.getReviewandPay);
 app.post('/order/:orderid/reviewandpay', userController.postReviewandPay);
 
-app.get('/emailtest', userController.getemailTest);
+app.get('/:orderid/:teammemberemail/vote', voteController.getVote);
+
+app.get('/emailtest', userController.getemailTest);//Deletable on launch
 
 
 app.get('/logout', userController.logout);
