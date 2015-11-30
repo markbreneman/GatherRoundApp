@@ -12,19 +12,19 @@
         //- | Project name
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        if !user
+        if !user && title=='Home' || title=='HomeBeta'
           //- li(class=title=='Home'?'active':undefined)
           //-   a(href='#Top') Home
           li(class=title=='Our Mission'?'active':undefined)
-            a(data-scroll='', href='#OurMission') Our Mission
+            a(data-scroll='', href='/#OurMission') Our Mission
           li(class=title=='Features'?'active':undefined)
-            a(data-scroll='', href='#Features') Features
+            a(data-scroll='', href='/#Features') Features
           li(class=title=='How It Works'?'active':undefined)
-            a(data-scroll='', href='#HowItWorks') How It Works  
+            a(data-scroll='', href='/#HowItWorks') How It Works  
           li(class=title=='Partners'?'active':undefined)
-            a(data-scroll='', href='#Partners') Partners
+            a(data-scroll='', href='/#Partners') Partners
           li(class=title=='Signup'?'active':undefined)
-              a(data-scroll='', href='#Signup') Signup
+              a(data-scroll='', href='/#Signup') Signup
           
       ul.nav.navbar-nav.navbar-right
         if !user
