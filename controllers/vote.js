@@ -82,3 +82,18 @@ exports.getVoteNo = function(req, res) {
     teammemberemail:req.params.teammemberemail,
   });
 };
+
+
+exports.getStaticVoteA = function(req, res) {
+  // res.send(req.params);
+  res.render('staticvoteA', {
+    title: 'Vote',
+  });
+};
+
+exports.getStaticVoteB = function(req, res) {
+  // res.send(req.params);
+  res.render('staticvoteB', {
+    title: 'Vote',
+  });
+};

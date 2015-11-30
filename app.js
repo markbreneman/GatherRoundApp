@@ -145,6 +145,7 @@ app.post('/order/:orderid/reviewandpay', userController.postReviewandPay);
 app.get('/:userid/:orderid/:teammemberemail/vote/yes', voteController.getVoteYes);
 app.post('/:userid/:orderid/:teammemberemail/vote/yes', voteController.postVoteYes);
 app.get('/:userid/:orderid/:teammemberemail/vote/no', voteController.getVoteNo);
+app.get('/vote-A/', voteController.getStaticVoteA);
 
 // app.get('/emailtest', userController.getemailTest);//Deletable on launch
 
