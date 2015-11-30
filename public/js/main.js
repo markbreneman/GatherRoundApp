@@ -1,4 +1,18 @@
 $(document).ready(function() {
+    // Randomizing colors on initial circles
+    // var colors = ["red", "blue", "green", "yellow"]
+    var hexcolors = ["#346B83", "#FFC107","#00B5A5", "#8C8C8C","#FFCF74", "#F2F2F2", "#FF533F", "#FFB381"]
+
+    var randomColor = Math.floor(Math.random()*hexcolors.length);
+
+    $(".btn-circle").each(function () {
+        // $(this).addClass(colors[randomColor]);
+        $(this).css('border-color',hexcolors[randomColor]);
+            // border: solid 2px #FFCF74;
+        randomColor = (randomColor + 1) % hexcolors.length;
+    });
+
+
     //SCRIPTS FOR CREATE TEAM
     if ($('html').attr('id')=='CreateATeam'){
       //ADD REMOVE TEAM MEMBERS CREATE TEAM
@@ -312,5 +326,6 @@ $(document).ready(function() {
       // $('.stripe-button-el span')[0].innerHTML= "Pay $ " + $('.ordermemberrow').length*10
 
     };
+
 
 });//End document ready

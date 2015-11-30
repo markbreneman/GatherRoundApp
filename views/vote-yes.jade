@@ -8,30 +8,33 @@ block content
             hr
           form(action="", method="post")
             input(type='hidden', name='_csrf', value=_csrf)
+            input(type='hidden', name='userid', value='#{userid}')
+            input(type='hidden', name='orderid', value='#{orderid}')
+            input(type='hidden', name='teammemberemail', value='#{teammemberemail}')
             .radio
-              input#radio3(type='radio', name='foodmood', value='option1')
+              input#radio1(type='radio', name='foodmood', value='Hearty')
               |             
-              label(for='radio3')
+              label(for='radio1')
                 | Hearty (e.g.: Rice, Pasta, Potatoes, Pork/ Beef as protein)
             |             
             .radio
-              input#radio4(type='radio', name='foodmood', value='option2')
+              input#radio2(type='radio', name='foodmood', value='Healthy')
               |             
-              label(for='radio4')
+              label(for='radio2')
                 | Healthy ( e.g.: Brown rice, Roasted Vegetables, Fish/ Chicken/ Tofu as protein)
             .radio
-              input#radio3(type='radio', name='foodmood', value='option1')
+              input#radio3(type='radio', name='foodmood', value='Light')
               |             
               label(for='radio3')
                 | Light (e.g.: Salad, Taco, Wraps)
             |             
             .radio
-              input#radio4(type='radio', name='foodmood', value='option2')
+              input#radio4(type='radio', name='foodmood', value='Comforting')
               |             
               label(for='radio4')
                 | Comforting (e.g.: Fried chicken, Mac & Cheese etc.)
             .form-group
-              label(for='comment') Notes:
+              label(id='VoteNotes'  for='comment') Notes:
               |             
-              textarea#comment.form-control(rows='5' placeholder='Any food allergies?')
-            button#SaveTeam.btn.btn-default.col-xs-4.col-xs-offset-4(type='submit') Save
+              textarea#comment.form-control(rows='3' name='notes' placeholder='Any food allergies?')
+            button#VoteButton.btn.btn-default.col-xs-4.col-xs-offset-4(type='submit') Submit

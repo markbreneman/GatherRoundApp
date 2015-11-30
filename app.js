@@ -114,6 +114,13 @@ app.param('teamname', function(req, res, next, name) {
 	next();
 });
 
+app.param('userid', function(req, res, next, user) {
+	var userid = user;
+	// save name to the request
+	req.name = userid;
+	next();
+});
+
 app.param('orderid', function(req, res, next, order) {
 	var orderid = order;
 	// save name to the request
@@ -134,7 +141,9 @@ app.post('/teams/:teamname/orderdetails', userController.postOrderDetails);
 app.get('/order/:orderid/reviewandpay', userController.getReviewandPay);
 app.post('/order/:orderid/reviewandpay', userController.postReviewandPay);
 
-app.get('/:orderid/:teammemberemail/vote', voteController.getVote);
+app.get('/:userid/:orderid/:teammemberemail/vote/yes', voteController.getVoteYes);
+app.post('/:userid/:orderid/:teammemberemail/vote/yes', voteController.postVoteYes);
+app.get('/:userid/:orderid/:teammemberemail/vote/no', voteController.getVoteNo);
 
 app.get('/emailtest', userController.getemailTest);//Deletable on launch
 

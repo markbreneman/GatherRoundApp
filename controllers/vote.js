@@ -17,11 +17,76 @@ var path = require('path');
 var templatesDir = path.resolve(__dirname, '..', 'emailtemplates')
 
 /**
- * GET /:orderid/:teammemberemail/vote
+ * GET /:orderid/:teammemberemail/vote/yes
  * Login page.
  */
-exports.getVote = function(req, res) {
-  res.render('vote', {
-    title: 'Vote'
+exports.getVoteYes = function(req, res) {
+  // res.send(req.params);
+
+  res.render('vote-yes', {
+    title: 'Vote',
+    userid:req.params.userid,
+    orderid:req.params.orderid,
+    teammemberemail:req.params.teammemberemail,
+  });
+};
+
+exports.postVoteYes = function(req, res) {
+  // res.send(req.body);
+  // User.findOne({ orderidforemail: req.body.orderid }, function(err, orderObject) {
+  User.findById(req.body.userid, function(err, user) {
+  // console.log(user.orders.length);
+  // 565aaa7dde6a402120db3920
+      for(i=0; i<user.orders.length; i++){
+        // console.log(req.user.orders[i]._id);
+        // console.log("total orders ="+ req.user.orders.length);
+        if(user.orders[i]._id==req.body.orderid){
+          orderIndex=i
+          // console.log("order Number= " +orderIndex);
+          break
+        }
+      }
+      for(i=0; i<user.orders[orderIndex].team[0].members.length ; i++){
+        if(user.orders[orderIndex].team[0].members[i].email==req.body.teammemberemail){
+          memberIndex=i;
+          break
+        }
+      }
+
+      user.orders[orderIndex].team[0].members[memberIndex].votestatus="yes"
+      user.orders[orderIndex].team[0].members[memberIndex].vote=req.body.foodmood
+      user.orders[orderIndex].team[0].members[memberIndex].notes=req.body.notes
+      console.log(user.orders[orderIndex].team[0].members[memberIndex]);
+      // console.log(user);
+      user.save(function(err) {
+        if (err) return next(err);
+        res.redirect('/');
+        // res.send(req.body);
+      });
+
+
+    });
+
+
+
+  // console.log(req.body.orderid)
+
+  // res.render('vote-yes', {
+  //   title: 'Vote',
+  //   orderid:req.params.orderid,
+  //   teammemberemail:req.params.teammemberemail,
+  // });
+};
+
+/**
+ * GET /:orderid/:teammemberemail/vote/yes
+ * Login page.
+ */
+exports.getVoteNo = function(req, res) {
+  // res.send(req.params);
+  res.render('vote-yes', {
+    title: 'Vote',
+    orderid:req.params.orderid,
+    teammemberemail:req.params.teammemberemail,
   });
 };

@@ -189,7 +189,10 @@ exports.postOrderDetails = function(req, res, next) {
         firstname: req.body.teamMemberFName[i],
         lastname: req.body.teamMemberLName[i],
         email: req.body.teamMemberEmail[i],
-        initials:req.body.teamMemberFName[i].charAt(0)+req.body.teamMemberLName[i].charAt(0)
+        initials:req.body.teamMemberFName[i].charAt(0)+req.body.teamMemberLName[i].charAt(0),
+        vote: "",
+        notes:"",
+        votestatus:"",
       });
       //Add the teammember to the array of team members
       teamArray.push(teammember);
@@ -398,6 +401,11 @@ exports.postReviewandPay = function(req, res, next) {
   });//End Stripe Charge
 
 };
+
+
+
+
+
 
 
 /**
