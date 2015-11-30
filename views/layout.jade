@@ -39,3 +39,15 @@ html(id = title)
       smoothScroll.init({
       offset:50,
       }); 
+      
+    if(title=='Home')
+      script(type='text/javascript').
+        var submitted=false;
+        document.getElementById("ss-submit").onclick = function() {
+        document.getElementById("ss-form").submit()
+        $('#entry_1162293703').remove();
+        $('#entry_620320143').remove();
+        $('#entry_1382539094').remove();
+        $('#ss-submit').remove();
+        $('#form-wrapper').append( '<p>Thanks! We\'ll keep you posted.</p>')};
+      iframe#hidden_iframe(name='hidden_iframe', style='display:none;')

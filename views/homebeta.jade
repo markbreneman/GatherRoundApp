@@ -125,40 +125,30 @@ block content
       .col-md-3.col-sm-3.col-xs-6
         img.img-responsive.center-block.partner(src='img/partners/greyscale/mq.jpg')
         h4 Might Quinn's
-    
-  #Signup(style="background-color:white")
-      .row
-        .col-md-12
-          h2 Coming Soon  
-      .row
-        .col-md-6.col-md-offset-3
-          p Our team is working hard to  bring Gather to your team. Let us know where you heard about us and leave your e&#x2011;mail. We will keep you posted on when we launch!
-
+          
         
-        
-      form#ss-form(action='https://docs.google.com/forms/d/1sEoPzUypR8DjOQpErzFPD_IAiEvSZ1AryjAcw4aGZ1k/formResponse', method='post', name='ss-form', onsubmit='submitted=true;', target='hidden_iframe')
-        select#entry_1162293703.valid(style="margin-left: 42%;" name='entry.1162293703', aria-label='  ')
-          option(value='', disabled='', selected='') How did you hear about us?
-          |       
-          option(value='Facebook') Facebook
-          |       
-          option(value='Twitter') Twitter
-          |       
-          option(value='Poster / Flyer') Poster / Flyer
-          |       
-          option(value='Friend') Friend
-          |       
-          option(value='Other') Other
-        |     
-        .container
-          .row.signup(style="margin-bottom:30px")
-            #form-wrapper
-              input#entry_620320143.ss-q-short(style="margin-right: 15px" aria-label='Your Name', dir='auto', name='entry.620320143', title='', type='text', value='', placeholder='Your e-mail', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Your e-mail'")
-              |           
-              input#entry_1382539094.ss-q-short(type='text', name='entry.1382539094', value='', dir='auto', aria-label='Your Company  ', title='', placeholder='Your Company', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Your Company'")
-              |           
-              a#ss-submit.jfk-button(href='javascript:;') Submit
-
            
-
+  if !user
+    #Signup.page-header        
+      h3 Sign up
+        .container
+          .row
+            form.form-horizontal.col-md-6.col-md-offset-3(id='signup-form', method='POST' action='/signup')
+              input(type='hidden', name='_csrf', value=_csrf)
+              .form-group
+                .col-md-6
+                  input.form-control(type='text', name='userfirstname', id='userFirstname', placeholder='First Name')    
+                .col-md-6
+                  input.form-control(type='text', name='userlastname', id='userLastname', placeholder='Last Name')
+              #EmailGroup.form-group
+                input.form-control(type='email', name='email', id='email', placeholder='Enter your Email')
+              .form-group
+                .col-md-12
+                  input.form-control(type='password', name='password', id='password', placeholder='Password')
+              .form-group  
+                .col-md-12
+                  input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
+              .form-group.signupholder
+                  button#SignupBtn.btn.col-md-12(type='submit')
+                    | Signup
                     

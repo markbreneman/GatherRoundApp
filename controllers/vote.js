@@ -67,19 +67,7 @@ exports.postVoteYes = function(req, res, next) {
         res.redirect('/');
         // res.send(req.body);
       });
-
-
     });
-
-
-
-  // console.log(req.body.orderid)
-
-  // res.render('vote-yes', {
-  //   title: 'Vote',
-  //   orderid:req.params.orderid,
-  //   teammemberemail:req.params.teammemberemail,
-  // });
 };
 
 /**

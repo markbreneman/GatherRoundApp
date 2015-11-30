@@ -100,6 +100,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.get('/', homeController.index);
+app.get('/beta', homeController.betaindex);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 
@@ -145,7 +146,7 @@ app.get('/:userid/:orderid/:teammemberemail/vote/yes', voteController.getVoteYes
 app.post('/:userid/:orderid/:teammemberemail/vote/yes', voteController.postVoteYes);
 app.get('/:userid/:orderid/:teammemberemail/vote/no', voteController.getVoteNo);
 
-app.get('/emailtest', userController.getemailTest);//Deletable on launch
+// app.get('/emailtest', userController.getemailTest);//Deletable on launch
 
 
 app.get('/logout', userController.logout);

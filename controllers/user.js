@@ -352,49 +352,48 @@ exports.postReviewandPay = function(req, res, next) {
         if (err) return next(err);
         // res.send(req.user.orders[orderIndex])
 
-        var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
-
-        //SEND EMAILS
-        var transporter = nodemailer.createTransport({
-          service: 'SendGrid',
-          auth: {
-            user: secrets.sendgrid.user,
-            pass: secrets.sendgrid.password
-          }
-        });
-
-        numvoters=req.user.orders[orderIndex].team[0].members.length;
-        voters=req.user.orders[orderIndex].team[0].members;
-
-      async.mapLimit(voters, numvoters, function (item, next) {
-          template.render(item, function (err, results) {
-            if (err) return next(err)
-            // console.log(req.user.orders[orderIndex]);
-            transporter.sendMail({
-              from: 'team@gatherround.io',
-              to: item.email,
-              subject: 'You\'ve Been Invited to Gather!',
-              html: results.html,
-              text: results.text
-
-            }, function (err, responseStatus) {
-              if (err) {
-                return next(err)
-              }
-              next(null, responseStatus.message)
-            })
-          })
-        }, function (err) {
-          if (err) {
-            console.error(err)
-          }
+      //   var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
+      //
+      //   //SEND EMAILS
+      //   var transporter = nodemailer.createTransport({
+      //     service: 'SendGrid',
+      //     auth: {
+      //       user: secrets.sendgrid.user,
+      //       pass: secrets.sendgrid.password
+      //     }
+      //   });
+      //
+      //   numvoters=req.user.orders[orderIndex].team[0].members.length;
+      //   voters=req.user.orders[orderIndex].team[0].members;
+      //
+      // async.mapLimit(voters, numvoters, function (item, next) {
+      //     template.render(item, function (err, results) {
+      //       if (err) return next(err)
+      //       // console.log(req.user.orders[orderIndex]);
+      //       transporter.sendMail({
+      //         from: 'team@gatherround.io',
+      //         to: item.email,
+      //         subject: 'You\'ve Been Invited to Gather!',
+      //         html: results.html,
+      //         text: results.text
+      //
+      //       }, function (err, responseStatus) {
+      //         if (err) {
+      //           return next(err)
+      //         }
+      //         next(null, responseStatus.message)
+      //       })
+      //     })
+      //   }, function (err) {
+      //     if (err) {
+      //       console.error(err)
+      //     }
           req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
           res.redirect('/dashboard');
-          console.log('Succesfully sent %d messages', voters.length)
-        })
+          // console.log('Succesfully sent %d messages', voters.length)
+        // })
 
       });//End User Save
-
 
     });//End find user
 

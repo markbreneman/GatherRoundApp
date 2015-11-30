@@ -8,9 +8,9 @@ block content
           h2 Hi, #{user.profile.firstname}!
           |       
           h3
-            | You have 1 order in progress. Check its 
-            a(href='#') details
-            | .
+            //- | You have 1 order in progress. Check its 
+            //- a(href='#') details
+            //- | .
           |       
           .create-order
             a#PlaceOrderBtn.btn.btn-primary(href='/teams')
@@ -31,15 +31,19 @@ block content
             |         
             p Manage your payments, addresses, personal details and teams.
             |         
-            .admin-button Account Details
+            a.admin-button(href='/account')
+              | Account Details
         |     
         .col-md-4.admin-tab-bg
           .admin-tab
             h4 Help &amp; Suport
             |         
             p
-              | Got a question? Check out our 
-              a(href='#') FAQ
-              | ! Can&apos;t find an answer? Shoot us a note and we&apos;ll return shortly.
+              | Got a question?
+              | Shoot us a note and we&apos;ll reply shortly
+              //- | Got a question? Check out our 
+              //- a(href='/contact') FAQ
+              //- | ! Can&apos;t find an answer? Shoot us a note and we&apos;ll return shortly.
             |         
-            .admin-button Contact Us
+            a.admin-button(href='/contact')
+              | Contact Us
