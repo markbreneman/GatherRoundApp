@@ -1,0 +1,82 @@
+extends layout
+
+block content
+  .container#Voting
+        .col-md-6.col-md-offset-3.col-xs-12
+          h3 What is your food mood
+          row
+            hr
+            form#ss-form(action='https://docs.google.com/forms/d/1_pMBLrLGWgVueAUx_gvCb1wO2VI0_k9BTiAidH07J6I/formResponse', method='post', name='ss-form', onsubmit='', target='_self')
+              .ss-question-list(role='list', style='margin-left: 2em; padding-left: 0')
+                .ss-form-question.errorbox-good(role='listitem')
+                  .ss-item.ss-radio(dir='auto')
+                    .ss-form-entry                      
+                      label.ss-q-item-label(for='entry_718665677')
+                      |                                    
+                      .ss-q-help.ss-secondary-text(dir='auto')
+                        label.ss-q-item-label(for='entry_718665677')
+                      |                                    
+                      ul.ss-choices(aria-label='What is your food mood?', role='radiogroup' style="list-style:none")
+                        li.ss-choice-item
+                          label
+                            span.ss-choice-item-control.goog-inline-block
+                              input#group_645480998_1.ss-q-radio(aria-label='Hearty', name='entry.645480998', role='radio', type='radio', value='Hearty')
+                            |                                        
+                            span.ss-choice-label(style="margin-left:20px") Hearty (e.g.: Rice, Pasta, Potatoes, Pork/ Beef as protein)                                       
+                        |                                        
+                        li.ss-choice-item
+                          label
+                            span.ss-choice-item-control.goog-inline-block
+                              input#group_645480998_2.ss-q-radio(aria-label='Healthy', name='entry.645480998', role='radio', type='radio', value='Healthy')
+                            |                                        
+                            span.ss-choice-label(style="margin-left:20px") Healthy ( e.g.: Brown rice, Roasted Vegetables, Fish/ Chicken/ Tofu as protein)
+                        |                                        
+                        li.ss-choice-item
+                          label
+                            span.ss-choice-item-control.goog-inline-block
+                              input#group_645480998_3.ss-q-radio(aria-label='Light', name='entry.645480998', role='radio', type='radio', value='Light')
+                            |                                        
+                            span.ss-choice-label(style="margin-left:20px") Light (e.g.: Salad, Taco, Wraps)
+                        |                                        
+                        li.ss-choice-item
+                          label
+                            span.ss-choice-item-control.goog-inline-block
+                              input#group_645480998_4.ss-q-radio(aria-label='Comforting', name='entry.645480998', role='radio', type='radio', value='Comforting')
+                            |                                        
+                            span.ss-choice-label(style="margin-left:20px") Comforting (e.g.: Fried chicken, Mac & Cheese etc.)
+                      |                                    
+                      #718665677_errorMessage.error-message
+                      |                                    
+                      .required-message
+                        | This is a required question
+                |                        
+                .ss-form-question.errorbox-good(role='listitem')
+                  .ss-item.ss-paragraph-text(dir='auto')
+                    .ss-form-entry
+                      label.ss-q-item-label(for='entry_143659655')
+                      |                                    
+                      .ss-q-title
+                        label.ss-q-item-label(for='entry_143659655')
+                          | Do you have any
+                          | allergies or restrictions?
+                      label.ss-q-item-label(for='entry_143659655')
+                      |                                    
+                      .ss-q-help.ss-secondary-text(dir='auto')
+                        label.ss-q-item-label(for='entry_143659655')
+                      |                                    
+                      textarea#entry_143659655.ss-q-long(aria-label='Do you have any allergies or restrictions?', cols='0', dir='auto', name='entry.143659655', rows='3', style="width:100%")
+                      |                                    
+                      #21441004_errorMessage.error-message
+                      |                                    
+                      .required-message
+                        | This is a required question
+                input(name='draftResponse', type='hidden', value='[,,"6342176602041170084"] ')
+                |  
+                input(name='pageHistory', type='hidden', value='0')
+                |  
+                input(name='fvv', type='hidden', value='0')
+                |  
+                input(name='fbzx', type='hidden', value='6342176602041170084')
+                |                        
+                .ss-item.ss-navigate
+                  input#VoteButton.jfk-button.jfk-button-action(name='submit', type='submit', value='Submit' style="width:150px;margin-left:30%")
