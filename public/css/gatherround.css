@@ -40,6 +40,9 @@ select {
   font-size: 14px;
   line-height: 18px;
 }
+.alert{
+margin-top: 63px !important;
+}
 /*
 --------------------------------------------------
 ------------------CUSTOM NAV----------------------
