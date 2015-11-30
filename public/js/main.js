@@ -17,8 +17,30 @@ $(document).ready(function() {
     if ($('html').attr('id')=='CreateATeam'){
       //ADD REMOVE TEAM MEMBERS CREATE TEAM
       var maxteamSize=10;
-      var minteamSize=2;
+      var minteamSize=6;
       var next = 1;
+      function checkTeamNumber(){
+
+        teamMemberCount=$(".teammember").length;
+        // console.log(teamMemberCount);
+        //Add value to team member size form feild
+        $('#hiddenTeamSize')[0].value=teamMemberCount;
+
+        if(teamMemberCount<minteamSize){
+          $('#SaveTeam').prop("disabled", true);
+        }
+        else if(teamMemberCount>=minteamSize && teamMemberCount<=maxteamSize){
+          $('#SaveTeam').prop("disabled", false);
+        }
+        if(teamMemberCount>=maxteamSize){
+          $('#AddTeamMember').prop("disabled", true);
+        }
+        else if(teamMemberCount<maxteamSize){
+          $('#AddTeamMember').prop("disabled", false);
+        }
+      }
+
+      checkTeamNumber();
 
       $(".add-more").click(function(e){
            e.preventDefault();
@@ -65,27 +87,6 @@ $(document).ready(function() {
               $(this).parent().remove();
               checkTeamNumber();
         });
-
-        function checkTeamNumber(){
-
-          teamMemberCount=$(".teammember").length;
-          // console.log(teamMemberCount);
-          //Add value to team member size form feild
-          $('#hiddenTeamSize')[0].value=teamMemberCount;
-
-          if(teamMemberCount<minteamSize){
-            $('#SaveTeam').prop("disabled", true);
-          }
-          else if(teamMemberCount>=minteamSize && teamMemberCount<=maxteamSize){
-            $('#SaveTeam').prop("disabled", false);
-          }
-          if(teamMemberCount>=maxteamSize){
-            $('#AddTeamMember').prop("disabled", true);
-          }
-          else if(teamMemberCount<maxteamSize){
-            $('#AddTeamMember').prop("disabled", false);
-          }
-        }
       });
     }
 
@@ -256,16 +257,23 @@ $(document).ready(function() {
         console.log("Team Order Size + " + teamOrderSize);
         console.log("Team Size + " + teamSize);
         $('#HiddenOrderTeamSize')[0].value=teamOrderSize;
+
         updateCostTotal(teamOrderSize);
 
       }
 
       var orderTime;
 
-      $('#sel1').change(function(){
-        var timeSelected=$('#sel1 option:selected').val();
+      $('#Sel1').change(function(){
+        var timeSelected=$('#Sel1 option:selected').val();
         // console.log(timeSelected);
         setTeamMemberTime(timeSelected);
+      });
+
+      $('#Sel2').change(function(){
+        var minPeople=$('#Sel2 option:selected').val();
+        console.log(minPeople);
+        updateCostTotal(minPeople);
       });
 
       function setTeamMemberTime(timeChosen){

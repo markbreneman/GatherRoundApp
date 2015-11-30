@@ -791,15 +791,15 @@ hr.teammemberreview{
   background-color: transparent ;
 }
 
-#OrderDetails #sel1 {
+#OrderDetails #Sel1 {
   background: url("/img/SelectListArrow@2x.png") 96% / 15% no-repeat #ffffff;
 }
 
-#OrderDetails #sel2 {
+#OrderDetails #Sel2 {
   background: url("/img/SelectListArrow@2x.png") 92% / 45% no-repeat #ffffff ;
 }
 
-#OrderDetails #sel3 {
+#OrderDetails #Sel3 {
   background: url("/img/SelectListArrow@2x.png") 92% / 15% no-repeat #ffffff ;
 }
 
