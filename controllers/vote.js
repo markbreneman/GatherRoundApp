@@ -31,12 +31,15 @@ exports.getVoteYes = function(req, res) {
   });
 };
 
-exports.postVoteYes = function(req, res) {
+exports.postVoteYes = function(req, res, next) {
   // res.send(req.body);
   // User.findOne({ orderidforemail: req.body.orderid }, function(err, orderObject) {
   User.findById(req.body.userid, function(err, user) {
   // console.log(user.orders.length);
-  // 565aaa7dde6a402120db3920
+  // 5656361b2ce16699cfed56d3 - Test@test.com
+  if (err) return next(err);
+  var orderIndex;
+  var memberIndex;
       for(i=0; i<user.orders.length; i++){
         // console.log(req.user.orders[i]._id);
         // console.log("total orders ="+ req.user.orders.length);
@@ -53,11 +56,12 @@ exports.postVoteYes = function(req, res) {
         }
       }
 
-      user.orders[orderIndex].team[0].members[memberIndex].votestatus="yes"
-      user.orders[orderIndex].team[0].members[memberIndex].vote=req.body.foodmood
-      user.orders[orderIndex].team[0].members[memberIndex].notes=req.body.notes
-      console.log(user.orders[orderIndex].team[0].members[memberIndex]);
-      // console.log(user);
+      user.orders[orderIndex].team[0].members[memberIndex].votestatus="yes";
+      user.orders[orderIndex].team[0].members[memberIndex].vote=req.body.foodmood;
+      user.orders[orderIndex].team[0].members[memberIndex].notes=req.body.notes;
+
+      // console.log(user.orders[orderIndex].team[0].members[memberIndex]);
+      console.log(user.orders[orderIndex].team[0]);
       user.save(function(err) {
         if (err) return next(err);
         res.redirect('/');
