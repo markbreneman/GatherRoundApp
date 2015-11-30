@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var orderSchema = new mongoose.Schema({
   teamname: String,
-  team:Array,
+  // team:Array,
+  team:Object,
   orderteamsize:String,
   dateplaced: String,
   orderfordate: String,

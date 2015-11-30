@@ -34,6 +34,7 @@ exports.getVoteYes = function(req, res) {
 exports.postVoteYes = function(req, res, next) {
   // res.send(req.body);
   // User.findOne({ orderidforemail: req.body.orderid }, function(err, orderObject) {
+  var theUser;
   User.findById(req.body.userid, function(err, user) {
   // console.log(user.orders.length);
   // 5656361b2ce16699cfed56d3 - Test@test.com
@@ -45,13 +46,15 @@ exports.postVoteYes = function(req, res, next) {
         // console.log("total orders ="+ req.user.orders.length);
         if(user.orders[i]._id==req.body.orderid){
           orderIndex=i
-          // console.log("order Number= " +orderIndex);
+          console.log("order Number= " + user.orders[orderIndex]._id);
+
           break
         }
       }
       for(i=0; i<user.orders[orderIndex].team[0].members.length ; i++){
         if(user.orders[orderIndex].team[0].members[i].email==req.body.teammemberemail){
           memberIndex=i;
+          // console.log("Member= " +user.orders[orderIndex].team[0].members[memberIndex]);
           break
         }
       }
