@@ -33,8 +33,6 @@ exports.getVoteYes = function(req, res) {
 
 exports.postVoteYes = function(req, res, next) {
   // res.send(req.body);
-  // User.findOne({ orderidforemail: req.body.orderid }, function(err, orderObject) {
-  var theUser;
   User.findById(req.body.userid, function(err, user) {
   // console.log(user.orders.length);
   // 5656361b2ce16699cfed56d3 - Test@test.com
