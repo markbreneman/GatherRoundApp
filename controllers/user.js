@@ -219,10 +219,10 @@ exports.postOrderDetails = function(req, res, next) {
       team:teamOrder,
       draft:true,
       votingtime:req.body.votingtime,
-      status:"";
-      paid=false;
-
+      status:"",
+      paid:false,
     })
+
     console.log(newOrder.id);
 
     newOrder.orderidforemail=newOrder.id;
@@ -353,8 +353,11 @@ exports.postReviewandPay = function(req, res, next) {
       req.user.orders[orderIndex].draft=false;
       req.user.orders[orderIndex].paid=true;
       // req.user.orders[orderIndex].team
-      // console.log(req.user.orders[orderIndex])
-      user.markModified('orders');
+      console.log(req.user.orders[orderIndex])
+      user.orders[orderIndex].markModified('status');
+      user.orders[orderIndex].markModified('draft');
+      user.orders[orderIndex].markModified('paid');
+
       user.save(function(err) {
         if (err) return next(err);
         // res.send(req.user.orders[orderIndex])
