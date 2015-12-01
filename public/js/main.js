@@ -17,7 +17,7 @@ $(document).ready(function() {
     if ($('html').attr('id')=='CreateATeam'){
       //ADD REMOVE TEAM MEMBERS CREATE TEAM
       var maxteamSize=10;
-      var minteamSize=6;
+      var minteamSize=2;
       var next = 1;
       function checkTeamNumber(){
 

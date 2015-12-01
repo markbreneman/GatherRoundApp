@@ -254,7 +254,9 @@ exports.getReviewandPay = function(req, res) {
     username=req.user.profile.firstname+" "+ req.user.profile.lastname
     dateplaced=req.user.orders[orderIndex].dateplaced
     orderfordate=req.user.orders[orderIndex].orderfordate
-    teamname=req.user.orders[orderIndex].team[0].teamname
+    // console.log(req.user.orders[orderIndex])
+    teamname=req.user.orders[orderIndex].team.teamname
+
     orderteamsize=req.user.orders[orderIndex].orderteamsize
     deliverytime=req.user.orders[orderIndex].deliverytime
     totalcost=req.user.orders[orderIndex].totalcost
@@ -267,8 +269,8 @@ exports.getReviewandPay = function(req, res) {
     phone=req.user.orders[orderIndex].phone
     votingtime=req.user.orders[orderIndex].votingtime
     orderidforemail=req.user.orders[orderIndex].orderidforemail
-    ordermembersarray=req.user.orders[orderIndex].team[0].members
-
+    ordermembersarray=req.user.orders[orderIndex].team.members
+    userid=req.user.id
 
     // console.log(req.user.orders[orderIndex].dateplaced);
 
@@ -292,6 +294,7 @@ exports.getReviewandPay = function(req, res) {
       ordermembersarray:ordermembersarray,
       votingtime:votingtime,
       orderidforemail:orderidforemail,
+      userid:userid,
       publishableKey: secrets.stripe.publishableKey
 
 
@@ -351,47 +354,47 @@ exports.postReviewandPay = function(req, res, next) {
       user.save(function(err) {
         if (err) return next(err);
         // res.send(req.user.orders[orderIndex])
+        var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
 
-      //   var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
-      //
-      //   //SEND EMAILS
-      //   var transporter = nodemailer.createTransport({
-      //     service: 'SendGrid',
-      //     auth: {
-      //       user: secrets.sendgrid.user,
-      //       pass: secrets.sendgrid.password
-      //     }
-      //   });
-      //
-      //   numvoters=req.user.orders[orderIndex].team[0].members.length;
-      //   voters=req.user.orders[orderIndex].team[0].members;
-      //
-      // async.mapLimit(voters, numvoters, function (item, next) {
-      //     template.render(item, function (err, results) {
-      //       if (err) return next(err)
-      //       // console.log(req.user.orders[orderIndex]);
-      //       transporter.sendMail({
-      //         from: 'team@gatherround.io',
-      //         to: item.email,
-      //         subject: 'You\'ve Been Invited to Gather!',
-      //         html: results.html,
-      //         text: results.text
-      //
-      //       }, function (err, responseStatus) {
-      //         if (err) {
-      //           return next(err)
-      //         }
-      //         next(null, responseStatus.message)
-      //       })
-      //     })
-      //   }, function (err) {
-      //     if (err) {
-      //       console.error(err)
-      //     }
+        //SEND EMAILS
+        var transporter = nodemailer.createTransport({
+          service: 'SendGrid',
+          auth: {
+            user: secrets.sendgrid.user,
+            pass: secrets.sendgrid.password
+          }
+        });
+
+        numvoters=req.user.orders[orderIndex].team.members.length;
+        voters=req.user.orders[orderIndex].team.members;
+
+      async.mapLimit(voters, numvoters, function (item, next) {
+          template.render(item, function (err, results) {
+            if (err) return next(err)
+            // console.log(req.user.orders[orderIndex]);
+            transporter.sendMail({
+              from: 'team@gatherround.io',
+              to: item.email,
+              subject: 'You\'ve Been Invited to Gather!',
+              html: results.html,
+              text: results.text
+
+            }, function (err, responseStatus) {
+              if (err) {
+                return next(err)
+              }
+              next(null, responseStatus.message)
+            })
+          })
+        }, function (err) {
+          if (err) {
+            console.error(err)
+          }
+
           req.flash('success', { msg: 'Your order is in the works! We have emailed your team members.' });
           res.redirect('/dashboard');
           // console.log('Succesfully sent %d messages', voters.length)
-        // })
+        })
 
       });//End User Save
 
