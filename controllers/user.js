@@ -254,7 +254,9 @@ exports.getReviewandPay = function(req, res) {
     username=req.user.profile.firstname+" "+ req.user.profile.lastname
     dateplaced=req.user.orders[orderIndex].dateplaced
     orderfordate=req.user.orders[orderIndex].orderfordate
-    teamname=req.user.orders[orderIndex].team[0].teamname
+    // console.log(req.user.orders[orderIndex])
+    teamname=req.user.orders[orderIndex].team.teamname
+
     orderteamsize=req.user.orders[orderIndex].orderteamsize
     deliverytime=req.user.orders[orderIndex].deliverytime
     totalcost=req.user.orders[orderIndex].totalcost
@@ -267,7 +269,7 @@ exports.getReviewandPay = function(req, res) {
     phone=req.user.orders[orderIndex].phone
     votingtime=req.user.orders[orderIndex].votingtime
     orderidforemail=req.user.orders[orderIndex].orderidforemail
-    ordermembersarray=req.user.orders[orderIndex].team[0].members
+    ordermembersarray=req.user.orders[orderIndex].team.members
 
 
     // console.log(req.user.orders[orderIndex].dateplaced);
@@ -363,8 +365,8 @@ exports.postReviewandPay = function(req, res, next) {
           }
         });
 
-        numvoters=req.user.orders[orderIndex].team[0].members.length;
-        voters=req.user.orders[orderIndex].team[0].members;
+        numvoters=req.user.orders[orderIndex].team.members.length;
+        voters=req.user.orders[orderIndex].team.members;
 
       async.mapLimit(voters, numvoters, function (item, next) {
           template.render(item, function (err, results) {
