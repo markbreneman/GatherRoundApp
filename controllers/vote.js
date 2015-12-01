@@ -67,8 +67,8 @@ exports.postVoteYes = function(req, res, next) {
         if (err) return next(err);
         console.log("after", user.orders[orderIndex].team.members[memberIndex]);
         // console.log(arguments);
-        // res.redirect('/');
-        res.send(req.body);
+        res.redirect('/');
+        // res.send(req.body);
       });
     });
 };
