@@ -218,7 +218,10 @@ exports.postOrderDetails = function(req, res, next) {
       defaultfoodmood:req.body.defaultfoodmood,
       team:teamOrder,
       draft:true,
-      votingtime:req.body.votingtime
+      votingtime:req.body.votingtime,
+      status:"";
+      paid=false;
+
     })
     console.log(newOrder.id);
 
@@ -349,7 +352,7 @@ exports.postReviewandPay = function(req, res, next) {
       req.user.orders[orderIndex].status="placed";
       req.user.orders[orderIndex].draft=false;
       req.user.orders[orderIndex].paid=true;
-      req.user.orders[orderIndex].team
+      // req.user.orders[orderIndex].team
       // console.log(req.user.orders[orderIndex])
       user.markModified('orders');
       user.save(function(err) {
