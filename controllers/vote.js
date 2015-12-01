@@ -33,45 +33,46 @@ exports.getVoteYes = function(req, res) {
 
 exports.postVoteYes = function(req, res, next) {
   // res.send(req.body);
-  // User.findById(req.body.userid, function(err, user) {
-  // console.log(user);
-  // // 5656361b2ce16699cfed56d3 - Test@test.com
-  // if (err) return next(err);
-  // var orderIndex;
-  // var memberIndex;
-    // for(i=0; i<user.orders.length; i++){
-    //   // console.log(req.user.orders[i]._id);
-    //   // console.log("total orders ="+ req.user.orders.length);
-    //   if(user.orders[i]._id==req.body.orderid){
-    //     orderIndex=i
-    //     // console.log("order Number= " + user.orders[orderIndex]._id);
-    //     break
-    //   }
-    // }
-    // for(i=0; i<user.orders[orderIndex].team.members.length ; i++){
-    //   if(user.orders[orderIndex].team.members[i].email==req.body.teammemberemail){
-    //     memberIndex=i;
-    //     // console.log("Member= " +user.orders[orderIndex].team.members[memberIndex]);
-    //     break
-    //   }
-    // }
-    //   // console.log(user.orders[orderIndex].team.members[memberIndex]);
-    //   // console.log(req.body.notes);
-    //   user.orders[orderIndex].team.members[memberIndex].votestatus="yes";
-    //   user.orders[orderIndex].team.members[memberIndex].vote=req.body.foodmood;
-    //   user.orders[orderIndex].team.members[memberIndex].notes=req.body.notes;
-    //
-    //   // console.log("after", user.orders[orderIndex].team.members[memberIndex]);
-    //   // console.log(user.orders[orderIndex].team);
-    //   user.save(function(err, user){
-    //     if (err) return next(err);
-    //     console.log("after", user.orders[orderIndex].team.members[memberIndex]);
-    //     // console.log(arguments);
-        // res.redirect('/');
+  User.findById(req.body.userid, function(err, user) {
+  console.log(user);
+  // 5656361b2ce16699cfed56d3 - Test@test.com
+  if (err) return next(err);
+  var orderIndex;
+  var memberIndex;
+    for(i=0; i<user.orders.length; i++){
+      // console.log(req.user.orders[i]._id);
+      // console.log("total orders ="+ req.user.orders.length);
+      if(user.orders[i]._id==req.body.orderid){
+        orderIndex=i
+        // console.log("order Number= " + user.orders[orderIndex]._id);
+        break
+      }
+    }
+    for(i=0; i<user.orders[orderIndex].team.members.length ; i++){
+      if(user.orders[orderIndex].team.members[i].email==req.body.teammemberemail){
+        memberIndex=i;
+        // console.log("Member= " +user.orders[orderIndex].team.members[memberIndex]);
+        break
+      }
+    }
+      // console.log(user.orders[orderIndex].team.members[memberIndex]);
+      // console.log(req.body.notes);
+      user.orders[orderIndex].team.members[memberIndex].votestatus="yes";
+      user.orders[orderIndex].team.members[memberIndex].vote=req.body.foodmood;
+      user.orders[orderIndex].team.members[memberIndex].notes=req.body.notes;
+
+      // console.log("after", user.orders[orderIndex].team.members[memberIndex]);
+      // console.log(user.orders[orderIndex].team);
+      user.markModified('orders');
+      user.save(function(err, user){
+        if (err) return next(err);
+        console.log("after", user.orders[orderIndex].team.members[memberIndex]);
+        // console.log(arguments);
+        res.redirect('/');
         // res.send(req.body);
-      // });
-    // });
-    res.redirect('/');
+      });
+    });
+    // res.redirect('/');
 };
 
 /**

@@ -345,12 +345,13 @@ exports.postReviewandPay = function(req, res, next) {
       }
 
       //Set Order to placed and draft to false.
+
       req.user.orders[orderIndex].status="placed";
       req.user.orders[orderIndex].draft=false;
       req.user.orders[orderIndex].paid=true;
       req.user.orders[orderIndex].team
       // console.log(req.user.orders[orderIndex])
-
+      user.markModified('orders');
       user.save(function(err) {
         if (err) return next(err);
         // res.send(req.user.orders[orderIndex])
