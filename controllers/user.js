@@ -347,20 +347,16 @@ exports.postReviewandPay = function(req, res, next) {
         }
       }
 
+      // console.log("before", req.user.orders[orderIndex])
       //Set Order to placed and draft to false.
+      user.orders[orderIndex].status="placed";
+      user.orders[orderIndex].draft=false;
+      user.orders[orderIndex].paid=true;
+      user.markModified("orders");
 
-      req.user.orders[orderIndex].status="placed";
-      req.user.orders[orderIndex].draft=false;
-      req.user.orders[orderIndex].paid=true;
-      // req.user.orders[orderIndex].team
-      console.log(req.user.orders[orderIndex])
-      user.orders[orderIndex].markModified('status');
-      user.orders[orderIndex].markModified('draft');
-      user.orders[orderIndex].markModified('paid');
-
-      user.save(function(err) {
+      user.save(function(err, user) {
+        // console.log("after", req.user.orders[orderIndex])
         if (err) return next(err);
-        // res.send(req.user.orders[orderIndex])
         var template = new EmailTemplate(path.join(templatesDir, 'foodmood-vote'))
 
         //SEND EMAILS
@@ -492,7 +488,7 @@ exports.postSignup = function(req, res, next) {
  */
 exports.getAccount = function(req, res) {
   res.render('account/profile', {
-    title: 'Account Management'
+    title: 'Account'
   });
 };
 

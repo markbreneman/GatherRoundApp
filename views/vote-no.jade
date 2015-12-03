@@ -3,37 +3,6 @@ extends layout
 block content
   .container#Voting
         .col-md-6.col-md-offset-3.col-xs-12
-          h3 What is your food mood
+          h3 WHY YOU NO LIKE
           row
-            hr
-          form(action="", method="post")
-            input(type='hidden', name='_csrf', value=_csrf)
-            input(type='hidden', name='orderid', value='#{orderid}')
-            input(type='hidden', name='teammemberemail', value='#{teammemberemail}')
-            .radio
-              input#radio1(type='radio', name='foodmood', value='option1')
-              |             
-              label(for='radio1')
-                | Hearty (e.g.: Rice, Pasta, Potatoes, Pork/ Beef as protein)
-            |             
-            .radio
-              input#radio2(type='radio', name='foodmood', value='option2')
-              |             
-              label(for='radio2')
-                | Healthy ( e.g.: Brown rice, Roasted Vegetables, Fish/ Chicken/ Tofu as protein)
-            .radio
-              input#radio3(type='radio', name='foodmood', value='option1')
-              |             
-              label(for='radio3')
-                | Light (e.g.: Salad, Taco, Wraps)
-            |             
-            .radio
-              input#radio4(type='radio', name='foodmood', value='option2')
-              |             
-              label(for='radio4')
-                | Comforting (e.g.: Fried chicken, Mac & Cheese etc.)
-            .form-group
-              label(id='VoteNotes' for='comment') Notes:
-              |             
-              textarea#comment.form-control(rows='3' placeholder='Any food allergies?')
-            button#VoteButton.btn.btn-default.col-xs-4.col-xs-offset-4(type='submit') Submit
+          
