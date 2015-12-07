@@ -35,10 +35,16 @@ module.exports = {
     user: process.env.MANDRILL_USER || 'hackathonstarterdemo',
     password: process.env.MANDRILL_PASSWORD || 'E1K950_ydLR4mHw12a0ldA'
   },
-//These are temp ids for sendgrid
+//These are temp ids for sendgrid-mb
   sendgrid: {
     user: process.env.SENDGRID_USER || 'markbreneman',
     password: process.env.SENDGRID_PASSWORD || 'T46r294vNm4'
+  },
+
+  aws: {
+    s3_bucket: process.env.S3_BUCKET || env.S3_BUCKET,
+    access_key: process.env.AWS_ACCESS_KEY || env.AWS_SECRET_KEY,
+    secret_key: process.env.AWS_SECRET_KEY || env.AWS_ACCESS_KEY
   },
 
   nyt: {

@@ -1132,6 +1132,53 @@ margin-top: 30px;
   margin-top: 15px;
 }
 
+#Account .gender{
+  margin-left: 25px;
+}
+
+ #Account .profilePic{
+   margin-right: 30px;
+ }
+
+ #Account .updateProfile, #Account .change{
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px
+ }
+
+ #Account .updateProfile .btn, #Account .btn .changebutton{
+  background: #FFC107;
+  border-radius: 3px;
+  font-family: roboto_condensedbold;
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 24px;
+  box-shadow:none;
+  border: none;
+  height:50px;
+  text-transform: uppercase;
+}
+#Account .password{
+  padding-top: 19px;
+  margin-left: -38px;
+}
+
+#Account .changebutton{
+  background: #FFC107;
+  border-radius: 3px;
+  font-family: roboto_condensedbold;
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 24px;
+  box-shadow:none;
+  border: none;
+  height:50px;
+  text-transform: uppercase;
+}
+
+
 
 /*--------------------------------------------------
 -------------------HEADERS------------------------

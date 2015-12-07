@@ -23,11 +23,9 @@ var userSchema = new mongoose.Schema({
   },
 
 //Add Teams per user.
-
   teams:Array,
 
 //Orders per user.
-
   orders:Array,
 
   resetPasswordToken: String,
