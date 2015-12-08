@@ -19,6 +19,7 @@
 
  * IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
  */
+var env = require('./.env');
 
 module.exports = {
 
@@ -43,8 +44,8 @@ module.exports = {
 
   aws: {
     s3_bucket: process.env.S3_BUCKET || env.S3_BUCKET,
-    access_key: process.env.AWS_ACCESS_KEY || env.AWS_SECRET_KEY,
-    secret_key: process.env.AWS_SECRET_KEY || env.AWS_ACCESS_KEY
+    access_key: process.env.AWS_ACCESS_KEY || env.AWS_ACCESS_KEY,
+    secret_key: process.env.AWS_SECRET_KEY || env.AWS_SECRET_KEY
   },
 
   nyt: {

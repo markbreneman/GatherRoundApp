@@ -54,6 +54,7 @@ block content
             input.form-control(type='text', name='zip', id='zip',placeholder='Zip Code')
                       
       .form-group
+        input#avatar_url(type='hidden', name='avatar_url', value='/images/default.png')
         .col-md-12
           label.col-sm-3.control-label(for='gravatar') Profile Picture
         .col-xs-1.profilePic
@@ -86,6 +87,14 @@ block content
         .col-xs-12.change
             button.btn.btn-primary.changebutton(type='submit')
               | Change Password
+  .container.changePassword
+    h3 Profile Picture
+    hr
+    input#file_input(type='file')
+    p#status Please select a file
+    img#preview(style='border:1px solid gray;width:100px;height:100px', src='/images/default.png')
+
+    
 
   .container.deleteAccount
     h3 Delete Account
@@ -98,3 +107,92 @@ block content
         .col-xs-12.change
           button.btn.btn-danger(type='submit')
             | Delete my account
+    
+  script(type='text/javascript').
+    /*
+    Function to carry out the actual PUT request to S3 using the signed request from the app.
+    */
+    function upload_file(file, signed_request, url){
+      console.log("Step 4");
+      var xhr = new XMLHttpRequest();
+      xhr.open("PUT", signed_request);
+      xhr.setRequestHeader('x-amz-acl', 'public-read');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // console.log(url);
+          document.getElementById("preview").src = url;
+          document.getElementById("avatar_url").value = url;
+        }
+      };
+      xhr.onerror = function() {
+        alert("Could not upload file.");
+      };
+      xhr.send(file);
+    }
+    /*
+    Function to get the temporary signed request from the app.
+    If request successful, continue to upload the file using this signed
+    request.
+    */
+    function get_signed_request(file){
+      console.log("Step 3...Speaking to the backend....");
+      // console.log("this is the file object",file);
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/updateS3?userid=#{userid}"+"&file_name="+file.name+"&file_type="+file.type);
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            var response = JSON.parse(xhr.responseText);
+            console.log(response)
+            upload_file(file, response.signed_request, response.url);
+          }
+          else{
+            alert("Could not get signed URL.");
+          }
+        }
+      };
+      xhr.send();
+    }
+    /*
+    Function called when file input updated. If there is a file selected, then
+    start upload procedure by asking for a signed request from the app.
+    */
+    function init_upload(){
+      console.log("Step 2");
+      var files = document.getElementById("file_input").files;
+      var file = files[0];
+      if(file == null){
+        alert("No file selected.");
+        return;
+      }
+      var url = URL.createObjectURL(this.files[0]);
+      var img = new Image;
+      img.src = url;
+      //Load the image from the blob.
+      img.onload = function() {
+        file.width=img.width;
+        file.height=img.height;
+        file.aspectRatio=img.width/img.height;
+        checkSize(file);
+      };
+      function checkSize(){
+        // console.log(file)
+        if(file.width<101 && file.height<101 && file.size<500000 && file.aspectRatio==1){
+          get_signed_request(file);
+        }
+        else{
+          alert("Sorry Image Doesnt Meet Requirements.");
+          console.log("width ", file.width)
+          console.log("height ", file.height)
+          console.log("filesize ", file.size)
+          console.log("aspectRatio ", file.width/file.height)
+        }
+      }
+    }
+    /*
+    Bind listeners when the page loads.
+    */
+    (function() {
+      console.log("Step 1");
+      document.getElementById("file_input").onchange = init_upload;
+    })();

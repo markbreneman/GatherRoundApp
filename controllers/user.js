@@ -12,6 +12,7 @@ var TeamMember = require('../models/TeamMember');
 var Order = require('../models/Order');
 var stripe;
 var secrets = require('../config/secrets');
+var aws = require('aws-sdk');
 
 var path = require('path');
 var templatesDir = path.resolve(__dirname, '..', 'emailtemplates')
@@ -488,8 +489,59 @@ exports.postSignup = function(req, res, next) {
  */
 exports.getAccount = function(req, res) {
   res.render('account/profile', {
-    title: 'Account'
+    title: 'Account',
+    userid: req.user._id
   });
+  console.log("the user id is", req.user._id);
+};
+
+/*
+* Load the S3 information from the environment variables.
+*/
+var AWS_ACCESS_KEY = secrets.aws.access_key;
+var AWS_SECRET_KEY = secrets.aws.secret_key;
+var S3_BUCKET = secrets.aws.s3_bucket;
+
+
+exports.updateS3 = function(req, res){
+    var urlstring = "?"+req.url.split('?')[1]
+    // console.log("req.url", urlstring);
+
+    function getURLParameter(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(urlstring)||[,""])[1].replace(/\+/g, '%20'))||null
+    }
+
+    // getURLParameter(userid)
+
+    userid = getURLParameter('userid');
+    // console.log("userid", userid);
+
+    aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
+    aws.config.update({region: 'us-east-1' , signatureVersion: 'v4' });
+    var s3 = new aws.S3();
+
+    var s3_params = {
+        Bucket: S3_BUCKET,
+        Key: userid+'/'+req.query.file_name,
+        Expires: 60,
+        ContentType: req.query.file_type,
+        ACL: 'public-read'
+    };
+
+    s3.getSignedUrl('putObject', s3_params, function(err, data){
+        if(err){
+            console.log(err);
+        }
+        else{
+            var return_data = {
+                signed_request: data,
+                url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+userid+'/'+req.query.file_name
+            };
+            res.write(JSON.stringify(return_data));
+            // console.log(JSON.stringify(return_data));
+            res.end();
+        }
+    });
 };
 
 /**
