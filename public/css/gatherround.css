@@ -453,6 +453,7 @@ padding:5px;
   padding-bottom:15px;
   margin-bottom: 100px;
 }
+
 #TeamNameRow{
   margin-bottom: 25px;
 }
@@ -1214,6 +1215,72 @@ margin-top: 30px;
   border-radius: 3px;
 }
 
+
+/*--------------------------------------------------
+-------------------ORDERS------------------------
+--------------------------------------------------*/
+
+#Orders .ordersrow{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#Orders .ordersrow .row{
+background: #FCFCFC;
+font-family: montserratlight;
+font-size: 14px;
+color: #8C8C8C;
+line-height: 18px;
+border-bottom: solid 1px #F2F2F2;
+height:70px;
+padding-top:15px;
+}
+
+#Orders .ordersrow .row .orderdate, #Orders .ordersrow .row .orderteamname{
+  padding-top:5px;
+}
+
+#Orders .viewbutton{
+  padding-top: 10px;
+}
+#Orders a.vieworderbtn{
+  border: 2px solid #D8D8D8;
+  border-radius: 3px;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 3px;
+  font-family: roboto_condensedregular;
+  font-size: 14px;
+  color: #8C8C8C;
+  letter-spacing: 1px;
+  line-height: 19px;
+  /*text-transform: uppercase;*/
+  text-decoration: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: -15px;
+}
+
+#Orders .ordersheader{
+  background: #8C8C8C;
+  font-family: roboto_condensedregular;
+  font-size: 18px;
+  color: #FCFCFC;
+  letter-spacing: 1px;
+  line-height: 24px;
+  height: 50px;
+  padding-top: 14px;
+}
+
+
+#Orders #AllOrders{
+  background-color: #F2F2F2;
+  padding-top: 15px;
+  padding-bottom:15px;
+  /*margin-bottom: 100px;*/
+}
 
 /*--------------------------------------------------
 -------------------HEADERS------------------------

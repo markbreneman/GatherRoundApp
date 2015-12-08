@@ -5,20 +5,21 @@ block content
         .row.whos-this-for
           col-md-12.whos-this-for
             h3 Order History
-  #TeamBuilder.container
-    .row
-      .col-md-3 Date
-      .col-md-3 Team Name
-      .col-md-offset-5.col-md-1 Details 
-    //- - for orders in user.orders.reverse()
-    -for (i=0; i<user.orders.length; i++)
-        .col-md-12
-          .ordersrow
-              .col-xs-3=user.orders[i].dateplaced.split(" ")[1]+"."+" "+user.orders[i].dateplaced.split(" ")[2]+" "+user.orders[i].dateplaced.split(" ")[3]
-                //- | orders.dateplaced
-              .col-xs-3=user.orders[i].team.teamname
-              .col-md-offset-5.col-md-1 
-                button.btn.btn-default
-                  a(href="/orders/"+user.orders[i].orderidforemail) View
-    
-          
+  #AllOrders.container
+    .col-md-12.holder
+      .row.ordersheader
+        .col-md-3.col-xs-3 Date
+        .col-md-3.col-xs-5 Team Name
+        .col-md-offset-5.col-md-1.col-xs-offset-1.col-xs-1 Details 
+      if user.orders.length
+        -for (i=0; i<user.orders.length; i++)
+            .col-xs-12.ordersrow
+              .row
+                  .col-md-3.col-xs-3.orderdate=user.orders[i].dateplaced.split(" ")[1]+"."+" "+user.orders[i].dateplaced.split(" ")[2]+" "+user.orders[i].dateplaced.split(" ")[3]
+                    //- | orders.dateplaced
+                  .col-md-3.col-xs-4.orderteamname=user.orders[i].team.teamname
+                  .col-md-offset-5.col-md-1.col-xs-offset-2.col-xs-1.viewbutton 
+                    a.vieworderbtn(href="/orders/"+user.orders[i].orderidforemail) View
+      else 
+        p "sawry no orders yet..."
+              
