@@ -54,17 +54,22 @@ block content
             input.form-control(type='text', name='zip', id='zip',placeholder='Zip Code')
                       
       .form-group
-        input#avatar_url(type='hidden', name='avatar_url', value='/images/default.png')
+        input#Avatar_URL(type='hidden', name='avatar_url', value='/images/default.png')
         .col-md-12
           label.col-sm-3.control-label(for='gravatar') Profile Picture
         
         .col-xs-1.profilePic
           
-          img#preview(style='border:1px solid gray;width:100px;height:100px', src='/images/default.png')
+          img#Preview.profile(src="#{user.gravatar()}")
           //- img(src="#{user.gravatar()}", class='profile', width='100', height='100')
         //- button.btn.btn.btn-primary.changePicButton(type='submit')          
         //-   | Change Photo
-        input#file_input.btn.btn.btn-primary.changePicButton(type='file')
+        
+        //- input#file_input.btn.btn.btn-primary.changePicButton(type='file')
+        .col-xs-1  
+          label.btn.changePicButton(for='File_Input') UPLOAD PICTURE        
+            input#File_Input(type='file', style='display:none')
+
         //- button.btn.btn.btn-primary.changePicButton(type='submit')          
         //-   | Upload Photo
       .col-md-12.updateProfile
@@ -115,8 +120,8 @@ block content
       xhr.onload = function() {
         if (xhr.status === 200) {
           // console.log(url);
-          document.getElementById("preview").src = url;
-          document.getElementById("avatar_url").value = url;
+          document.getElementById("Preview").src = url;
+          document.getElementById("Avatar_URL").value = url;
         }
       };
       xhr.onerror = function() {
@@ -154,7 +159,7 @@ block content
     */
     function init_upload(){
       console.log("Step 2");
-      var files = document.getElementById("file_input").files;
+      var files = document.getElementById("File_Input").files;
       var file = files[0];
       if(file == null){
         alert("No file selected.");
@@ -189,5 +194,5 @@ block content
     */
     (function() {
       console.log("Step 1");
-      document.getElementById("file_input").onchange = init_upload;
+      document.getElementById("File_Input").onchange = init_upload;
     })();
