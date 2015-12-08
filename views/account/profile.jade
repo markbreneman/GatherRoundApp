@@ -54,15 +54,16 @@ block content
             input.form-control(type='text', name='zip', id='zip',placeholder='Zip Code')
                       
       .form-group
-        input#Avatar_URL(type='hidden', name='avatar_url', value='/images/default.png')
+        input#Avatar_URL(type='hidden', name='avatar_url')
         .col-md-12
           label.col-sm-3.control-label(for='gravatar') Profile Picture
-        
         .row.profilePic
-          
-          img#Preview.profile(src="#{user.gravatar()}")
+          if(!user.profile.avatarurl)
+            img#Preview.profile(src="#{user.gravatar()}")
+          else
+            img#Preview.profile(src="#{user.profile.avatarurl}")
         .col-xs-7  
-          label.btn.changePicButton(for='File_Input') UPLOAD PHOTO        
+          label.btn.changePicButton(for='File_Input') CHANGE PHOTO        
             input#File_Input(type='file', style='display:none')
         
       .col-md-12.updateProfile
@@ -189,3 +190,6 @@ block content
       console.log("Step 1");
       document.getElementById("File_Input").onchange = init_upload;
     })();
+    
+    
+  

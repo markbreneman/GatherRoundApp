@@ -31,6 +31,8 @@ html(id = title)
     script(type='text/javascript', src='/js/lib/bootstrap-datetimepicker.min.js')
     script(src='/js/main.js')
     
+
+    
     
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
@@ -46,4 +48,18 @@ html(id = title)
       smoothScroll.init({
       offset:50,
       }); 
+      
+      $('#Preview').bind('error',function(e){
+        console.log("noIMAGE")
+      //error has been thrown
+      $(this).attr('src','/img/defaultprofiledark.svg');
+      });
+      
+      $('#ProfilePic').bind('error',function(e){
+        console.log("noIMAGE")
+      //error has been thrown
+      $(this).attr('src','/img/defaultprofile.svg');
+      });
+
+      
     

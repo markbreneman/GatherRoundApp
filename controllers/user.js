@@ -490,7 +490,7 @@ exports.postSignup = function(req, res, next) {
 exports.getAccount = function(req, res) {
   res.render('account/profile', {
     title: 'Account',
-    userid: req.user._id
+    userid: req.user._id,
   });
   console.log("the user id is", req.user._id);
 };
@@ -549,15 +549,21 @@ exports.updateS3 = function(req, res){
  * Update profile information.
  */
 exports.postUpdateProfile = function(req, res, next) {
+  console.log(req);
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
     user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.profile.address = req.body.address || '';
+    user.profile.city = req.body.city || '';
+    user.profile.state = req.body.state || '';
+    user.profile.zip = req.body.zip || '';
+    user.profile.avatarurl = req.body.avatar_url || '';
+    // user.markModified("profile");
 
     user.save(function(err) {
+
       if (err) return next(err);
       req.flash('success', { msg: 'Profile information updated.' });
       res.redirect('/account');

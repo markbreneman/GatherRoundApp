@@ -186,6 +186,7 @@ background-color:#1C3C4A;
 
 #ProfilePic{
   border-radius: 20px;
+  border: solid 1.85px;
 }
 /*
 --------------------------------------------------
@@ -1168,20 +1169,21 @@ margin-top: 30px;
   border: 2px solid #D8D8D8;
   border-radius: 3px;
   font-family: roboto_condensedregular;
-  font-size: 18px;
+  font-size: 17px;
   color: #8C8C8C;
   letter-spacing: 1px;
   line-height: 24px;
   box-shadow: none;
-  padding-left:15px;
+  padding-left:14px;
 }
 
 #Account #Preview {
   border:1px solid gray;
-  width:100px;
-  height:100px;
+  width:150px;
+  height:150px;
   margin-left: 30px;
 }
+
 
 #Account button.changebutton{
   background: #FFC107;

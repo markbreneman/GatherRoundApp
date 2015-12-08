@@ -21,8 +21,8 @@
     ul.nav.navbar-nav.navbar-right
       li.dropdown
         a.dropdown-toggle(href='#', data-toggle='dropdown')
-          if user.profile.picture
-            img(id='ProfilePic' src='#{user.profile.picture}')
+          if user.profile.avatarurl
+            img(id='ProfilePic' src='#{user.profile.avatarurl}')
           else
             img(id='ProfilePic' src='#{user.gravatar(60)}')
           | #{user.profile.name || user.email || user.id}&nbsp;

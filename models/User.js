@@ -17,9 +17,11 @@ var userSchema = new mongoose.Schema({
     firstname: { type: String, default: '' },
     lastname: { type: String, default: '' },
     gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
-    picture: { type: String, default: '' }
+    address: { type: String, default: '' },
+    city: { type: String, default: '' },
+    state: { type: String, default: '' },
+    zip: { type: String, default: '' },
+    avatarurl: { type: String, default: '' },
   },
 
 //Add Teams per user.
@@ -63,9 +65,11 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
  */
 userSchema.methods.gravatar = function(size) {
   if (!size) size = 200;
-  if (!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
+  console.log("gravatar...")
+  if (!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=404';
   var md5 = crypto.createHash('md5').update(this.email).digest('hex');
-  return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
+  return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=404';
+  // return '/img/defaultprofile.svg'
 };
 
 module.exports = mongoose.model('User', userSchema);
