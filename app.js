@@ -146,9 +146,12 @@ app.post('/order/:orderid/reviewandpay', userController.postReviewandPay);
 app.get('/:userid/:orderid/:teammemberemail/vote/yes', voteController.getVoteYes);
 app.post('/:userid/:orderid/:teammemberemail/vote/yes', voteController.postVoteYes);
 app.get('/:userid/:orderid/:teammemberemail/vote/no', voteController.getVoteNo);
+
+app.get('/orders', userController.getOrders);
+
+//DELETABLE ROUTES
 app.get('/vote-A/', voteController.getStaticVoteA);//TempRoute
 app.get('/vote-B/', voteController.getStaticVoteB);//TempRoute
-
 // app.get('/emailtest', userController.getemailTest);//Deletable on launch
 
 

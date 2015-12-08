@@ -409,6 +409,34 @@ exports.postReviewandPay = function(req, res, next) {
 };
 
 
+exports.getOrders = function(req, res) {
+  User.findById(req.user.id, function(err, user) {
+    // res.send("farts")
+    res.render('account/orders', {
+      // username:username,
+      title:"Orders",
+      // teamname:teamname,
+      // orderid:orderID,
+      // orderfordate:orderfordate,
+      // deliverytime:deliverytime,
+      // totalcost:totalcost,
+      // teamminimum:teamminimum,
+      // defaultfoodmood:defaultfoodmood,
+      // address:address,
+      // city:city,
+      // state:state,
+      // postalcode:postalcode,
+      // ordermembersarray:ordermembersarray,
+      // votingtime:votingtime,
+      // orderidforemail:orderidforemail,
+      // userid:userid,
+      // publishableKey: secrets.stripe.publishableKey
+    });
+
+  });
+};
+
+
 /**
  * GET /emailTest DEBUG ONLY
  *

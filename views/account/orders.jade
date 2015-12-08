@@ -1,0 +1,24 @@
+extends ../layoutloggedin
+
+block content
+  .container
+        .row.whos-this-for
+          col-md-12.whos-this-for
+            h3 Order History
+  #TeamBuilder.container
+    .row
+      .col-md-3 Date
+      .col-md-3 Team Name
+      .col-md-offset-5.col-md-1 Details 
+    //- - for orders in user.orders.reverse()
+    -for (i=0; i<user.orders.length; i++)
+        .col-md-12
+          .ordersrow
+              .col-xs-3=user.orders[i].dateplaced.split(" ")[1]+"."+" "+user.orders[i].dateplaced.split(" ")[2]+" "+user.orders[i].dateplaced.split(" ")[3]
+                //- | orders.dateplaced
+              .col-xs-3=user.orders[i].team.teamname
+              .col-md-offset-5.col-md-1 
+                button.btn.btn-default
+                  a(href="/orders/"+user.orders[i].orderidforemail) View
+    
+          
