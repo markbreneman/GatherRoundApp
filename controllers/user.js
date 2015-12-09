@@ -222,7 +222,7 @@ exports.postOrderDetails = function(req, res, next) {
       votingtime:req.body.votingtime,
       status:"",
       paid:false,
-      refund:""
+      refund:0,
     })
 
     console.log(newOrder.id);

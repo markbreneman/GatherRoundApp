@@ -76,16 +76,57 @@ exports.postVoteYes = function(req, res, next) {
 };
 
 /**
- * GET /:orderid/:teammemberemail/vote/yes
+ * GET /:orderid/:teammemberemail/vote/no
  * Login page.
  */
+
 exports.getVoteNo = function(req, res) {
   // res.send(req.params);
-  res.render('vote-yes', {
-    title: 'Vote',
-    orderid:req.params.orderid,
-    teammemberemail:req.params.teammemberemail,
-  });
+
+  User.findById(req.params.userid, function(err, user) {
+  if (err) return next(err);
+  var orderIndex;
+  var memberIndex;
+    for(i=0; i<user.orders.length; i++){
+      if(user.orders[i]._id==req.params.orderid){
+        orderIndex=i
+        break
+      }
+    }
+    for(i=0; i<user.orders[orderIndex].team.members.length ; i++){
+      if(user.orders[orderIndex].team.members[i].email==req.params.teammemberemail){
+        memberIndex=i;
+        break
+      }
+    }
+
+
+    user.orders[orderIndex].team.members[memberIndex].vote="---";
+    if(user.orders[orderIndex].team.members[memberIndex].votestatus!="Opt-Out"){
+      var refundupdate=parseInt(user.orders[orderIndex].refund)+10
+      user.orders[orderIndex].refund=refundupdate;
+      user.orders[orderIndex].totalcost=parseInt(user.orders[orderIndex].totalcost)-refundupdate;
+    }
+    user.orders[orderIndex].team.members[memberIndex].votestatus="Opt-Out";
+
+      user.markModified('orders');
+      user.save(function(err, user){
+        if (err) return next(err);
+        res.render('vote-no', {
+          title: 'Vote',
+          userid:req.params.userid,
+          orderid:req.params.orderid,
+          teammemberemail:req.params.teammemberemail,
+        });
+      });
+    });
+
+
+
+
+
+
+
 };
 
 
