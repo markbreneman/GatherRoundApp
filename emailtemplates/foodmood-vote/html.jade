@@ -22,9 +22,13 @@ html
       //- .row
       h4(style="margin-bottom:30px; font-family: Roboto Condensed; font-size: 18px; color: #123D34; line-height: 20px;") Are you joining us for lunch? 
       //- .row
-      a.col-xs-10.col-xs-offset-1.btn(href='http://gatherround.io/'+userid+'/'+orderidforemail+'/'+email+'/vote/yes' style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #00B5A5; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:20px;") 
+      //- a.col-xs-10.col-xs-offset-1.btn(href='http://gatherround.io/'+userid+'/'+orderidforemail+'/'+email+'/vote/yes' style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #00B5A5; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:20px;") 
+      //-   | Yes
+      //- a.col-xs-10.col-xs-offset-1.btn(href='http://gatherround.io/'+userid+'/'+orderidforemail+'/'+email+'/vote/no' style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #FF533F; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:50px;") 
+      //-   | Nah
+      a.col-xs-10.col-xs-offset-1.btn(href='localhost:3000/'+userid+'/'+orderidforemail+'/'+email+'/vote/yes' style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #00B5A5; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:20px;") 
         | Yes
-      a.col-xs-10.col-xs-offset-1.btn(href='http://gatherround.io/'+userid+'/'+orderidforemail+'/'+email+'/vote/no' style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #FF533F; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:50px;") 
+      a.col-xs-10.col-xs-offset-1.btn(href='localhost:3000/'+userid+'/'+orderidforemail+'/'+email+'/vote/no' style="height:50px; padding-top:8px;font-family: Roboto Condensed; background-color: #FF533F; border-radius: 3px;font-size: 18px; color: #FFFFFF; letter-spacing: 1.1px; line-height: 24px; text-transform:uppercase; margin-bottom:50px;") 
         | Nah
       col-xs-12
         img(style='height:75px; width:100%' src='http://gatherroundio.herokuapp.com/img/EmailFooter@2x.png')

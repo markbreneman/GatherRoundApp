@@ -57,7 +57,7 @@ exports.postVoteYes = function(req, res, next) {
     }
       // console.log(user.orders[orderIndex].team.members[memberIndex]);
       // console.log(req.body.notes);
-      user.orders[orderIndex].team.members[memberIndex].votestatus="yes";
+      user.orders[orderIndex].team.members[memberIndex].votestatus="Opt-In";
       user.orders[orderIndex].team.members[memberIndex].vote=req.body.foodmood;
       user.orders[orderIndex].team.members[memberIndex].notes=req.body.notes;
 
