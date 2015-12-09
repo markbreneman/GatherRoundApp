@@ -1223,6 +1223,7 @@ margin-top: 30px;
 #Orders .ordersrow{
   padding-left: 0px;
   padding-right: 0px;
+
 }
 
 #Orders .ordersrow .row{
@@ -1272,6 +1273,8 @@ padding-top:15px;
   line-height: 24px;
   height: 50px;
   padding-top: 14px;
+  -webkit-border-top-left-radius: 2px;
+  -webkit-border-top-right-radius: 2px;
 }
 
 
@@ -1281,6 +1284,101 @@ padding-top:15px;
   padding-bottom:15px;
   /*margin-bottom: 100px;*/
 }
+
+/*
+--------------------------------------------------
+------------------ORDER--------------------
+--------------------------------------------------
+*/
+
+#OrderReport h4, #OrderReport h3, #OrderReport p{
+  text-align: left;
+}
+
+#OrderReport h3{
+font-family: roboto_condensedregular;
+font-size: 24px;
+color: #000000;
+letter-spacing: 1px;
+line-height: 30px;
+}
+
+#OrderReport h4{
+font-family: roboto_condensedregular;
+font-size: 18px;
+color: #1C3C4A;
+line-height: 18px;
+}
+
+#OrderReport p{
+font-family: montserratlight;
+font-size: 14px;
+color: #8C8C8C;
+line-height: 20px;
+}
+
+#OrderReport #ReviewAddress p{
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+#OrderReport .ordername, #OrderReport .orderemail, #OrderReport .orderamt, #OrderReport .votestatus, #OrderReport .vote {
+font-family: montserratlight;
+font-size: 14px;
+color: #8C8C8C;
+line-height: 18px;
+padding-top:15px;
+}
+
+.orderinfoheader{
+  margin-left: 0px;
+  margin-top:5px;
+  margin-bottom:5px;
+  font-family: roboto_condensedregular;
+  font-size: 18px;
+  color: #1C3C4A;
+  letter-spacing: 1px;
+  line-height: 24px;
+}
+
+#TeamOrderContainer{
+background-color: #F2F2F2;
+padding-bottom: 20px;
+}
+.ordermemberrow{
+  background-color:white;
+  padding-left: 15px;
+  padding-right:15px;
+  padding-top:15px;
+  height: 80px;
+  border-bottom: solid 1px #F2F2F2;
+}
+
+.orderamt{
+      text-align: right;
+}
+
+
+#PrintButton{
+  padding-top: 18px;
+  box-shadow:none
+}
+#OrderReport p.printcaption{
+  text-align: center;
+  font-family: roboto_condensedregular;
+  font-size: 10px;
+  color: #1C3C4A;
+  letter-spacing: 1px;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+
+#OrderReport #MainContainer{
+  background-color:#FCFCFC;
+  /*Footer issue*/
+  margin-bottom: 50px;
+}
+
 
 /*--------------------------------------------------
 -------------------HEADERS------------------------

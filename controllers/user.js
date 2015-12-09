@@ -209,7 +209,7 @@ exports.postOrderDetails = function(req, res, next) {
       orderfordate:req.body.orderfordate,
       totalcost:req.body.totalcost,
       deliverytime: req.body.deliverytime,
-      teamMinimum: req.body.minteamsize,
+      teamminimum: req.body.minteamsize,
       defaultfoodmood: String,
       address: req.body.address,
       city: req.body.city,
@@ -408,33 +408,77 @@ exports.postReviewandPay = function(req, res, next) {
 
 };
 
+/**
+ * GET /orders
+ *
+ */
 
 exports.getOrders = function(req, res) {
   User.findById(req.user.id, function(err, user) {
-    // res.send("farts")
     res.render('account/orders', {
-      // username:username,
       title:"Orders",
-      // teamname:teamname,
-      // orderid:orderID,
-      // orderfordate:orderfordate,
-      // deliverytime:deliverytime,
-      // totalcost:totalcost,
-      // teamminimum:teamminimum,
-      // defaultfoodmood:defaultfoodmood,
-      // address:address,
-      // city:city,
-      // state:state,
-      // postalcode:postalcode,
-      // ordermembersarray:ordermembersarray,
-      // votingtime:votingtime,
-      // orderidforemail:orderidforemail,
-      // userid:userid,
-      // publishableKey: secrets.stripe.publishableKey
     });
-
   });
 };
+
+/**
+ * GET /orders
+ *
+ */
+
+exports.getOrderReport = function(req, res) {
+  User.findById(req.user.id, function(err, user) {
+    console.log("params", req.params.orderid);
+    var orderIndex;
+    for(i=0; i<user.orders.length; i++){
+      console.log(i)
+      if (user.orders[i].orderidforemail==req.params.orderid){
+      orderIndex=i;
+      console.log(orderIndex);
+      break
+      }
+    }
+    orderID=req.params.orderid;
+    dateplaced=req.user.orders[orderIndex].dateplaced
+    orderfordate=req.user.orders[orderIndex].orderfordate
+    teamname=req.user.orders[orderIndex].team.teamname
+    orderteamsize=req.user.orders[orderIndex].orderteamsize
+    deliverytime=req.user.orders[orderIndex].deliverytime
+    totalcost=req.user.orders[orderIndex].totalcost
+    teamminimum=req.user.orders[orderIndex].teamminimum
+    defaultfoodmood=req.user.orders[orderIndex].defaultfoodmood
+    address=req.user.orders[orderIndex].address
+    city=req.user.orders[orderIndex].city
+    state=req.user.orders[orderIndex].state
+    postalcode=req.user.orders[orderIndex].postalcode
+    phone=req.user.orders[orderIndex].phone
+    votingtime=req.user.orders[orderIndex].votingtime
+    orderidforemail=req.user.orders[orderIndex].orderidforemail
+    ordermembersarray=req.user.orders[orderIndex].team.members
+    userid=req.user.id
+
+
+    res.render('account/orderreport', {
+      title:"OrderReport",
+      teamname:teamname,
+      orderid:orderID,
+      orderfordate:orderfordate,
+      deliverytime:deliverytime,
+      totalcost:totalcost,
+      teamminimum:teamminimum,
+      defaultfoodmood:defaultfoodmood,
+      address:address,
+      city:city,
+      state:state,
+      postalcode:postalcode,
+      ordermembersarray:ordermembersarray,
+      votingtime:votingtime,
+      orderidforemail:orderidforemail,
+      userid:userid,
+    });
+  });
+};
+
 
 
 /**

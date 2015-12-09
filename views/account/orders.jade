@@ -13,13 +13,14 @@ block content
         .col-md-offset-5.col-md-1.col-xs-offset-1.col-xs-1 Details 
       if user.orders.length
         -for (i=0; i<user.orders.length; i++)
-            .col-xs-12.ordersrow
-              .row
-                  .col-md-3.col-xs-3.orderdate=user.orders[i].dateplaced.split(" ")[1]+"."+" "+user.orders[i].dateplaced.split(" ")[2]+" "+user.orders[i].dateplaced.split(" ")[3]
-                    //- | orders.dateplaced
-                  .col-md-3.col-xs-4.orderteamname=user.orders[i].team.teamname
-                  .col-md-offset-5.col-md-1.col-xs-offset-2.col-xs-1.viewbutton 
-                    a.vieworderbtn(href="/orders/"+user.orders[i].orderidforemail) View
+            if(user.orders[i].status=="placed")
+              .col-xs-12.ordersrow
+                .row
+                    .col-md-3.col-xs-3.orderdate=user.orders[i].dateplaced.split(" ")[1]+"."+" "+user.orders[i].dateplaced.split(" ")[2]+" "+user.orders[i].dateplaced.split(" ")[3]
+                      //- | orders.dateplaced
+                    .col-md-3.col-xs-4.orderteamname=user.orders[i].team.teamname
+                    .col-md-offset-5.col-md-1.col-xs-offset-2.col-xs-1.viewbutton 
+                      a.vieworderbtn(href="/orders/"+user.orders[i].orderidforemail) View
       else 
         p "sawry no orders yet..."
               

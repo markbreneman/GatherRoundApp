@@ -1,0 +1,53 @@
+extends ../layoutloggedin
+
+block content
+  #MainContainer.container
+        .row
+          .col-xs-10
+            h3 Order Details
+          
+          a#PrintButton.col-xs-1.btn(href="#print")
+            img(style="width:20px; margin-bottom:6px;" src='/img/print@2x.png') 
+            p.printcaption 
+              | print
+        .row
+          .col-xs-3
+            h4 Order Date
+            p=orderfordate
+            h4 Team
+            p=teamname
+          .col-xs-3#ReviewAddress
+            h4 Deliver To
+            p=username
+            p=address
+            p=city
+            p=postalcode
+            p=phone
+          .col-xs-3
+            h4 Delivery time
+            p=deliverytime
+            h4 Payment Method
+            p Credit Card
+          .col-xs-3
+            h4 Minimum Team Instructions
+            p Min. of #{teamminimum} Default #{defaultfoodmood} food mood.
+        #TeamOrderContainer.col-xs-12
+          .row.orderinfoheader
+            h4 Order Information
+          div 
+            -for member in ordermembersarray
+              .ordermemberrow
+                .col-xs-1.btn-circle.hidden-xs=member.initials
+                .col-xs-2.ordername=member.firstname+" "+member.lastname
+                .col-xs-4.orderemail=member.email
+                .col-xs-1.votestatus=member.votestatus
+                .col-xs-1.vote=member.vote
+                if member.votestatus=="Opt-in" || !member.votestatus
+                  .col-xs-1.col-xs-offset-2.orderamt $10
+                else if member.votestatus=="Opt-Out"
+                  .col-xs-1.col-xs-offset-2.orderamt $0
+          .col-sm-2.col-sm-offset-10
+            h4#OrderTotal| Sub-Total:$ #{totalcost}
+            h4#OrderTotal| Refund:$ 
+            h4#OrderTotal| Total:$ 
+        

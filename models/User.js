@@ -65,7 +65,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
  */
 userSchema.methods.gravatar = function(size) {
   if (!size) size = 200;
-  console.log("gravatar...")
+  // console.log("gravatar...")
   if (!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=404';
   var md5 = crypto.createHash('md5').update(this.email).digest('hex');
   return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=404';

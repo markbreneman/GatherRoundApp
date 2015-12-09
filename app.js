@@ -148,6 +148,7 @@ app.post('/:userid/:orderid/:teammemberemail/vote/yes', voteController.postVoteY
 app.get('/:userid/:orderid/:teammemberemail/vote/no', voteController.getVoteNo);
 
 app.get('/orders', userController.getOrders);
+app.get('/orders/:orderid', userController.getOrderReport);
 
 //DELETABLE ROUTES
 app.get('/vote-A/', voteController.getStaticVoteA);//TempRoute
