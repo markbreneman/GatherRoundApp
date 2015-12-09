@@ -21,7 +21,8 @@ var orderSchema = new mongoose.Schema({
   refund:String,
   paid:Boolean,
   votingtime:String,
-  orderidforemail:String
+  orderidforemail:String,
+  optouts:String
 });
 
 module.exports = mongoose.model('Order', orderSchema);

@@ -30,7 +30,8 @@ block content
             p Credit Card
           .col-xs-3
             h4 Minimum Team Instructions
-            p Min. of #{teamminimum} Default #{defaultfoodmood} food mood.
+            p Min. of #{teamminimum} meals with a
+            p Default #{defaultfoodmood} food mood.
         #TeamOrderContainer.col-xs-12
           .row.orderinfoheader
             h4 Order Information
@@ -42,12 +43,17 @@ block content
                 .col-xs-4.orderemail=member.email
                 .col-xs-1.votestatus=member.votestatus
                 .col-xs-1.vote=member.vote
-                if member.votestatus=="Opt-in" || !member.votestatus
+                if member.votestatus=="Opt-In" || !member.votestatus
                   .col-xs-1.col-xs-offset-2.orderamt $10
                 else if member.votestatus=="Opt-Out"
                   .col-xs-1.col-xs-offset-2.orderamt $0
           .col-sm-2.col-sm-offset-10
-            h4#OrderTotal| Sub-Total:$ #{totalcost}
-            h4#OrderTotal| Refund:$ 
-            h4#OrderTotal| Total:$ 
+            -var subtotal=ordermembersarray.length*10
+            h4#OrderTotal(style="text-align:right")| Sub-Total:$ #{subtotal}
+            -var additionalmeals=(teamminimum-ordermembersarray.length)*10
+            if additionalmeals>0
+              h4#OrderTotal(style="text-align:right")| Add.Meals:$ #{additionalmeals}
+            if refund  
+              h4(style="text-align:right")#OrderTotal| Refund:-$#{refund}
+            h4#OrderTotal(style="text-align:right")| Total:$ #{totalcost}
         

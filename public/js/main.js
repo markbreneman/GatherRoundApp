@@ -95,6 +95,7 @@ $(document).ready(function() {
 
       //ORDER DETAILS PAGE
       checkTeamSize()
+
       var teamOrderSize;
       //RESET SWITCHES
       $('.switch input').attr('checked',true);
@@ -256,9 +257,20 @@ $(document).ready(function() {
         teamOrderSize=teamSize-disabledTeamMembers;
         console.log("Team Order Size + " + teamOrderSize);
         console.log("Team Size + " + teamSize);
-        $('#HiddenOrderTeamSize')[0].value=teamOrderSize;
+        var minFoodFor=$('#Sel2').find(":selected").text()
+        if(minFoodFor>teamOrderSize){
+          updateCostTotal(minFoodFor);
+        }
+        else if (minFoodFor<teamOrderSize) {
+          updateCostTotal(teamOrderSize);
+        }
+        else if (minFoodFor=teamOrderSize) {
+          updateCostTotal(teamOrderSize);
+        }
 
-        updateCostTotal(teamOrderSize);
+        $('#HiddenOrderTeamSize')[0].value=teamOrderSize;  
+
+
 
       }
 

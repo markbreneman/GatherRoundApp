@@ -39,8 +39,15 @@ block content
                 .col-xs-4.ordername=member.firstname+" "+member.lastname
                 .col-xs-4.orderemail=member.email
                 .col-xs-1.col-xs-offset-2.orderamt $10
-          .col-sm-2.col-sm-offset-11
-            h4#OrderTotal| Total:$ #{totalcost}
+          .col-sm-2.col-sm-offset-10
+            -var subtotal=ordermembersarray.length*10
+            h4#OrderTotal(style="text-align:right")| Sub-Total:$ #{subtotal}
+            -var additionalmeals=(teamminimum-ordermembersarray.length)*10
+            if additionalmeals>0
+              h4#OrderTotal(style="text-align:right")| Add.Meals:$ #{additionalmeals}
+            if refund  
+              h4(style="text-align:right")#OrderTotal| Refund:-$#{refund}
+            h4#OrderTotal(style="text-align:right")| Total:$ #{totalcost}
         form(method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
           input(type='hidden', name='stripeTotalAmount', value=totalcost)

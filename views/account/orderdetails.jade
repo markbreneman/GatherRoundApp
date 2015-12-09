@@ -212,7 +212,7 @@ block content
                     div(style="width: 30%; margin-right:5px; float: left;padding-top: 8px;") A minimum of 
                     div.form-group(style="width: 15%;float: left;margin-right: 15px;")
                       select#Sel2.form-control(type='text',name='minteamsize' required)
-                        option 6
+                        option(selected="selected") 6
                         |                   
                         option 7
                         |                   
@@ -245,8 +245,8 @@ block content
                 .row
                   #TotalCost.col-xs-2.teammin="$"+teammembers.length*10
                     
-                  .col-xs-3.teammin.unitcost
-                    | ($10/person)
+                  .col-xs-4.teammin.unitcost
+                    | ($10/person + any additional meals)
                 .form-group.col-xs-12.hiddenTotal
                   input.form-control#HiddenTotal(value=teammembers.length*10 type='text',name='totalcost' placeholder="")    
               button#SaveTeam.btn.btn-default.col-xs-6.col-xs-offset-3(type='submit') Review Order

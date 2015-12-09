@@ -222,6 +222,7 @@ exports.postOrderDetails = function(req, res, next) {
       votingtime:req.body.votingtime,
       status:"",
       paid:false,
+      refund:""
     })
 
     console.log(newOrder.id);
@@ -275,6 +276,7 @@ exports.getReviewandPay = function(req, res) {
     orderidforemail=req.user.orders[orderIndex].orderidforemail
     ordermembersarray=req.user.orders[orderIndex].team.members
     userid=req.user.id
+    refund=req.user.orders[orderIndex].refund
 
     // console.log(req.user.orders[orderIndex].dateplaced);
 
@@ -299,6 +301,7 @@ exports.getReviewandPay = function(req, res) {
       votingtime:votingtime,
       orderidforemail:orderidforemail,
       userid:userid,
+      refund:refund,
       publishableKey: secrets.stripe.publishableKey
 
 
@@ -431,10 +434,8 @@ exports.getOrderReport = function(req, res) {
     console.log("params", req.params.orderid);
     var orderIndex;
     for(i=0; i<user.orders.length; i++){
-      console.log(i)
       if (user.orders[i].orderidforemail==req.params.orderid){
       orderIndex=i;
-      console.log(orderIndex);
       break
       }
     }
@@ -456,6 +457,8 @@ exports.getOrderReport = function(req, res) {
     orderidforemail=req.user.orders[orderIndex].orderidforemail
     ordermembersarray=req.user.orders[orderIndex].team.members
     userid=req.user.id
+    refund=req.user.orders[orderIndex].refund
+    console.log("Refund.backend",refund)
 
 
     res.render('account/orderreport', {
@@ -475,6 +478,7 @@ exports.getOrderReport = function(req, res) {
       votingtime:votingtime,
       orderidforemail:orderidforemail,
       userid:userid,
+      refund:refund
     });
   });
 };
