@@ -45,8 +45,6 @@ block content
             -var additionalmeals=(teamminimum-ordermembersarray.length)*10
             if additionalmeals>0
               h4#OrderTotal(style="text-align:right")| Add.Meals:$ #{additionalmeals}
-            if refund  
-              h4(style="text-align:right")#OrderTotal| Refund:-$#{refund}
             h4#OrderTotal(style="text-align:right")| Total:$ #{totalcost}
         form(method='POST')
           input(type='hidden', name='_csrf', value=_csrf)

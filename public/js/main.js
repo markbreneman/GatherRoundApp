@@ -60,9 +60,9 @@ $(document).ready(function() {
 
 
           var newTeamMemberStringPt1 = "<div id='"+teamMemberIDtag+"'"+" class='teammember row'>"
-          var newTeamMemberStringPt2 = "<div class='form-group col-md-2'><input id='"+teamMemberFNameIDtag+"'"+'name='+teamMemberFNameIDtag+" type='text' placeholder='First Name' class='form-control teammemberfnameinput'/></div>"
-          var newTeamMemberStringPt3 = "<div class='form-group col-md-2'><input id='"+teamMemberLNameIDtag+"'"+'name='+teamMemberLNameIDtag+" type='text' placeholder='Last Name' class='form-control teammemberlnameinput'/></div>"
-          var newTeamMemberStringPt4 = "<div class='form-group col-md-4'><input id='"+teamMemberEmailIDtag+"'"+'name='+teamMemberEmailIDtag+" type='email' placeholder='Email' class='form-control teammemberemailinput'/></div>"
+          var newTeamMemberStringPt2 = "<div class='form-group col-md-2'><input id='"+teamMemberFNameIDtag+"'"+'name='+'teamMemberFName[]'+" type='text' placeholder='First Name' class='form-control teammemberfnameinput'/></div>"
+          var newTeamMemberStringPt3 = "<div class='form-group col-md-2'><input id='"+teamMemberLNameIDtag+"'"+'name='+'teamMemberLName[]'+" type='text' placeholder='Last Name' class='form-control teammemberlnameinput'/></div>"
+          var newTeamMemberStringPt4 = "<div class='form-group col-md-4'><input id='"+teamMemberEmailIDtag+"'"+'name='+'teamMemberEmail[]'+" type='email' placeholder='Email' class='form-control teammemberemailinput'/></div>"
           var newTeamMemberStringPt5 = "<button type='button' class='btn remove-me col-md-offset-3'><img src='img/delete.png'></button>"
           var newTeamMemberStringPt6 = "<hr></div>"
 
@@ -268,7 +268,7 @@ $(document).ready(function() {
           updateCostTotal(teamOrderSize);
         }
 
-        $('#HiddenOrderTeamSize')[0].value=teamOrderSize;  
+        $('#HiddenOrderTeamSize')[0].value=teamOrderSize;
 
 
 

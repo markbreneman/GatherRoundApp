@@ -99,7 +99,7 @@ exports.getCreateTeam = function(req, res) {
  * Create a new team
  */
 exports.postCreateTeam = function(req, res, next) {
-
+  // res.send(req.body)
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
     //Create a Team Object with the teamMemberFName
@@ -110,18 +110,20 @@ exports.postCreateTeam = function(req, res, next) {
     //Get the teamsize from the post request
     var teamsizeinput = req.body.teamsize;
     var teamArray = [];
-
+    console.log(req.body);
     //For the size of the team create a team member object for each team member
     for (i = 0; i < teamsizeinput; i++){
-      var fnameString="teamMemberFName"+(i+2);
-      var lnameString="teamMemberLName"+(i+2);
-      var emailString="teamMemberEmail"+(i+2);
-
+      var fnameString=req.body.teamMemberFName[i];
+      var lnameString=req.body.teamMemberLName[i];
+      var emailString=req.body.teamMemberEmail[i];
+      console.log("firstname", fnameString);
+      console.log("lastname", lnameString);
+      console.log("email", emailString);
       var teammember=new TeamMember({
-        firstname: req["body"][fnameString],
-        lastname: req["body"][lnameString],
-        email: req["body"][emailString],
-        initials:req["body"][fnameString].charAt(0)+req["body"][lnameString].charAt(0)
+        firstname: fnameString,
+        lastname: lnameString,
+        email: emailString,
+        initials:fnameString.charAt(0)+lnameString.charAt(0)
       });
       teamArray.push(teammember);
       // console.log("Created New Team Member! " + teammember);
