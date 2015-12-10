@@ -107,8 +107,20 @@ app.post('/login', userController.postLogin);
 
 app.get('/dashboard', userController.index);
 app.get('/teams', userController.getTeams);
+
+app.param('teamid', function(req, res, next, teamidnum) {
+	var teamid = teamidnum;
+	// save name to the request
+	req.name = teamid;
+	next();
+});
+app.get('/teams/delete/:teamid', userController.getTeamDelete);
+
 app.get('/createteam', userController.getCreateTeam);
 app.post('/createteam', userController.postCreateTeam);
+
+
+
 app.param('teamname', function(req, res, next, name) {
 	var sentTeamName = name;
 	// save name to the request

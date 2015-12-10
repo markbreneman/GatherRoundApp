@@ -11,6 +11,27 @@ $(document).ready(function() {
             // border: solid 2px #FFCF74;
         randomColor = (randomColor + 1) % hexcolors.length;
     });
+    //SCRIPTS FOR TEAM
+    if ($('html').attr('id')=='Teams'){
+      //Attach listener to delete button - Data attribute triggers modal
+      var teamID;
+      $(".delete").click(function(e){
+        teamID=$(this).data( "id" )
+      });
+
+      $("#DeleteTeamBtn").click(function(e){
+        removeMarkup=$('div').find("[data-teamid='" + teamID + "']");
+        $.get( "/teams/delete/"+teamID, function() {
+        alert( "Load was performed." );
+        });
+
+        //Remove the Front End Markup
+        removeMarkup[0].remove();
+        console.log(removeMarkup[0]);
+
+      })
+
+    };
 
 
     //SCRIPTS FOR CREATE TEAM

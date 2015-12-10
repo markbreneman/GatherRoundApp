@@ -1,6 +1,22 @@
 extends ../layoutloggedin
 
 block content
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') &times;
+          
+          h4#myModalLabel.modal-title Team Deletion
+              
+        .modal-body
+          h5 Do you want to permanently delete this team?
+              
+        .modal-footer
+          button.btn#DeleteTeamBtn(type='button' data-dismiss="modal") Yes
+          button.btn#DontDelete(type='button' data-dismiss="modal") No
+          
   .container
         .row.whos-this-for
           col-md-12.whos-this-for
@@ -11,7 +27,7 @@ block content
                     a.btn(href="/createteam")
                       | + Add New Team
               - for teams in user.teams.reverse()
-                  div.col-md-6
+                  div.col-md-6(data-teamid='#{teams._id}')
                     .namedTeamWithMembers
                       div.topRow
                         div.col-xs-7.teamName
@@ -22,7 +38,7 @@ block content
                          a(href="#Copy") 
                           img(style="width:20px;" src='/img/copy.png') 
                          a(href="#Delete") 
-                          img(style="width:20px;" src='/img/delete.png') 
+                          img.delete(style="width:20px;" src='/img/delete.png' data-toggle='modal', data-target='#myModal', data-id='#{teams._id}') 
                       hr    
                       div.bottomRow
                         - for member in teams.members

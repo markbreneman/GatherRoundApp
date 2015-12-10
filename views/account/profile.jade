@@ -59,7 +59,7 @@ block content
           label.col-sm-3.control-label(for='gravatar') Profile Picture
         .row.profilePic
           if(!user.profile.avatarurl)
-            img#Preview.profile(src="#{user.gravatar()}")
+            img#Preview.profile(src="#{user.gravatar()}" onError="this.onerror=null;this.src='/img/defaultprofiledark.svg'")
           else
             img#Preview.profile(src="#{user.profile.avatarurl}")
         .col-xs-7  

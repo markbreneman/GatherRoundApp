@@ -86,6 +86,43 @@ exports.getTeams = function(req, res) {
 };
 
 /**
+ * GET /teams/delete/:teamID
+ * this is the ajax route to delete a team
+ */
+exports.getTeamDelete = function(req, res) {
+  console.log(req.params);
+  // res.send("GOOD JOB.")
+
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+    var selectedTeamIndex;
+    for (i = 0; i < user.teams.length; i++){
+      if (user.teams[i]._id==req.params.teamid){
+        selectedTeamIndex=i;
+        console.log(selectedTeamIndex);
+        break
+      }
+    }
+
+    console.log("before", user.teams)
+    console.log(req.params.teamid)
+
+    user.teams.pull({'_id':req.params.teamid},function(err){
+      if (err) return next(err);
+      console.log ("removed...")
+    })
+
+    user.markModified("teams");
+
+    user.save(function(err) {
+      console.log("after", user.teams)
+      if (err) return next(err);
+      req.flash('success', { msg: 'Team saved' });
+    });
+  });
+};
+
+/**
  * GET /createteam
  */
 exports.getCreateTeam = function(req, res) {

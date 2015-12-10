@@ -24,7 +24,7 @@
           if user.profile.avatarurl
             img(id='ProfilePic' src='#{user.profile.avatarurl}')
           else
-            img(id='ProfilePic' src='#{user.gravatar(60)}')
+            img(id='ProfilePic' src='#{user.gravatar(60)}' onError="this.onerror=null;this.src='/img/defaultprofile.svg'")
           | #{user.profile.name || user.email || user.id}&nbsp;
           i.caret
           //- b.caret
