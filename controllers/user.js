@@ -90,36 +90,47 @@ exports.getTeams = function(req, res) {
  * this is the ajax route to delete a team
  */
 exports.getTeamDelete = function(req, res) {
-  console.log(req.params);
-  // res.send("GOOD JOB.")
-
+  // console.log(req.params);
   User.findById(req.user.id, function(err, user) {
-    if (err) return next(err);
-    var selectedTeamIndex;
-    for (i = 0; i < user.teams.length; i++){
-      if (user.teams[i]._id==req.params.teamid){
-        selectedTeamIndex=i;
-        console.log(selectedTeamIndex);
-        break
+      if (err) return next(err);
+      var selectedTeamIndex;
+      for (i = 0; i < user.teams.length; i++){
+        if (user.teams[i]._id==req.params.teamid){
+          selectedTeamIndex=i;
+          break
+        }
       }
-    }
-
-    console.log("before", user.teams)
-    console.log(req.params.teamid)
-
-    user.teams.pull({'_id':req.params.teamid},function(err){
-      if (err) return next(err);
-      console.log ("removed...")
-    })
-
-    user.markModified("teams");
-
-    user.save(function(err) {
-      console.log("after", user.teams)
-      if (err) return next(err);
-      req.flash('success', { msg: 'Team saved' });
-    });
   });
+  console.log("before", req.user.teams)
+  console.log(req.params.teamid)
+
+  teamID=req.params.teamid;
+  userID=req.user.id;
+
+  // User.update(
+  // {'_id': userID},
+  // { $pull: { "teams" : { id: teamID } } },
+  // false,
+  // true
+  // );
+  // user.markModified("teams");
+  // user.save();
+
+
+
+  User.update(
+  {'_id': userID},
+  { "$pull": { "teams" : {"_id" : teamID } } },
+  { "multi": true }
+  );
+
+  req.user.markModified("teams");
+  req.user.save(function(err) {
+      console.log("after", req.user.teams)
+      if (err) return next(err);
+      req.flash('success', { msg: 'Team deleted' });
+  });
+
 };
 
 /**
